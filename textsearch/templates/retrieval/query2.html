@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <title>Virtual Keyboard Language Layouts</title>
+
+  <!-- demo -->
+  <link href="static/keyboard_css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/keyboard_css/font-awesome.min.css" rel="stylesheet">
+  <link href="static/keyboard_css/demo.css" rel="stylesheet">
+
+  <!-- jQuery & jQuery UI + theme (required) -->
+  <link href="static/keyboard_css/jquery-ui.min.css" rel="stylesheet">
+  <script src="static/keyboard_js/jquery-latest.min.js"></script>
+  <script src="static/keyboard_js/jquery-ui.min.js"></script>
+  <script src="static/keyboard_js/bootstrap.min.js"></script>
+
+  <!-- keyboard widget css & script (required) -->
+  <link href="static/keyboard_css/keyboard.css" rel="stylesheet">
+  <link href="static/keyboard_css/keyboard-previewkeyset.css" rel="stylesheet">
+  <script src="static/keyboard_js/jquery.keyboard.js"></script>
+
+  <!-- keyboard extensions (optional) -->
+  <script src="static/keyboard_js/jquery.mousewheel.js"></script>
+  <script src="static/keyboard_js/jquery.keyboard.extension-typing.js"></script>
+  <script src="static/keyboard_js/jquery.keyboard.extension-previewkeyset.js"></script>
+
+  <!-- preloaded keyboard layout -->
+  <script src="static/layouts/keyboard-layouts-greywyvern.js" charset="utf-8"></script>
+
+  <script>
+  $(function(){
+
+
+    // Change display language, if the definitions are available
+    showKb = function(layout){
+      var kb = $('#multi').getkeyboard();
+      kb.options.layout = layout;
+      // redraw keyboard with new layout
+      kb.redraw();
+    };
+
+    $('#multi').keyboard({
+      layout: 'qwerty',
+      stayOpen: true
+    })
+    // activate the typing extension
+    .addTyping({
+      showTyping: true,
+      delay: 200
+    })
+    .previewKeyset();
+
+    $('#lang')
+      .change(function(){
+        var kb = $('#multi'),
+          layout = 'ml';
+        showKb( layout );
+      }).trigger('change');
+  });
+  </script>
+  <style>
+  .rtl {
+    text-align: right;
+  }
+  </style>
+</head>
+<body>
+<div class="container">
+<div id="page-wrap">
+
+  <div class="block2">
+
+    <h2 id="lang"></h2>
+    <input id="multi" type="text" />
+  </div>
+
+  <br class="clear" />
+</div>
+</div>
+
+</body>
+</html>

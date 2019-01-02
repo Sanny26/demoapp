@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block css %}
+    {% include "retrieval/template_css.html" %}
+{% endblock %}
+
+{% block content %}
+<section id="about">
+      <div class="container">
+                <div class="col-lg-12 text-center">
+                	<h3>WORDSPOTTING DEMO FOR {{Cname}}</h3>
+                	{% if ftype == 'img' %}
+                	<p style="float:right;"><a href="{% url 'upload_query' %}"> Search for another word </a></p><br><br>
+					{% else %}
+					<p style="float:right;"><a href="{% url 'text_query' %}"> Search for another word </a></p><br><br>
+					{% endif %}
+					<h4>Query</h4>
+					{% if ftype == 'img' %}
+					<img src="{{qimg}}" />
+					{% else %}
+					<p><font size="10">{{qimg}}</font></p>
+					{% endif %}
+
+					<br><h4>Search results</h4>
+					<br>
+
+					<table border="0" width="100%" ID="Table1" style="margin: 0px;">
+					<tr>
+					{% for each in pages %}
+					{% if forloop.counter0 < 3 %}
+					<td><a href="{% url 'view_results' pages.number forloop.counter0 %}">{{each.0}}</a></td>				
+					{% endif %}
+					{% endfor %}</tr>
+					
+					<tr>{% for each in pages %}
+					{% if forloop.counter0 < 3 %}
+					<td><img src="{{word_path}}/{{each.1}}" height="60" width="150"></td>
+					{% endif %}
+					{% endfor %}</tr>
+					</table>
+
+					<br><br>
+					<table border="0" width="100%" ID="Table2" style="margin: 0px;">
+					<tr>
+					{% for each in pages %}
+					{% if forloop.counter0 >= 3 %}
+					<td><a href="{% url 'view_results' pages.number forloop.counter0 %}">{{each.0}}</a></td>
+
+					{% endif %}
+					{% endfor %}</tr>
+					
+					<tr>{% for each in pages %}
+					{% if forloop.counter0 >= 3 %}
+					<td><img src="{{word_path}}/{{each.1}}" height="60" width="150"></td>
+					{% endif %}
+					{% endfor %}</tr>
+					</table>
+					
+					<br><br>
+					<div class="pagination">
+					    <span class="step-links">
+					        {% if pages.has_previous %}
+					            <a href="?page=1">&laquo; first</a>
+					            <a href="?page={{ pages.previous_page_number }}">previous</a>
+					        {% endif %}
+
+					        <span class="current">
+					            Page {{ pages.number }} of {{ pages.paginator.num_pages }}.
+					        </span>
+
+					        {% if pages.has_next %}
+					            <a href="?page={{ pages.next_page_number }}">next</a>
+					            <a href="?page={{ pages.paginator.num_pages }}">last &raquo;</a>
+					        {% endif %}
+					    </span>
+					</div>
+
+				</div>
+        </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+{% include "retrieval/template_scripts.html" %}
+{% endblock %}

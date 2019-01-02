@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block css %}
+    {% include "retrieval/template_css.html" %}
+{% endblock %}
+
+{% block content %}
+<section id="about">
+        <div class="container">
+                <div class="col-lg-12 text-center">
+                	<h3>WORDSPOTTING DEMO FOR {{Cname}}</h3><br>
+                	<p style="float:left;"><a href={% url 'results' %}>Back </a></p>
+                	{% if ftype == 'img' %}
+                	<p style="float:right;"><a href="{% url 'upload_query' %}"> Search for another word </a></p><br><br>
+					{% else %}
+					<p style="float:right;"><a href="{% url 'text_query' %}"> Search for another word </a></p><br><br>
+					{% endif %}
+					<br><br>
+                	<h4>Query </h4>
+					{% if ftype == 'img' %}
+					<img src="{{qimg}}" />
+					{% else %}
+					<p><font size="10">{{qimg}}</font></p>
+					{% endif %}
+					<br>
+					
+					{% if page > 0 %}
+					<p><a href={% url 'mresults' pid  %}> prev </a> | 
+					{% endif %}					
+					{% if page < mlen %}
+					<a href={% url 'mresults' nid %}> next </a></p>
+					{% endif %}			
+					
+					<h4>Search results</h4>
+					<img src="{{nimg}}" style="padding:1px;border:1px solid #021a40;" height="1000" width="600"/>
+					<p>{{each}}</p>
+					<br>
+					
+				</div>
+        </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+{% include "retrieval/template_scripts.html" %}
+{% endblock %}

@@ -1,3 +1,11 @@
+textsearch/media/demo/*
+textsearch/media/small_set/*
+textsearch/media/cleaned/*
+textsearch/saved_models/mohanlal/*
+textsearch/saved_models/mohanlal2/*
+textsearch/saved_models/e2e_model/*
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block css %}
+    {% include "retrieval/template_css.html" %}
+{% endblock %}
+
+{% block content %}
+
+<section id="about">
+        <div class="container">
+          <div class="col-lg-8 col-lg-offset-2 text-center">
+              <h3>Wordspotting Demo For {{Cname}}</h3><br><br>
+              <p style="float:right;"><a href={% url 'home' %}> Search in other collections </a></p>
+              <br><br><br>
+                 <form enctype="multipart/form-data" method="post">
+				          <div class="row">
+                        <div class="form-group col-xs-12 label-form-group controls">
+			    		             {% csrf_token %}
+                            <table class="form-group label-form-group controls">
+                            {{form1.as_table}}
+                            </table>
+                        </div>
+                        <input type="submit" value="Search for the query" />
+                    </div>    
+			           </form><br>
+                 <p>To get started, we have given some of the words that occur in the collection. Click on any of the images to
+                 retrieve relevant documents.</p>
+                 {% for path in dpaths %}
+                 <a href='{% url "dresults" forloop.counter %}'><img src="{{path}}" height="60" width="150" style="border:1px solid black; margin: 5px 20px"></a>
+                 {% endfor %}
+                  <br><br><br>
+              <p>Try out text based querying by clicking on <a href="{% url 'text_query' %}">this link</a>.</p>
+    <p>Go to home page of this collection. <a href="{% url 'chome' cname=cname %}">Click here</a></p>
+    <p>To explore other collections click <a href="{% url 'home' %}">here</a>.</p>
+          </div>
+				</div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+{% include "retrieval/template_scripts.html" %}
+{% endblock %}
