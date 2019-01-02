@@ -17,6 +17,7 @@ from .word_index import query_word
 from .extractFeature import feature
 from .E2Efeat import imgFeat, txtFeat
 
+
 def text_query(request):
 	page_template = 'retrieval/layouts2.html'
 	demo_path = 'media/demo/imgs/'
@@ -105,7 +106,8 @@ def collection_index(request, cname):
 	context['cname'] = cname
 	if collection.collection_link != '':
 		context['url'] = collection.collection_link
-
+	collections = Collections.objects.all().values_list('collection_name', flat=True) 
+	context['collections'] = [(each.replace(' ', '_'), each)for each in collections]
 	return render(request, page_template, context)
 
 def image_query(request):

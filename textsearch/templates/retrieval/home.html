@@ -1,5 +1,5 @@
 {% load static from staticfiles %}
-
+{% load mytemplatetags %}
 <!DOCTYPE html>
 <html>
 
@@ -75,7 +75,7 @@
                         <span></span>
                         <span></span>
                     </button>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <!--button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
                     </button>
 
@@ -94,19 +94,50 @@
                                 <a class="nav-link" href="#">Page</a>
                             </li>
                         </ul>
-                    </div>
+                    </div-->
                 </div>
             </nav>
             
             <h2>Overview</h2>
             <p>This application is built to demonstrate handwritten document retrieval systems for collections written in different Indic scripts. Handwritten documents written by a specific person or handwritten documents containing information related to a specific domain that may hold a historical significance are referred to as 
-            <b>Collections</b> in this project.<br>
-        To the best of our knowledge, this application is the first attempt to build a retreival system for handwritten documents written in Indian languages.</p>
+            <b>Collections</b> in this project. <br> To the best of our knowledge, this application is the first attempt to build a retreival system for handwritten documents written in Indian languages.</p>
 
             <div class="line"></div>
             <h2>Available Collections</h2>
-            <p></p>
+            <p>Retrieval systems have been built for the following collections. Choose any of the collections to start your search.</p>
+            <div class="row text-center text-lg-left">
+            {% for name in collections %}
+            <div class="col-lg-2 col-md-3 col-xs-4">
+                <a href="{% url 'chome' name.0 %}" class="d-block mb-5 h-100">
+                   <img class="img-fluid img-thumbnail" src="{{'media/placeholders/'|add:name.0|file_exists}}" height="150" width="150">
+                   <p>{{name.1}}</p>
+                </a>
+            </div>
+            {% endfor %}
+            </div>
+            <div class="line"></div>
+
+            <h4>Instructions to use the demo application</h4>
+                <ul class="list-group"> 
+                  <li class="list-group-item"><b>Querying</b><br>
+                    The system can handle two different types of queries to retrieve relevant handwritten documents.
+                    <ul>
+                      <li>Query by text. Use the virtual keyboard to enter a query.<br>Example query word for the above collection is <b>നിങ്ങൾ</b>.</li>
+                      <li>Query by example image. Upload a word image using the file upload option. <br>This system can handle single word images only. Example query image for Mohanlal blog collection, <img src="/media/demo/5.jpg"></li>
+                    </ul>
+                  </li>
+                  <li class="list-group-item"> <b>Results</b><br>
+                  <div class="clearfix">
+                  <img src="/media/results.png" width="300" height="200" style="border:1px solid black; float:right">          
+                  Top 10 relavant word images will be displayed. The results are displayed in the format shown in the image.
+                  Top left word image has the highest relevance with the query, the following image has second highest relevance and so on. <br>
+                  A link is provided on top of each word image, which corresponds to the document that contains the spotted word. Click on the link to read the whole document. 
+                 </div></li>
+                </ul>
+
     </div>
+
+
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
