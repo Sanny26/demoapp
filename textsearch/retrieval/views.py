@@ -273,7 +273,7 @@ def results(request):
 		
 
 	for i, each in enumerate(results):
-		pages.append([each.split('/')[0]+'.jpg', each])
+		pages.append([each.split('/')[0]+'.jpg', each, i])
 
 	paginator = Paginator(pages, 6)
 
@@ -287,6 +287,8 @@ def results(request):
 		context['qimg'] = request.session['qimg']
 	context['cname'] = cname
 	context['ftype'] = request.session['ftype']
+	collections = Collections.objects.all().values_list('collection_name', flat=True) 
+	context['collections'] = [(each.replace(' ', '_'), each)for each in collections]
 	return render(request, page_template, context) 
 
 def mresults(request, page):
@@ -315,6 +317,8 @@ def mresults(request, page):
 		context['qimg'] = reverse('show_image')
 	else:
 		context['qimg'] = request.session['qimg']
+	collections = Collections.objects.all().values_list('collection_name', flat=True) 
+	context['collections'] = [(each.replace(' ', '_'), each)for each in collections]
 	return render(request, page_template, context)
 
 def view_results(request, page, pid):
@@ -348,7 +352,7 @@ def view_results(request, page, pid):
 	request.session['mflag'] = 0
 	context['nimg'] = reverse('show_page')
 	context['ftype'] = request.session['ftype']
-	context['pid'] = pid
+	context['pid'] = pid + 1
 	if pid!=(len(results)-1):
 		context['next_pid'] = pid+1
 		context['page'] = 0
@@ -362,4 +366,7 @@ def view_results(request, page, pid):
 		context['prev_pid'] = -1
 		context['page'] = 0
 	context['cname'] = cname
+	collections = Collections.objects.all().values_list('collection_name', flat=True) 
+	context['collections'] = [(each.replace(' ', '_'), each)for each in collections]
+	
 	return render(request, page_template, context)

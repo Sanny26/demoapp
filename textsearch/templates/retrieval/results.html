@@ -1,86 +1,196 @@
-{% extends "base.html" %}
+{% load static from staticfiles %}
+{% load mytemplatetags %}
+<!DOCTYPE html>
+<html>
 
-{% block css %}
-    {% include "retrieval/template_css.html" %}
-{% endblock %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-{% block content %}
-<section id="about">
-      <div class="container">
-                <div class="col-lg-12 text-center">
-                	<h3>WORDSPOTTING DEMO FOR {{Cname}}</h3>
-                	{% if ftype == 'img' %}
-                	<p style="float:right;"><a href="{% url 'upload_query' %}"> Search for another word </a></p><br><br>
-					{% else %}
-					<p style="float:right;"><a href="{% url 'text_query' %}"> Search for another word </a></p><br><br>
-					{% endif %}
-					<h4>Query</h4>
-					{% if ftype == 'img' %}
-					<img src="{{qimg}}" />
-					{% else %}
-					<p><font size="10">{{qimg}}</font></p>
-					{% endif %}
+    <title>HW Search</title>
 
-					<br><h4>Search results</h4>
-					<br>
+    <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link href="{% static 'css/sidebar.css' %}" rel="stylesheet">
 
-					<table border="0" width="100%" ID="Table1" style="margin: 0px;">
-					<tr>
-					{% for each in pages %}
-					{% if forloop.counter0 < 3 %}
-					<td><a href="{% url 'view_results' pages.number forloop.counter0 %}">{{each.0}}</a></td>				
-					{% endif %}
-					{% endfor %}</tr>
-					
-					<tr>{% for each in pages %}
-					{% if forloop.counter0 < 3 %}
-					<td><img src="{{word_path}}/{{each.1}}" height="60" width="150"></td>
-					{% endif %}
-					{% endfor %}</tr>
-					</table>
+    
+    <Font Awesome JS >
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
-					<br><br>
-					<table border="0" width="100%" ID="Table2" style="margin: 0px;">
-					<tr>
-					{% for each in pages %}
-					{% if forloop.counter0 >= 3 %}
-					<td><a href="{% url 'view_results' pages.number forloop.counter0 %}">{{each.0}}</a></td>
+</head>
 
-					{% endif %}
-					{% endfor %}</tr>
-					
-					<tr>{% for each in pages %}
-					{% if forloop.counter0 >= 3 %}
-					<td><img src="{{word_path}}/{{each.1}}" height="60" width="150"></td>
-					{% endif %}
-					{% endfor %}</tr>
-					</table>
-					
-					<br><br>
-					<div class="pagination">
-					    <span class="step-links">
-					        {% if pages.has_previous %}
-					            <a href="?page=1">&laquo; first</a>
-					            <a href="?page={{ pages.previous_page_number }}">previous</a>
-					        {% endif %}
+<body>
 
-					        <span class="current">
-					            Page {{ pages.number }} of {{ pages.paginator.num_pages }}.
-					        </span>
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>put_icons</h3>
+            </div>
 
-					        {% if pages.has_next %}
-					            <a href="?page={{ pages.next_page_number }}">next</a>
-					            <a href="?page={{ pages.paginator.num_pages }}">last &raquo;</a>
-					        {% endif %}
-					    </span>
+            <ul class="list-unstyled components">
+                <p>Available Collections</p>
+                {% for name in collections %}
+                {% if forloop.counter == 0 %}
+                <li class="active">
+                {% else %}
+                <li>
+                {% endif %}
+                    <a href="{{'#'|add:name.0 }}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">{{name.1}}</a>
+                    <ul class="collapse list-unstyled" id="{{name.0}}">
+                        <li>
+                            <a href="{% url 'chome' name.0 %}">About</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'redirect_' name.0 0 %}">Image Search</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'redirect_' name.0 1 %}">Text Search</a>
+                        </li>
+                    </ul>
+                </li>
+                {% endfor %}
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <!--li>
+                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
+                </li-->
+                <li>
+                    <a href="{% url 'home' %}" class="article">Back to Home</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content Holder -->
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="navbar-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <!--button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                        </ul>
+                    </div-->
+                </div>
+            </nav>
+            
+            <div id="hyperlink">
+				{% if ftype == 'img' %}
+				<p>Search results for <img src="{{qimg}}"></p>
+				<!--a href="{% url 'upload_query' %}" style="float:right;">Search for another word</a-->
+				<a href="{% url 'upload_query' %}" >Search for another word</a>
+				
+				{% else %}
+				<p style="float:left;">Search results for {{qimg}}</p>
+				<a href="{% url 'text_query' %}" style="float:right;">Search for another word</a>
+				{% endif %}
+			</div>
+			<div class="line"></div>
+
+			
+			<!--div id="hyperlink" class="row">
+				<table border="0" width="100%" ID="Table1" style="margin: 0px;">
+				<tr>
+				{% for each in pages %}
+				{% if forloop.counter0 < 3 %}
+				<td><a href="{% url 'view_results' pages.number forloop.counter0 %}">{{each.0}}</a></td>				
+				{% endif %}
+				{% endfor %}</tr>
+				
+				<tr>{% for each in pages %}
+				{% if forloop.counter0 < 3 %}
+				<td><img src="{{word_path}}/{{each.1}}" height="60" width="150"></td>
+				{% endif %}
+				{% endfor %}</tr>
+				</table>
+
+				<br><br>
+				<table border="0" width="100%" ID="Table2" style="margin: 0px;">
+				<tr>
+				{% for each in pages %}
+				{% if forloop.counter0 >= 3 %}
+				<td><a href="{% url 'view_results' pages.number forloop.counter0 %}">{{each.0}}</a></td>
+
+				{% endif %}
+				{% endfor %}</tr>
+				
+				<tr>{% for each in pages %}
+				{% if forloop.counter0 >= 3 %}
+				<td><img src="{{word_path}}/{{each.1}}" height="60" width="150"></td>
+				{% endif %}
+				{% endfor %}</tr>
+				</table>
+			</div-->
+			<!--p>The matched words are dispalyed below.</p-->
+			<div id="hyperlin" class="row">
+				{% for each in pages %}
+				<div class="col-lg-4 col-md-4 col-xs-6">
+					<div class="mb-4">
+						<figure class='figure'>
+						<img class="figure-img img-fluid" src="{{word_path}}/{{each.1}}" style="padding:1px;border:1px solid #021a40;" height="100" width="200">
+						<figcaption class="figure-caption"> Result {{each.2|add:"1"}} : <a href="{% url 'view_results' pages.number forloop.counter0 %}">Open document <i class="fas fa-link"></i></a></figcaption>
+						</figure>
 					</div>
+            	</div>
+				{% endfor %}
+			</div>
 
-				</div>
-        </div>
-</section>
+			<div class="pagination" id="hyperlink">
+			    <span class="step-links">
+			        {% if pages.has_previous %}
+			            <a href="?page=1">&laquo; first</a>
+			            <a href="?page={{ pages.previous_page_number }}">previous</a>
+			        {% endif %}
 
-{% endblock %}
+			        <span class="current">
+			            Page {{ pages.number }} of {{ pages.paginator.num_pages }}.
+			        </span>
 
-{% block scripts %}
-{% include "retrieval/template_scripts.html" %}
-{% endblock %}
+			        {% if pages.has_next %}
+			            <a href="?page={{ pages.next_page_number }}">next</a> | 
+			            <a href="?page={{ pages.paginator.num_pages }}">last &raquo;</a>
+			        {% endif %}
+			    </span>
+			</div>
+		</div>
+    </div>
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $(this).toggleClass('active');
+            });
+        });
+    </script>
+</body>
+</html>

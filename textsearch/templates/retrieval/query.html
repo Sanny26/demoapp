@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Search Demo</title>
+    <title>HW Search</title>
 
     <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -100,8 +100,8 @@
             <div class="row"><h2>Image Search</h2></div><br>
                 <form enctype="multipart/form-data" method="post">
                     {% csrf_token %}
-                    {{ form1 }}
-                    <input type="submit" value=<span class="glyphicon glyphicon-search"></span> > 
+                    {{ form1.as_table }}
+                    <input type="submit" value="Search" > 
                 </form><br><br>
            <p>To get started, we have given some of the words that occur in the collection. Click on any of the images to
            retrieve relevant documents.</p>
