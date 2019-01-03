@@ -1,73 +1,119 @@
+{% load static from staticfiles %}
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 
-	<title>Wordspotting demo</title>
-	{% include "retrieval/template_css.html" %}
-	<!-- demo -->
-	<!--link href="static/keyboard_css/bootstrap.min.css" rel="stylesheet"-->
-	<!--link href="static/keyboard_css/font-awesome.min.css" rel="stylesheet"-->
-	<link href="static/keyboard_css/demo.css" rel="stylesheet">
+	<title>Search demo</title>
+	
+	<!--Basic style-->
+	<link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link href="{% static 'css/sidebar.css' %}" rel="stylesheet">
 
-	<!-- jQuery & jQuery UI + theme (required) -->
-	<link href="static/keyboard_css/jquery-ui.min.css" rel="stylesheet">
-	<script src="static/keyboard_js/jquery-latest.min.js"></script>
-	<script src="static/keyboard_js/jquery-ui.min.js"></script>
-	<script src="static/keyboard_js/bootstrap.min.js"></script>
+    <Font Awesome JS >
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
-	<!-- keyboard widget css & script (required) -->
-	<link href="static/keyboard_css/keyboard.css" rel="stylesheet">
-	<link href="static/keyboard_css/keyboard-previewkeyset.css" rel="stylesheet">
-	<script src="static/keyboard_js/jquery.keyboard.js"></script>
-
-	<!-- keyboard extensions (optional) -->
-	<script src="static/keyboard_js/jquery.mousewheel.js"></script>
-	<script src="static/keyboard_js/jquery.keyboard.extension-typing.js"></script>
-	<script src="static/keyboard_js/jquery.keyboard.extension-previewkeyset.js"></script>
-
-	<!-- preloaded keyboard layout -->
-	<script src="static/layouts/keyboard-layouts-greywyvern.js" charset="utf-8"></script>
-
-	<script>
-	$(function(){
-
-
-		// Change display language, if the definitions are available
-		showKb = function(layout){
-			var kb = $('#multi').getkeyboard();
-			kb.options.layout = layout;
-			// redraw keyboard with new layout
-			kb.redraw();
-		};
-
-		$('#multi').keyboard({
-			layout: 'qwerty',
-			stayOpen: true
-		})
-		// activate the typing extension
-		.addTyping({
-			showTyping: true,
-			delay: 200
-		})
-		.previewKeyset();
-
-		$('#lang')
-			.change(function(){
-				var kb = $('#multi'),
-					layout = 'ml';
-				showKb( layout );
-			}).trigger('change');
-	});
-	</script>
-	<style>
-	.rtl {
-		text-align: right;
-	}
-	</style>
 </head>
+
 <body>
-<div class="container">
+<body>
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>put_icons</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <p>Available Collections</p>
+                {% for name in collections %}
+                {% if forloop.counter == 0 %}
+                <li class="active">
+                {% else %}
+                <li>
+                {% endif %}
+                    <a href="{{'#'|add:name.0 }}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">{{name.1}}</a>
+                    <ul class="collapse list-unstyled" id="{{name.0}}">
+                        <li>
+                            <a href="{% url 'chome' name.0 %}">About</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'redirect_' name.0 0 %}">Image Search</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'redirect_' name.0 1 %}">Text Search</a>
+                        </li>
+                    </ul>
+                </li>
+                {% endfor %}
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <!--li>
+                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
+                </li-->
+                <li>
+                    <a href="{% url 'home' %}" class="article">Back to Home</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content Holder -->
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="navbar-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <!--button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                        </ul>
+                    </div-->
+                </div>
+            </nav>
+            
+            <h2>Text Search</h2><br>
+            <p>To get started, we have given some of the words that occur in the collection. Copy any of below words to the query box and click accept to retrieve relevant documents.<br>Sample words:വേഗം, നിങ്ങൾ</p>
+        	<br>
+			<!--div id="page-wrap">
+				<div class="block2">
+
+					<h2 id="lang"></h2>
+					<form method="post" novalidate>
+					    {% csrf_token %}
+					    <input id="multi" type="text" name='text_query'/>
+					    <br><br><br>
+					    <button type="submit" class="btn btn-default">Search for the query</button>
+					</form>
+				</div>
+				<br class='clear' />
+			</div-->
+            
+        </div>
+   	</div>
+
+<!--div class="container">
 	<div class="text-center">
         <h3>Wordspotting Demo For {{Cname}}</h3><br>
         <p class="text-left small">To get started, we have given some of the words that occur in the collection. Copy any of below words to the query box and click accept to retrieve relevant documents.<br>Sample words:വേഗം, നിങ്ങൾ</p>
@@ -89,11 +135,22 @@
 		<p>Go to home page of this collection. <a href="{% url 'chome' cname=cname %}">Click here</a></p>
 		<p>To explore other collections click <a href="{% url 'home' %}">here</a>.</p>
 	</div>
-</div>
-<footer class="stickyfooter">
-  <div class="container text-center">© 2018 Copyright:
-    <a href="https://cvit.iiit.ac.in"> CVIT@IIIT Hyderabad</a>
-  </div>
-</footer>
+</div-->
+
+<!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $(this).toggleClass('active');
+            });
+        });
+    </script>
 </body>
 </html>

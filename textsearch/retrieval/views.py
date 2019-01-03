@@ -17,6 +17,36 @@ from .word_index import query_word
 from .extractFeature import feature
 from .E2Efeat import imgFeat, txtFeat
 
+def redirect_query(request, cname, choice):
+	request.session['cname'] = cname
+	if choice == '0':
+		return redirect('upload_query')
+	elif choice == '1':
+		return redirect('text_query')
+	else:
+		return redirect('home')
+
+def index(request):
+	page_template =  'retrieval/home.html'
+	context = {}
+	collections = Collections.objects.all().values_list('collection_name', flat=True) 
+	context['collections'] = [(each.replace(' ', '_'), each)for each in collections]
+	return render(request, page_template, context)
+
+def collection_index(request, cname):
+	page_template = 'retrieval/chome.html'
+	context = {}
+	request.session['cname'] = cname
+	Cname = cname.replace('_', ' ')
+	collection = Collections.objects.filter(collection_name = Cname)[0]
+	context['desc'] = collection.desc
+	context['Cname'] = Cname
+	context['cname'] = cname
+	if collection.collection_link != '':
+		context['url'] = collection.collection_link
+	collections = Collections.objects.all().values_list('collection_name', flat=True) 
+	context['collections'] = [(each.replace(' ', '_'), each)for each in collections]
+	return render(request, page_template, context)
 
 def text_query(request):
 	page_template = 'retrieval/layouts2.html'
@@ -85,27 +115,6 @@ def text_query(request):
 			
 			return redirect('mresults', page=0)
 
-	return render(request, page_template, context)
-
-
-def index(request):
-	page_template =  'retrieval/home.html'
-	context = {}
-	collections = Collections.objects.all().values_list('collection_name', flat=True) 
-	context['collections'] = [(each.replace(' ', '_'), each)for each in collections]
-	return render(request, page_template, context)
-
-def collection_index(request, cname):
-	page_template = 'retrieval/chome.html'
-	context = {}
-	request.session['cname'] = cname
-	Cname = cname.replace('_', ' ')
-	collection = Collections.objects.filter(collection_name = Cname)[0]
-	context['desc'] = collection.desc
-	context['Cname'] = Cname
-	context['cname'] = cname
-	if collection.collection_link != '':
-		context['url'] = collection.collection_link
 	collections = Collections.objects.all().values_list('collection_name', flat=True) 
 	context['collections'] = [(each.replace(' ', '_'), each)for each in collections]
 	return render(request, page_template, context)
@@ -175,6 +184,8 @@ def image_query(request):
 	context['dpaths'] = paths
 	context['Cname'] = Cname
 	context['cname'] = cname
+	collections = Collections.objects.all().values_list('collection_name', flat=True) 
+	context['collections'] = [(each.replace(' ', '_'), each)for each in collections]
 	return render(request, page_template, context)
 
 def show_image(request):

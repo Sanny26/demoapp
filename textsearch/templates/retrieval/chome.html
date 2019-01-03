@@ -44,10 +44,10 @@
                             <a href="{% url 'chome' name.0 %}">About</a>
                         </li>
                         <li>
-                            <a href="#">Image Search</a>
+                            <a href="{% url 'redirect_' name.0 0 %}">Image Search</a>
                         </li>
                         <li>
-                            <a href="#">Text Search</a>
+                            <a href="{% url 'redirect_' name.0 1 %}">Text Search</a>
                         </li>
                     </ul>
                 </li>
@@ -55,11 +55,11 @@
             </ul>
 
             <ul class="list-unstyled CTAs">
-                <li>
+                <!--li>
                     <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
-                </li>
+                </li-->
                 <li>
-                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
+                    <a href="{% url 'home' %}" class="article">Back to Home</a>
                 </li>
             </ul>
         </nav>
@@ -110,6 +110,29 @@
                 More information about this collection can be found at this <a href="{{url}}">link</a></div> 
                 {% endif %}
             </p>
+            <div class='line'></div>
+
+            <!--Access demo links-->
+            <h2>Access Demo</h2>
+            <div class="row text-center">
+            <div class="col-lg-4 col-md-4 col-xs-4">
+                    <a href="{% url 'upload_query' %}" class="btn btn-danger btn-block btn-lg">
+                        Image Search
+                    </a>
+                    <div id='hyperlink'><a href="#">Usage Instructions</a></div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-xs-4">
+                    <a href="{% url 'upload_query' %}" class="btn btn-danger btn-block btn-lg">
+                        Text Search
+                    </a>
+                    <div id='hyperlink'><a href="#">Usage Instructions</a></div>
+            </div>
+            
+            </div>
+            <!--Display sample pages in collection-->
+            <div class='line'></div>
+            <h2>Sample pages</h2>
+
         </div>
 
 
