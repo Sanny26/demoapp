@@ -9,6 +9,6 @@ def file_exists(filepath):
     path = os.path.join(settings.BASE_DIR, filepath) + '.jpg'
     print(path)
     if os.path.isfile(path):
-        return filepath + '.jpg'
+        return '/'+filepath + '.jpg'
     else:
         return "http://placehold.it/150x150?text=Collection"

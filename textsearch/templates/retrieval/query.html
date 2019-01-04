@@ -27,23 +27,19 @@
         <!-- Sidebar Holder -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>put_icons</h3>
+                <h3>HW Search</h3>
             </div>
 
             <ul class="list-unstyled components">
                 <p>Available Collections</p>
                 {% for name in collections %}
-                {% if forloop.counter == 0 %}
-                <li class="active">
-                {% else %}
                 <li>
-                {% endif %}
                     <a href="{{'#'|add:name.0 }}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">{{name.1}}</a>
-                    <ul class="collapse list-unstyled" id="{{name.0}}">
+                    <ul class="{% if name.0 != cname %}collapse{% endif %} list-unstyled" id="{{name.0}}">
                         <li>
                             <a href="{% url 'chome' name.0 %}">About</a>
                         </li>
-                        <li>
+                        <li class="{% if name.0 == cname %}active{% endif %}">
                             <a href="{% url 'redirect_' name.0 0 %}">Image Search</a>
                         </li>
                         <li>
@@ -74,6 +70,11 @@
                         <span></span>
                         <span></span>
                     </button>
+
+                    <div class="row justify-content-right">
+                        <img src="{% static 'icons/lab.jpg'%}" width="75" height="50">
+                        <img src="{% static 'icons/college.jpeg'%}" width="75" height="50">
+                    </div>
                     <!--button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
                     </button>
@@ -97,17 +98,48 @@
                 </div>
             </nav>
             
-            <div class="row"><h2>Image Search</h2></div><br>
-                <form enctype="multipart/form-data" method="post">
-                    {% csrf_token %}
-                    {{ form1.as_table }}
-                    <input type="submit" value="Search" > 
-                </form><br><br>
-           <p>To get started, we have given some of the words that occur in the collection. Click on any of the images to
-           retrieve relevant documents.</p>
-           {% for path in dpaths %}
-           <a href='{% url "dresults" forloop.counter %}'><img src="{{path}}" height="60" width="150" style="border:1px solid black; margin: 5px 20px"></a>
-           {% endfor %}
+            <h2 class="text-center">Image Search</h2>
+            <div class="line"></div>
+            <form class="form-horizontal" enctype="multipart/form-data" method="post">
+                <div class="row justify-content-center">
+                <div class="card" style="width: 30rem;background-color: #FFCCCC;">
+                    <div class="card-body">
+                {% csrf_token %}
+                        {{ form1}}
+                    <!--div class="row justify-content-center"-->
+                        <input type="submit" value="Search" class="btn btn-danger"> 
+                </div>
+            </div>
+            </div>
+            </form>
+            <!--form enctype="multipart/form-data" method="post" novalidate>
+                {% csrf_token %}
+                <div class="row justify-content-center">
+                <div class="col-lg-3 col-md-3 col-sm-4">
+                    {{ form1.non_field_errors }}
+
+                    {{ form1.source.errors }}
+                    {{ form1.source }}
+                    <table>
+                        <tr>
+                            <th>{{form1.query.label_tag}}</th>
+                            <td>
+                                {{ form1.query.errors }}
+                                {{ form1.query }}
+                            </td>
+                        </tr>
+                    </table>
+                    <input type="submit" value="Search" class="btn btn-danger" > 
+                </div>
+                </div>
+            </form-->
+            
+            <div class="line"></div>
+            <p>To get started, some of the words that occur in this collection are given below.<br>
+            <span class="text-danger">Click on any of the images to retrieve relevant documents.</span></p>
+            {% for path in dpaths %}
+            <a href='{% url "dresults" forloop.counter %}'><img src="{{path}}" height="60" width="150" style="border:1px solid black; margin: 5px 20px"></a>
+            {% endfor %}
         </div>
 
     </div>

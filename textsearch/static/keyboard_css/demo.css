@@ -5,16 +5,10 @@ html, body, div, input, textarea {
 }
 
 body { background: #ffffff; color: #333333; height: 98%; margin: 0 auto; padding: 0; }
-a:link { color: #18BC9C; text-decoration: none; }
-a:hover { color: #18BC9C; }
-a:visited, a:active, h2.active { color: #18BC9C; }
-a.external {background-image:url(images/external.png);background-position:center right;background-repeat:no-repeat;padding-right:12px;}
 
 #page-wrap { display: block; width: 90%; margin: 0 auto; text-align: center; height: 98%; min-height: 350px; }
 
-h1, h2, h3, h4 { color: #333333; text-align: center; }
 .block h2 { margin: 5px; font-size: 130%; cursor: pointer; }
-h2 img { margin-bottom: 7px; }
 
 #nav { display: block; width: auto; text-align: center; margin: 20px auto 0 auto; line-height: 45px; }
 #nav a { text-align: center; background: #000; color: #FFF; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; padding: 10px; white-space: nowrap; }

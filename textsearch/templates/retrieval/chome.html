@@ -27,7 +27,7 @@
         <!-- Sidebar Holder -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>put_icons</h3>
+                <h3>HW Search</h3>
             </div>
 
             <ul class="list-unstyled components">
@@ -39,8 +39,8 @@
                 <li>
                 {% endif %}
                     <a href="{{'#'|add:name.0 }}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">{{name.1}}</a>
-                    <ul class="collapse list-unstyled" id="{{name.0}}">
-                        <li>
+                    <ul class="{% if name.0 != cname %}collapse{% endif %} list-unstyled" id="{{name.0}}">
+                        <li class="{% if name.0 == cname %}active{% endif %}">
                             <a href="{% url 'chome' name.0 %}">About</a>
                         </li>
                         <li>
@@ -74,6 +74,11 @@
                         <span></span>
                         <span></span>
                     </button>
+
+                    <div class="row justify-content-right">
+                        <img src="{% static 'icons/lab.jpg'%}" width="75" height="50">
+                        <img src="{% static 'icons/college.jpeg'%}" width="75" height="50">
+                    </div>
                     <!--button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
                     </button>
@@ -97,7 +102,7 @@
                 </div>
             </nav>
                 
-            <h2>About the collection</h2>
+            <h3>About the collection</h3>
             <p>Chosen Collection: {{Cname}}</p>
             <div id="hyperlink">
             <p>
@@ -113,7 +118,7 @@
             <div class='line'></div>
 
             <!--Access demo links-->
-            <h2>Access Demo</h2>
+            <h3>Access Demo</h3>
             <div class="row text-center">
             <div class="col-lg-4 col-md-4 col-xs-4">
                     <a href="{% url 'upload_query' %}" class="btn btn-danger btn-block btn-lg">
@@ -131,8 +136,16 @@
             </div>
             <!--Display sample pages in collection-->
             <div class='line'></div>
-            <h2>Sample pages</h2>
-
+            <h3>Sample pages</h3>
+            <p>The sample pages from this collection are displayed below.</p>
+            <div class="row text-center text-lg-left">
+                <div class="col-lg-6 col-md-6 col-xs-6">
+                    <img class="img-fluid" src="{{'media/sample_pages/'|add:cname|add:'/1'|file_exists}}" height="500" style="padding:1px;border:1px solid #021a40;">
+                </div>
+                <div class="col-lg-6 col-md-6 col-xs-6">
+                    <img class="img-fluid" src="{{'media/sample_pages/'|add:cname|add:'/2'|file_exists}}" height="500" style="padding:1px;border:1px solid #021a40;">
+                </div>
+            </div>
         </div>
 
 
