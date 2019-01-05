@@ -20,6 +20,58 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
     
+
+    <!-- jQuery & jQuery UI + theme (required) -->
+    <link href="static/keyboard_css/jquery-ui.min.css" rel="stylesheet">
+    <script src="static/keyboard_js/jquery-latest.min.js"></script>
+    <script src="static/keyboard_js/jquery-ui.min.js"></script>
+    <script src="static/keyboard_js/bootstrap.min.js"></script>
+
+    <!-- keyboard widget css & script (required) -->
+    <link href="static/keyboard_css/keyboard.css" rel="stylesheet">
+    <link href="static/keyboard_css/keyboard-previewkeyset.css" rel="stylesheet">
+    <script src="static/keyboard_js/jquery.keyboard.js"></script>
+
+    <!-- keyboard extensions (optional) -->
+    <script src="static/keyboard_js/jquery.mousewheel.js"></script>
+    <script src="static/keyboard_js/jquery.keyboard.extension-typing.js"></script>
+    <script src="static/keyboard_js/jquery.keyboard.extension-previewkeyset.js"></script>
+
+    <!-- preloaded keyboard layout -->
+    <script src="static/layouts/keyboard-layouts-greywyvern.js" charset="utf-8"></script>
+    <script>
+    $(function(){
+        $('#vkbutton').on('click',function(){
+
+            console.log('success');
+            // Change display language, if the definitions are available
+            showKb = function(layout){
+                var kb = $('#multi').getkeyboard();
+                kb.options.layout = layout;
+                // redraw keyboard with new layout
+                kb.redraw();
+            };
+
+            $('#multi').keyboard({
+                layout: 'qwerty',
+                stayOpen: true
+            })
+            // activate the typing extension
+            .addTyping({
+                showTyping: true,
+                delay: 200
+            })
+            .previewKeyset();
+
+            $('#lang')
+                .change(function(){
+                    var kb = $('#multi'),
+                        layout = 'ml';
+                    showKb( layout );
+                }).trigger('change');
+        });
+    });
+    </script>
 </head>
 
 <body>
@@ -27,11 +79,11 @@
         <!-- Sidebar Holder -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>HW Search</h3>
+                <h3><a href="{% url 'home' %}">HW Search</a></h3>
             </div>
 
             <ul class="list-unstyled components">
-                <p>Available Collections</p>
+                <li><a href="{% url 'home' %}">Home <i class="fas fa-home"></i></a></li>
                 {% for name in collections %}
                 {% if forloop.counter == 0 %}
                 <li class="active">
@@ -54,14 +106,7 @@
                 {% endfor %}
             </ul>
 
-            <ul class="list-unstyled CTAs">
-                <!--li>
-                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
-                </li-->
-                <li>
-                    <a href="{% url 'home' %}" class="article">Back to Home</a>
-                </li>
-            </ul>
+            
         </nav>
 
         <!-- Page Content Holder -->
@@ -102,31 +147,40 @@
                 </div>
             </nav>
             
-            <h3 class="text-center">Text Search</h3>
-            <div class="line"></div>
-
-            <form class="form-horizontal" method="post" novalidate>
-                <div class="row justify-content-center ">
-                <div class="col-lg-3 col-md-3 col-sm-4">
-                <div class="card" style="width: 18rem;background-color: #FFCCCC;">
-                    <div class="card-body">
-                        {% csrf_token %}
-                            <div class="form-group">
-                                <input id="multi" type="text" name="text_query" class="form-control" placeholder="Query">
+            <div id="mcontent">
+                <h3 class="text-center">Text Search</h3>
+                <br>
+                <!--div class="col-lg-2 col-md-2 col-sm-2"-->
+                <div class="row justify-content-center">
+                    <div class="card" style="width: 40rem;background-color: #FFCCCC;">
+                        <div class="card-body">
+                            <div class="row justify-content-center">
+                                <form class="form-inline" method="post" novalidate>
+                                            <h2 id="lang"></h2>
+                                                {% csrf_token %}
+                                                    <div class="form-group">
+                                                        <input id="multi" type="text" name="text_query" class="form-control" placeholder="Query">
+                                                    </div>
+                                                    &nbsp;&nbsp;
+                                                    <div class="form-group">
+                                                        <button type="submit" class="btn btn-danger"><i class="fas fa-search"></i></button>
+                                                    </div>
+                                </form>
                             </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-danger">Search</button>
-                                <a href="#" class="btn btn-danger" role="button">Virtual Keyboard</a>
+                            <br>
+                            <div class="row justify-content-center">
+                            <button id="vkbutton" class="btn btn-danger">Virtual Keyboard</button>
                             </div>
+                        </div>
                     </div>
                 </div>
-                </div>
-                </div>
-            </form>
-            <div class="line"></div>
-            <p>To get started, words that occur in this collection are given below.<br><span class="text-danger">Copy any of below words to the query box and click on the search button.</span></p><p>Sample words:വേഗം, നിങ്ങൾ</p>
+                <div class="line"></div>
+                <p>To get started, words that occur in this collection are given below.<br><span class="text-danger">Copy any of below words to the query box and click on the search button.</span></p><p>Sample words:വേഗം, നിങ്ങൾ</p>
+            </div>
+        </div>
+
     <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!--script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script-->
     <!-- Popper.JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <!-- Bootstrap JS -->

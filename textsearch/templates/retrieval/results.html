@@ -27,11 +27,11 @@
         <!-- Sidebar Holder -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>HW Search</h3>
+                <h3><a href="{% url 'home' %}">HW Search</a></h3>
             </div>
 
             <ul class="list-unstyled components">
-                <p>Available Collections</p>
+                <li><a href="{% url 'home' %}">Home <i class="fas fa-home"></i></a></li>
                 {% for name in collections %}
                 {% if forloop.counter == 0 %}
                 <li class="active">
@@ -39,14 +39,14 @@
                 <li>
                 {% endif %}
                     <a href="{{'#'|add:name.0 }}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">{{name.1}}</a>
-                    <ul class="collapse list-unstyled" id="{{name.0}}">
+                    <ul class="{% if name.0 != cname %}collapse{% endif %} list-unstyled" id="{{name.0}}">
                         <li>
                             <a href="{% url 'chome' name.0 %}">About</a>
                         </li>
-                        <li>
+                        <li class="{% if ftype == 'img' %}active{% endif %}">
                             <a href="{% url 'redirect_' name.0 0 %}">Image Search</a>
                         </li>
-                        <li>
+                        <li class="{% if ftype == 'txt' %}active{% endif %}">
                             <a href="{% url 'redirect_' name.0 1 %}">Text Search</a>
                         </li>
                     </ul>
@@ -54,14 +54,7 @@
                 {% endfor %}
             </ul>
 
-            <ul class="list-unstyled CTAs">
-                <!--li>
-                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
-                </li-->
-                <li>
-                    <a href="{% url 'home' %}" class="article">Back to Home</a>
-                </li>
-            </ul>
+            
         </nav>
 
         <!-- Page Content Holder -->
@@ -102,84 +95,55 @@
                 </div>
             </nav>
             
-            <div id="hyperlink">
-				{% if ftype == 'img' %}
-				<p>Search results for <img src="{{qimg}}"></p>
-				<!--a href="{% url 'upload_query' %}" style="float:right;">Search for another word</a-->
-				<a href="{% url 'upload_query' %}" >Search for another word</a>
-				
-				{% else %}
-				<p style="float:left;">Search results for {{qimg}}</p>
-				<a href="{% url 'text_query' %}" style="float:right;">Search for another word</a>
-				{% endif %}
-			</div>
-			<div class="line"></div>
+            <div id="mcontent">
+                <div id="hyperlink">
+    				{% if ftype == 'img' %}
+    				<h5>Search results for <img src="{{qimg}}" style="padding:1px;border:1px solid #021a40;"></h5>
+    				{% else %}
+    				<h5>Search results for {{qimg}}</h5>
+    				{% endif %}
+    			</div>
+                <br>
+                <div id="hyperlin" class="row">
+                    {% for each in pages %}
+                    <div class="col-lg-4 col-md-4 col-xs-6">
+                        <div class="mb-4">
+                            <figure class='figure'>
+                            <img class="figure-img img-fluid" src="{{word_path}}/{{each.1}}" style="padding:1px;border:1px solid #021a40;" height="100" width="200">
+                            <figcaption class="figure-caption"> Result {{each.2|add:"1"}} : <a href="{% url 'view_results' pages.number forloop.counter0 %}">Open document <i class="fas fa-link"></i></a></figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
 
-			
-			<!--div id="hyperlink" class="row">
-				<table border="0" width="100%" ID="Table1" style="margin: 0px;">
-				<tr>
-				{% for each in pages %}
-				{% if forloop.counter0 < 3 %}
-				<td><a href="{% url 'view_results' pages.number forloop.counter0 %}">{{each.0}}</a></td>				
-				{% endif %}
-				{% endfor %}</tr>
-				
-				<tr>{% for each in pages %}
-				{% if forloop.counter0 < 3 %}
-				<td><img src="{{word_path}}/{{each.1}}" height="60" width="150"></td>
-				{% endif %}
-				{% endfor %}</tr>
-				</table>
+                <div class="pagination" id="hyperlink">
+                    <span class="step-links">
+                        {% if pages.has_previous %}
+                            <a href="?page=1">&laquo; first</a> |
+                            <a href="?page={{ pages.previous_page_number }}">previous</a>
+                        {% endif %}
 
-				<br><br>
-				<table border="0" width="100%" ID="Table2" style="margin: 0px;">
-				<tr>
-				{% for each in pages %}
-				{% if forloop.counter0 >= 3 %}
-				<td><a href="{% url 'view_results' pages.number forloop.counter0 %}">{{each.0}}</a></td>
+                        <span class="current">
+                            Page {{ pages.number }} of {{ pages.paginator.num_pages }}.
+                        </span>
 
-				{% endif %}
-				{% endfor %}</tr>
-				
-				<tr>{% for each in pages %}
-				{% if forloop.counter0 >= 3 %}
-				<td><img src="{{word_path}}/{{each.1}}" height="60" width="150"></td>
-				{% endif %}
-				{% endfor %}</tr>
-				</table>
-			</div-->
-			<!--p>The matched words are dispalyed below.</p-->
-			<div id="hyperlin" class="row">
-				{% for each in pages %}
-				<div class="col-lg-4 col-md-4 col-xs-6">
-					<div class="mb-4">
-						<figure class='figure'>
-						<img class="figure-img img-fluid" src="{{word_path}}/{{each.1}}" style="padding:1px;border:1px solid #021a40;" height="100" width="200">
-						<figcaption class="figure-caption"> Result {{each.2|add:"1"}} : <a href="{% url 'view_results' pages.number forloop.counter0 %}">Open document <i class="fas fa-link"></i></a></figcaption>
-						</figure>
-					</div>
-            	</div>
-				{% endfor %}
-			</div>
+                        {% if pages.has_next %}
+                            <a href="?page={{ pages.next_page_number }}">next</a> | 
+                            <a href="?page={{ pages.paginator.num_pages }}">last &raquo;</a>
+                        {% endif %}
+                    </span>
+                </div>
 
-			<div class="pagination" id="hyperlink">
-			    <span class="step-links">
-			        {% if pages.has_previous %}
-			            <a href="?page=1">&laquo; first</a>
-			            <a href="?page={{ pages.previous_page_number }}">previous</a>
-			        {% endif %}
-
-			        <span class="current">
-			            Page {{ pages.number }} of {{ pages.paginator.num_pages }}.
-			        </span>
-
-			        {% if pages.has_next %}
-			            <a href="?page={{ pages.next_page_number }}">next</a> | 
-			            <a href="?page={{ pages.paginator.num_pages }}">last &raquo;</a>
-			        {% endif %}
-			    </span>
-			</div>
+    			<div class="line"></div>
+                <div id="hyperlink">
+                    {% if ftype == 'img' %}
+                    <a href="{% url 'upload_query' %}">Try searching for another word</a>
+                    {% else %}
+                    <a href="{% url 'text_query' %}">Try searching for another word</a>
+                    {% endif %}
+                </div>
+            </div>
 		</div>
     </div>
     <!-- jQuery CDN - Slim version (=without AJAX) -->

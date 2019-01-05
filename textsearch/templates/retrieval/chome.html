@@ -27,17 +27,13 @@
         <!-- Sidebar Holder -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>HW Search</h3>
+                <h3><a href="{% url 'home' %}">HW Search</a></h3>
             </div>
 
             <ul class="list-unstyled components">
-                <p>Available Collections</p>
+                <li><a href="{% url 'home' %}">Home <i class="fas fa-home"></i></a></li>
                 {% for name in collections %}
-                {% if forloop.counter == 0 %}
-                <li class="active">
-                {% else %}
                 <li>
-                {% endif %}
                     <a href="{{'#'|add:name.0 }}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">{{name.1}}</a>
                     <ul class="{% if name.0 != cname %}collapse{% endif %} list-unstyled" id="{{name.0}}">
                         <li class="{% if name.0 == cname %}active{% endif %}">
@@ -52,15 +48,6 @@
                     </ul>
                 </li>
                 {% endfor %}
-            </ul>
-
-            <ul class="list-unstyled CTAs">
-                <!--li>
-                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
-                </li-->
-                <li>
-                    <a href="{% url 'home' %}" class="article">Back to Home</a>
-                </li>
             </ul>
         </nav>
 
@@ -101,49 +88,50 @@
                     </div-->
                 </div>
             </nav>
-                
-            <h3>About the collection</h3>
-            <p>Chosen Collection: {{Cname}}</p>
-            <div id="hyperlink">
-            <p>
-                {% if desc %}
-                {{desc | safe}}<br>
-                {% else %}
-                No information available about this collection.<br>
-                {% endif %}
-                {% if url %}
-                More information about this collection can be found at this <a href="{{url}}">link</a></div> 
-                {% endif %}
-            </p>
-            <div class='line'></div>
+              
+            <div id="mcontent">  
+                <h3>About the collection</h3>
+                <div id="hyperlink">
+                    <p>
+                        {% if desc %}
+                        {{desc | safe}}<br>
+                        {% else %}
+                        No information available about this collection.<br>
+                        {% endif %}
+                        {% if url %}
+                        More information about this collection can be found at this <a href="{{url}}">link</a></div> 
+                        {% endif %}
+                    </p>
+                    <div class='line'></div>
 
-            <!--Access demo links-->
-            <h3>Access Demo</h3>
-            <div class="row text-center">
-            <div class="col-lg-4 col-md-4 col-xs-4">
-                    <a href="{% url 'upload_query' %}" class="btn btn-danger btn-block btn-lg">
-                        Image Search
-                    </a>
-                    <div id='hyperlink'><a href="#">Usage Instructions</a></div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-xs-4">
-                    <a href="{% url 'text_query' %}" class="btn btn-danger btn-block btn-lg">
-                        Text Search
-                    </a>
-                    <div id='hyperlink'><a href="#">Usage Instructions</a></div>
-            </div>
-            
-            </div>
-            <!--Display sample pages in collection-->
-            <div class='line'></div>
-            <h3>Sample pages</h3>
-            <p>The sample pages from this collection are displayed below.</p>
-            <div class="row text-center text-lg-left">
-                <div class="col-lg-6 col-md-6 col-xs-6">
-                    <img class="img-fluid" src="{{'media/sample_pages/'|add:cname|add:'/1'|file_exists}}" height="500" style="padding:1px;border:1px solid #021a40;">
-                </div>
-                <div class="col-lg-6 col-md-6 col-xs-6">
-                    <img class="img-fluid" src="{{'media/sample_pages/'|add:cname|add:'/2'|file_exists}}" height="500" style="padding:1px;border:1px solid #021a40;">
+                    <!--Access demo links-->
+                    <h3>Access Demo</h3>
+                    <div class="row text-center">
+                        <div class="col-lg-4 col-md-4 col-xs-4">
+                                <a href="{% url 'upload_query' %}" class="btn btn-danger btn-block btn-lg">
+                                    Image Search
+                                </a>
+                                <div id='hyperlink'><a href="#">Usage Instructions</a></div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-xs-4">
+                                <a href="{% url 'text_query' %}" class="btn btn-danger btn-block btn-lg">
+                                    Text Search
+                                </a>
+                                <div id='hyperlink'><a href="#">Usage Instructions</a></div>
+                        </div>
+                    </div>
+                    <!--Display sample pages in collection-->
+                    <div class='line'></div>
+                    <h3>Sample pages</h3>
+                    <p>The sample pages from this collection are displayed below.</p>
+                    <div class="row text-center text-lg-left">
+                        <div class="col-lg-6 col-md-6 col-xs-6">
+                            <img class="img-fluid" src="{{'media/sample_pages/'|add:cname|add:'/1'|file_exists}}" height="500" style="padding:1px;border:1px solid #021a40;">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-xs-6">
+                            <img class="img-fluid" src="{{'media/sample_pages/'|add:cname|add:'/2'|file_exists}}" height="500" style="padding:1px;border:1px solid #021a40;">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
