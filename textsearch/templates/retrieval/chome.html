@@ -62,35 +62,18 @@
                         <span></span>
                     </button>
 
+                    <div class="row justify-content-center">
+                        <h2>Handwritten Text Search</h2>
+                    </div>
                     <div class="row justify-content-right">
                         <img src="{% static 'icons/lab.jpg'%}" width="75" height="50">
                         <img src="{% static 'icons/college.jpeg'%}" width="75" height="50">
                     </div>
-                    <!--button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-align-justify"></i>
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                        </ul>
-                    </div-->
                 </div>
             </nav>
               
             <div id="mcontent">  
-                <h3>About the collection</h3>
+                <h4>About the collection</h4>
                 <div id="hyperlink">
                     <p>
                         {% if desc %}
@@ -105,24 +88,32 @@
                     <div class='line'></div>
 
                     <!--Access demo links-->
-                    <h3>Access Demo</h3>
+                    <h4>Access Demo</h4>
+                      
+                
                     <div class="row text-center">
-                        <div class="col-lg-4 col-md-4 col-xs-4">
-                                <a href="{% url 'upload_query' %}" class="btn btn-danger btn-block btn-lg">
-                                    Image Search
-                                </a>
-                                <div id='hyperlink'><a href="#">Usage Instructions</a></div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-xs-4">
-                                <a href="{% url 'text_query' %}" class="btn btn-danger btn-block btn-lg">
-                                    Text Search
-                                </a>
-                                <div id='hyperlink'><a href="#">Usage Instructions</a></div>
-                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                        <a href="{% url 'upload_query' %}">
+                        <div class="box-part text-center">
+                            <i class="fas fa-image fa-4x" aria-hidden="true" style="color:#fff;"></i>
+                            <div class="text">
+                                <h4>Image Search</h4>
+                            </div>
+                        </div></a>
+                        </div> 
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <a href="{% url 'text_query' %}">
+                        <div class="box-part text-center">
+                            <i class="fas fa-keyboard fa-4x" style="color:#fff;"></i>
+                            <div class="text">
+                                <h4>Text Search</h4>
+                            </div>
+                        </div></a>
+                        </div> 
                     </div>
                     <!--Display sample pages in collection-->
                     <div class='line'></div>
-                    <h3>Sample pages</h3>
+                    <h4>Sample pages</h4>
                     <p>The sample pages from this collection are displayed below.</p>
                     <div class="row text-center text-lg-left">
                         <div class="col-lg-6 col-md-6 col-xs-6">

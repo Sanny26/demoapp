@@ -62,6 +62,9 @@
                         <span></span>
                     </button>
 
+                    <div class="row justify-content-center">
+                        <h2>Handwritten Text Search</h2>
+                    </div>
                     <div class="row justify-content-right">
                         <img src="{% static 'icons/lab.jpg'%}" width="75" height="50">
                         <img src="{% static 'icons/college.jpeg'%}" width="75" height="50">
@@ -71,33 +74,31 @@
             </nav>
             
             <div id="mcontent">
-                <h3>Image Search</h3><br>
+                <h4 class="text-center">Image Search</h4><br>
                 
                 <form class="form" enctype="multipart/form-data" method="post">
-                    <div class="row ">
+                    <div class="row justify-content-center">
                     <div class="card" style="width: 30rem;background-color: #FFCCCC;">
                         <div class="card-body">
-                    {% csrf_token %}
+                            
+                            {% csrf_token %}
                             {{ form1}}
-                        <!--div class="row justify-content-center"-->
+                        <button type="submit" class="btn btn-danger"><i class="fas fa-search"></i></button>
+                        
                     </div>
                 </div>
                 </div>
-                <br>
-                <!--div class="row justify-content-center"-->
-                <div class="row ">
-                    <!--input type="submit" value="Search" class="btn btn-danger"-->
-
-                    <button type="submit" class="btn btn-danger"><i class="fas fa-search"></i></button>
-                                            
-                </div>
                 </form>
                 <div class="line"></div>
-                <p>To get started, some of the words that occur in this collection are given below.<br>
-                <span class="text-danger">Click on any of the images to retrieve relevant documents.</span></p>
-                {% for path in dpaths %}
-                <a href='{% url "dresults" forloop.counter %}'><img src="{{path}}" height="60" width="150" style="border:1px solid black; margin: 5px 20px"></a>
-                {% endfor %}
+                <div class="row justify-content-center">
+                    <p>To get started, some of the words that occur in this collection are given below.<br>
+                    <span class="text-danger">Click on any of the images to retrieve relevant documents.</span></p>
+                    <div class="row">
+                        {% for path in dpaths %}
+                        <a href='{% url "dresults" forloop.counter %}'><img src="{{path}}" height="60" width="150" style="border:1px solid black; margin: 5px 20px"></a>
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
 
     </div>
