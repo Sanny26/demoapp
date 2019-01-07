@@ -31,34 +31,34 @@
             </div>
 
             <ul class="list-unstyled components">
-                <p><a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a></p>
+                
+                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a></li>
                 {% for name in collections %}
-                {% if forloop.counter == 0 %}
-                <li class="active">
-                {% else %}
                 <li>
-                {% endif %}
                     <a href="{{'#'|add:name.0 }}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">{{name.1}}</a>
-                    <ul class="{% if name.0 != cname %}collapse{% endif %} list-unstyled" id="{{name.0}}">
+                    <ul class="collapse list-unstyled" id="{{name.0}}">
                         <li>
                             <a href="{% url 'chome' name.0 %}">About</a>
                         </li>
-                        <li class="{% if ftype == 'img' %}active{% endif %}">
+                        <li>
                             <a href="{% url 'redirect_' name.0 0 %}">Image Search</a>
                         </li>
-                        <li class="{% if ftype == 'txt' %}active{% endif %}">
+                        <li>
                             <a href="{% url 'redirect_' name.0 1 %}">Text Search</a>
                         </li>
                     </ul>
                 </li>
+                
                 {% endfor %}
                 <br>
                 <li><a href="{% url 'about_project' %}">About the project</a></li>
-            </ul>  
+            </ul>
+
         </nav>
 
         <!-- Page Content Holder -->
         <div id="content">
+
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
 
@@ -75,55 +75,35 @@
                         <img src="{% static 'icons/lab.jpg'%}" width="75" height="50">
                         <img src="{% static 'icons/college.jpeg'%}" width="75" height="50">
                     </div>
-                    <!--button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-align-justify"></i>
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                        </ul>
-                    </div-->
+                    
                 </div>
             </nav>
-            
             <div id="mcontent">
-                <h5 >Opening result <span class="text-danger">{{pid}}</span> for query  
-    			{% if ftype == 'img' %}
-    			<img class="img-thumbnail" src="{{qimg}}" style="padding:1px;border:1px solid #021a40;"/></h5>
-    			{% else %}
-    			{{qimg}}</h5>
-    			{% endif %}
-    			
-    			
-    			<div id="hyperlink">
-    				{% if prev_pid >= 0 %}
-    				<p><a href={% url 'view_results' page prev_pid %}> prev </a> | 
-    				{% endif %}					
-    				{% if next_pid >= 0 %}
-    				<a href={% url 'view_results' page next_pid %}> next </a>
-    				{% endif %}
+                <h4 style="color: #606060;">Motivation</h4>
+                <p style="font-size: 1.0em;">
+                    Large collections of handwritten documents containing valuable information have been digitized and preserved. However, making these collections accessible and usable should be our main objective and this task still remains a challenge for many Indian langauges.
+                    <br><br>
+                    In this application, we demonstrate systems that enables the users to search for keywords in handwritten document collections. Through this application, users will be able to access relevant information from handwritten documents for a given search term.
+                </p>
+                <div class="line"></div>
 
-    				<a href={% url 'results' %} style="float:right;">Go back</a></p>
-    			</div>	
-    			<div class="line"></div>
-    			<img src="{{nimg}}" style="padding:1px;border:1px solid #021a40;" height="1000" width="600"/>
-    			<p>{{each}}</p>
-    			<br>   
-            </div> 
-    	</div>
+                <h4 style="color: #606060;">Technical Detail</h4>
+                <p style="font-size: 1.0em;">For a given query, a wordspotting classifier is used to generate a feature vector for the query. This pretrained classifier can process both image and text queries.
+                <br>
+                For each collection, features are calculated for all the words in the collection and a k-d tree is constructed using these features. This is used during query time to retrieve relevant results. These trees are stored collection wise.
+                <br>At query time, the feature vector is used to obtain nearest neighbours from the precalculated k-d tree for that collection.</p>
+                <div class="row justify-content-center">
+                <img class="img-thumbnail" src="/media/system.png" height="400" width="400">
+                </div>
+                <div id="hyperlink">
+                    <p style="font-size: 1.0em;">For more technical details, read this article by <a href="https://arxiv.org/pdf/1802.06194.pdf">clicking here.</a></p>
+                </div>
+                <div class="line"></div>
+                
+                
+            </div>
     </div>
+
 
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->

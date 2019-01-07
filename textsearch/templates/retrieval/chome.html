@@ -42,7 +42,7 @@
             </div>
 
             <ul class="list-unstyled components">
-                <li><a href="{% url 'home' %}">Home <i class="fas fa-home"></i></a></li>
+                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a></li>
                 {% for name in collections %}
                 <li>
                     <a href="{{'#'|add:name.0 }}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">{{name.1}}</a>
@@ -59,6 +59,8 @@
                     </ul>
                 </li>
                 {% endfor %}
+                <br>
+                <li><a href="{% url 'about_project' %}">About the project</a></li>
             </ul>
         </nav>
 

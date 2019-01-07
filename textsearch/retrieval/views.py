@@ -17,6 +17,13 @@ from .word_index import query_word
 from .extractFeature import feature
 from .E2Efeat import imgFeat, txtFeat
 
+def about_project(request):
+	page_template = 'retrieval/about.html'
+	context = {}
+	collections = Collections.objects.all().values_list('collection_name', flat=True) 
+	context['collections'] = [(each.replace(' ', '_'), each)for each in collections]
+	return render(request, page_template, context)
+
 def redirect_query(request, cname, choice):
 	request.session['cname'] = cname
 	if choice == '0':
@@ -154,14 +161,14 @@ def image_query(request):
 			img_feat = imgFeat(img, model_path)
 			print('Total time to extract feature vector', time.time()-begin)
 
-			begin = time.time()
+			#begin = time.time()
 			kdtree = open(kdtree_path, 'rb')
 			page2word = open(page2word_path, 'rb')
 			with open(wrd_pos_fpath, 'rb') as fobj:
 				wrd_pos = pickle.load(fobj)
 			print('Total time to load pickle files', time.time()-begin)
 
-			begin = time.time()
+			#begin = time.time()
 			results = query_word(img_feat, kdtree, page2word) 
 			print('Total time to search in KD Tree', time.time()-begin)
 

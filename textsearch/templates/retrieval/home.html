@@ -31,6 +31,7 @@
             </div>
 
             <ul class="list-unstyled components">
+                
                 <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a></li>
                 {% for name in collections %}
                 <li>
@@ -48,6 +49,8 @@
                     </ul>
                 </li>
                 {% endfor %}
+                <br>
+                <li><a href="{% url 'about_project' %}">About the project</a></li>
             </ul>
 
         </nav>
@@ -76,13 +79,18 @@
             </nav>
             <div id="mcontent">
                 <!--h4 class="text-center" style="color: #606060;">Overview</h4-->
-                <p>This application is built to demonstrate handwritten document retrieval systems for collections written in different Indic scripts.</p>
+                <p>This application is built to demonstrate handwritten document retrieval system for collections written in different Indic scripts.
+                For a given query, our system retrieves relevant handwritten pages that contain the provided keyword. 
+                </p>
                 
                 
 
                 <div class="line"></div>
                 <h4  style="color: #606060;">Available Collections</h4>
-                <p>Retrieval systems have been built for the following collections.<br><span class="text-danger">Choose any of the collections to start your search.</p>
+                <p>Retrieval systems have been built for the following collections.</p>
+                <div class="alert alert-info">
+                    <strong>Note: </strong> Choose from the below listed collections to try the retrieval system. Your query will be searched only in the chosen collection.
+                </div>
                 <div class="row text-center text-lg-left">
                 {% for name in collections %}
                 <div class="col-md-3 col-sm-6">
@@ -95,21 +103,22 @@
                             </div>
                         </div>
                     </a-->
-                    <div class="card" style="width: 11rem;">
-                        <img class="card-img-top" src="{{'media/placeholders/'|add:name.0|file_exists}}" height="120">
+                    <div class="card" style="width: 14rem;">
+                        <img class="card-img-top" src="{{'media/placeholders/'|add:name.0|file_exists}}" height="200">
                         <div class="card-body">
                             <h5 class="card-title">{{name.1}}</h5>
     <!--p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p-->
-    <a href="{% url 'chome' name.0 %}" class="btn btn-primary">Search in this!</a>
+    <a href="{% url 'chome' name.0 %}" class="btn btn-primary">Click here!</a>
                             
                         </div>
                     </div>
                 
                 </div>
                 {% endfor %}
-                <br>
                 </div>
-                <br><p> Handwritten documents written by a specific person or handwritten documents containing information related to a specific domain that may hold a historical significance are referred to as 
+                <br>
+                  
+                <p> Handwritten documents written by a specific person or handwritten documents containing information related to a specific domain that may hold a historical significance are referred to as 
                 <b>Collections</b> in this project.</p>
                 <div class="line"></div>
                 

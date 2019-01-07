@@ -60,7 +60,7 @@
             </div>
 
             <ul class="list-unstyled components">
-                <li><a href="{% url 'home' %}">Home <i class="fas fa-home"></i></a></li>
+                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a></li>
                 {% for name in collections %}
                 <li>
                     <a href="{{'#'|add:name.0 }}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">{{name.1}}</a>
@@ -77,6 +77,8 @@
                     </ul>
                 </li>
                 {% endfor %}
+                <br>
+                <li><a href="{% url 'about_project' %}">About the project</a></li>
             </ul>
         </nav>
 
@@ -111,7 +113,7 @@
                         <img src="{% static 'instructions/ihelp2.jpg'%}" style="width:100%">
                     </div>
                     <div class="row justify-content-center">
-                        <div id="bar" style="background-color: red; padding: 5px;color:white;">
+                        <div id="bar" style="background-color: #B71C1C; padding: 5px;color:white;">
                         <a href="#" onclick="change1()" >
                             <i class="fas fa-arrow-left fa-1x"></i>
                             <span class="sr-only">Previous</span>
@@ -130,7 +132,7 @@
                 <h4 class="text-center" style="color: #606060;">Image Search</h4><br>
                 <form class="form" enctype="multipart/form-data" method="post">
                     <div class="row justify-content-center">
-                    <div class="card" style="width: 30rem;background-color: #FFCCCC;">
+                    <div class="card" style="width: 30rem;background-color: #F8BBD0">
                         <div class="card-body">
                             {% csrf_token %}
                             {% for hidden in form1.hidden_fields %}

@@ -19,6 +19,17 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();   
+    });
+    </script>
 </head>
 
 <body>
@@ -31,7 +42,7 @@
             </div>
 
             <ul class="list-unstyled components">
-                <li><a href="{% url 'home' %}">Home <i class="fas fa-home"></i></a></li>
+                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a></li>
                 {% for name in collections %}
                 {% if forloop.counter == 0 %}
                 <li class="active">
@@ -52,6 +63,8 @@
                     </ul>
                 </li>
                 {% endfor %}
+                <br>
+                <li><a href="{% url 'about_project' %}">About the project</a></li>
             </ul>
 
             
@@ -101,7 +114,7 @@
             <div id="mcontent">
                 <div id="hyperlink" class="text-center">
     				{% if ftype == 'img' %}
-    				<h5>Search results for <img src="{{qimg}}" style="padding:1px;border:1px solid #021a40;"></h5>
+    				<h5>Search results for <img class="img-thumbnail" src="{{qimg}}" style="padding:1px;border:1px solid #021a40;" height="70" width="150"></h5>
     				{% else %}
     				<h5>Search results for {{qimg}}</h5>
     				{% endif %}
@@ -111,9 +124,10 @@
                     {% for each in pages %}
                     <div class="col-lg-4 col-md-4 col-xs-6">
                         <div class="mb-4">
-                            <figure class="figure">
-                                <img id="result" class="figure-img" src="{{word_path}}/{{each.1}}" style="padding:1px;border:1px solid #021a40;" height="70" width="150">
-                            <figcaption class="figure-caption"><p>Result {{each.2|add:"1"}} : <a href="{% url 'view_results' pages.number forloop.counter0 %}">Open document <i class="fas fa-link"></i></a></p></figcaption>
+                            <figure class="figure" data-toggle="tooltip" title="Click to open.">
+                                <a href="{% url 'view_results' pages.number forloop.counter0 %}" >
+                                <img class="img-thumbnail" src="{{word_path}}/{{each.1}}" style="padding:1px;border:1px solid #021a40;" height="70" width="150"></a>
+                            <figcaption class="figure-caption"><p><a href="{% url 'view_results' pages.number forloop.counter0 %}">Result {{each.2|add:"1"}} : Open document <i class="fas fa-link"></i></a></p></figcaption>
                             </figure>
                         </div>
                     </div>

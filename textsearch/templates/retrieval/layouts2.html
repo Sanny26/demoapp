@@ -130,7 +130,7 @@
             </div>
 
             <ul class="list-unstyled components">
-                <li><a href="{% url 'home' %}">Home <i class="fas fa-home"></i></a></li>
+                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a></li>
                 {% for name in collections %}
                 {% if forloop.counter == 0 %}
                 <li class="active">
@@ -151,6 +151,8 @@
                     </ul>
                 </li>
                 {% endfor %}
+                <br>
+                <li><a href="{% url 'about_project' %}">About the project</a></li>
             </ul>
 
             
@@ -209,6 +211,7 @@
                         <img src="{% static 'instructions/thelp3.jpg'%}" style="width:100%">
                     </div>
                     <div class="row justify-content-center">
+                        <div id="bar" style="background-color: #B71C1C; padding: 5px;color:white;">
                         <a href="#" onclick="change1()" >
                             <i class="fas fa-arrow-left"></i>
                             <span class="sr-only">Previous</span>
@@ -218,7 +221,7 @@
                           <span class="sr-only">Next</span>
                         </a>&nbsp;
                         <a href="#" onclick="off()" ><i class="fas fa-window-close"></i></a>
-                    </div>
+                    </div></div>
 
                 </div>                
             </div>
@@ -227,7 +230,7 @@
                 <br>
                 <!--div class="col-lg-2 col-md-2 col-sm-2"-->
                 <div class="row justify-content-center">
-                    <div class="card" style="width: 40rem;background-color: #FFCCCC;">
+                    <div class="card" style="width: 40rem;background-color: #F8BBD0">
                         <div class="card-body">
                             <div class="row justify-content-center">
                                 <form class="form-inline" method="post" novalidate>

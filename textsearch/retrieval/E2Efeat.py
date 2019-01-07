@@ -62,7 +62,7 @@ def synthesizeImage(rText):
     return sample
 
 def phocVec(text):
-    phoc_gr_file = '/home/sanny/wordspotting/saved_models/grams.npz'
+    phoc_gr_file = 'saved_models/grams.npz'
     phoc_files = np.load(phoc_gr_file)
     phoc_unigrams = phoc_files['arr_0'].tolist()
     phoc_bigrams = phoc_files['arr_1'].tolist()
