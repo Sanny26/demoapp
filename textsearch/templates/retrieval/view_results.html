@@ -66,6 +66,9 @@
                         <span></span>
                     </button>
 
+                    <div class="row justify-content-center">
+                        <h2>Handwritten Text Search</h2>
+                    </div>
                     <div class="row justify-content-right">
                         <img src="{% static 'icons/lab.jpg'%}" width="75" height="50">
                         <img src="{% static 'icons/college.jpeg'%}" width="75" height="50">
@@ -94,7 +97,7 @@
             </nav>
             
             <div id="mcontent">
-                <h5>Opening result <span class="text-danger">{{pid}}</span> for query  
+                <h5 >Opening result <span class="text-danger">{{pid}}</span> for query  
     			{% if ftype == 'img' %}
     			<img src="{{qimg}}" style="padding:1px;border:1px solid #021a40;"/></h5>
     			{% else %}
@@ -110,7 +113,7 @@
     				<a href={% url 'view_results' page next_pid %}> next </a>
     				{% endif %}
 
-    				<a href={% url 'results' %} style="float:right;">Show all results</a></p>
+    				<a href={% url 'results' %} style="float:right;">Go back</a></p>
     			</div>	
     			<div class="line"></div>
     			<img src="{{nimg}}" style="padding:1px;border:1px solid #021a40;" height="1000" width="600"/>

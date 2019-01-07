@@ -31,7 +31,7 @@
             </div>
 
             <ul class="list-unstyled components">
-                <li><a href="{% url 'home' %}">Home <i class="fas fa-home"></i></a></li>
+                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a></li>
                 {% for name in collections %}
                 <li>
                     <a href="{{'#'|add:name.0 }}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">{{name.1}}</a>
@@ -71,54 +71,48 @@
                         <img src="{% static 'icons/lab.jpg'%}" width="75" height="50">
                         <img src="{% static 'icons/college.jpeg'%}" width="75" height="50">
                     </div>
-                    <!--button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-align-justify"></i>
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                        </ul>
-                    </div-->
+                    
                 </div>
             </nav>
             <div id="mcontent">
-                <h2>Overview</h2>
-                <p>This application is built to demonstrate handwritten document retrieval systems for collections written in different Indic scripts. Handwritten documents written by a specific person or handwritten documents containing information related to a specific domain that may hold a historical significance are referred to as 
-                <b>Collections</b> in this project. <br> To the best of our knowledge, this application is the first attempt to build a retreival system for handwritten documents written in Indian languages.</p>
+                <!--h4 class="text-center" style="color: #606060;">Overview</h4-->
+                <p>This application is built to demonstrate handwritten document retrieval systems for collections written in different Indic scripts.</p>
+                
+                
 
                 <div class="line"></div>
-                <h2>Available Collections</h2>
-                <p>Retrieval systems have been built for the following collections. Choose any of the collections to start your search.</p>
+                <h4  style="color: #606060;">Available Collections</h4>
+                <p>Retrieval systems have been built for the following collections.<br><span class="text-danger">Choose any of the collections to start your search.</p>
                 <div class="row text-center text-lg-left">
                 {% for name in collections %}
                 <div class="col-md-3 col-sm-6">
                 
-                    <a href="{% url 'chome' name.0 %}">
+                    <!--a href="{% url 'chome' name.0 %}">
                        <div class="box1">
                             <img src="{{'media/placeholders/'|add:name.0|file_exists}}">
                             <div class="box-content">
                                 <h3 class="title">{{name.1}}</h3>
                             </div>
                         </div>
-                    </a>
+                    </a-->
+                    <div class="card" style="width: 11rem;">
+                        <img class="card-img-top" src="{{'media/placeholders/'|add:name.0|file_exists}}" height="120">
+                        <div class="card-body">
+                            <h5 class="card-title">{{name.1}}</h5>
+    <!--p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p-->
+    <a href="{% url 'chome' name.0 %}" class="btn btn-primary">Search in this!</a>
+                            
+                        </div>
+                    </div>
                 
                 </div>
                 {% endfor %}
+                <br>
                 </div>
-
+                <br><p> Handwritten documents written by a specific person or handwritten documents containing information related to a specific domain that may hold a historical significance are referred to as 
+                <b>Collections</b> in this project.</p>
                 <div class="line"></div>
+                
             </div>
     </div>
 

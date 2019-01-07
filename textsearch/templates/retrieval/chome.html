@@ -14,16 +14,27 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link href="{% static 'css/sidebar.css' %}" rel="stylesheet">
 
-    
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
     <Font Awesome JS >
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
+    <script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();   
+    });
+    </script>
+   
 </head>
 
 <body>
-
-    <div class="wrapper">
+      <div class="wrapper">
         <!-- Sidebar Holder -->
         <nav id="sidebar">
             <div class="sidebar-header">
@@ -73,69 +84,72 @@
             </nav>
               
             <div id="mcontent">  
-                <h4>About the collection</h4>
+               
                 <div id="hyperlink">
-                    <p>
-                        {% if desc %}
-                        {{desc | safe}}<br>
-                        {% else %}
-                        No information available about this collection.<br>
-                        {% endif %}
-                        {% if url %}
-                        More information about this collection can be found at this <a href="{{url}}">link</a></div> 
-                        {% endif %}
-                    </p>
-                    <div class='line'></div>
-
-                    <!--Access demo links-->
-                    <h4>Access Demo</h4>
+                    <div class="card">
                       
-                
-                    <div class="row text-center">
+                      <div class="card-body">
+                      
+                      
+                        <img src="{{'media/placeholders/'|add:cname|file_exists}}" style="margin:1px 15px 1px 1px;padding:1px;border:1px solid #021a40;float:left;" height="150" width="150">
+                        <h4  style="color: #606060;text-align: justify-all;">{{Cname}}</h4>
+                        <p style="text-align: justify-all;">
+                            {% if desc %}
+                            {{desc | safe}}<br>
+                            {% else %}
+                            No information available about this collection.<br>
+                            {% endif %}
+                            {% if url %}
+                            <a href="{{url}}">Click here to know more about the collection.</a> 
+                            {% endif %}
+                            </p>
+                      </div>
+                    </div>
+                </div>  
+                <div class="space"></div>
+                    <!--Access demo links-->
+                <div class="card">
+                    
+                    <div class="card-body">
+                      <p>Search systems can process both images and text queries.<br><span class="text-danger">Select one of the search engines below.</span></p>
+
+                      <div class="row text-center">
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
-                        <a href="{% url 'upload_query' %}">
-                        <div class="box-part text-center">
-                            <i class="fas fa-image fa-4x" aria-hidden="true" style="color:#fff;"></i>
-                            <div class="text">
-                                <h4>Image Search</h4>
-                            </div>
-                        </div></a>
+                          <a href="{% url 'upload_query' %}" data-toggle="tooltip" title="Searches for relevant documents that contains the given word image.">
+                          <div class="box-part text-center">
+                                <i class="fas fa-image fa-4x" aria-hidden="true" style="color:#fff;"></i>
+                                <div class="text">
+                                    <h4>Image Search</h4>
+                                </div>
+                          </div></a>
                         </div> 
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <a href="{% url 'text_query' %}">
-                        <div class="box-part text-center">
-                            <i class="fas fa-keyboard fa-4x" style="color:#fff;"></i>
-                            <div class="text">
-                                <h4>Text Search</h4>
-                            </div>
-                        </div></a>
+                          <a href="{% url 'text_query' %}" data-toggle="tooltip" title="Searches for relevant documents that contains the given text query.">
+                          <div class="box-part text-center">
+                              <i class="fas fa-keyboard fa-4x" style="color:#fff;"></i>
+                              <div class="text">
+                                  <h4>Text Search</h4>
+                              </div>
+                          </div></a>
                         </div> 
-                    </div>
-                    <!--Display sample pages in collection-->
-                    <div class='line'></div>
-                    <h4>Sample pages</h4>
-                    <p>The sample pages from this collection are displayed below.</p>
-                    <div class="row text-center text-lg-left">
-                        <div class="col-lg-6 col-md-6 col-xs-6">
-                            <img class="img-fluid" src="{{'media/sample_pages/'|add:cname|add:'/1'|file_exists}}" height="500" style="padding:1px;border:1px solid #021a40;">
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-xs-6">
-                            <img class="img-fluid" src="{{'media/sample_pages/'|add:cname|add:'/2'|file_exists}}" height="500" style="padding:1px;border:1px solid #021a40;">
-                        </div>
+                      </div>
                     </div>
                 </div>
+                    <!--h4>Sample pages</h4-->
+                <div class="space"></div>
+                <div class="card">
+                    
+                    <div class="card-body">
+                      <p>The sample pages from this collection are displayed below.</p>
+                      <a type="button" class="btn" ><img class="simg" src="{{'media/sample_pages/'|add:cname|add:'/1'|file_exists}}"></a>
+                      <a type="button" class="btn" ><img class="simg" src="{{'media/sample_pages/'|add:cname|add:'/2'|file_exists}}"></a>
+                    </div>
+                </div>
+                    
+                
             </div>
         </div>
-
-
-
-    <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-
+    </div>
     <script type="text/javascript">
         $(document).ready(function () {
             $('#sidebarCollapse').on('click', function () {

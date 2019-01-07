@@ -68,6 +68,9 @@
                         <span></span>
                     </button>
 
+                    <div class="row justify-content-center">
+                        <h2>Handwritten Text Search</h2>
+                    </div>
                     <div class="row justify-content-right">
                         <img src="{% static 'icons/lab.jpg'%}" width="75" height="50">
                         <img src="{% static 'icons/college.jpeg'%}" width="75" height="50">
@@ -96,7 +99,7 @@
             </nav>
             
             <div id="mcontent">
-                <div id="hyperlink">
+                <div id="hyperlink" class="text-center">
     				{% if ftype == 'img' %}
     				<h5>Search results for <img src="{{qimg}}" style="padding:1px;border:1px solid #021a40;"></h5>
     				{% else %}
@@ -108,9 +111,9 @@
                     {% for each in pages %}
                     <div class="col-lg-4 col-md-4 col-xs-6">
                         <div class="mb-4">
-                            <figure class='figure'>
-                            <img class="figure-img img-fluid" src="{{word_path}}/{{each.1}}" style="padding:1px;border:1px solid #021a40;" height="100" width="200">
-                            <figcaption class="figure-caption"> Result {{each.2|add:"1"}} : <a href="{% url 'view_results' pages.number forloop.counter0 %}">Open document <i class="fas fa-link"></i></a></figcaption>
+                            <figure class="figure">
+                                <img id="result" class="figure-img" src="{{word_path}}/{{each.1}}" style="padding:1px;border:1px solid #021a40;" height="70" width="150">
+                            <figcaption class="figure-caption"><p>Result {{each.2|add:"1"}} : <a href="{% url 'view_results' pages.number forloop.counter0 %}">Open document <i class="fas fa-link"></i></a></p></figcaption>
                             </figure>
                         </div>
                     </div>
