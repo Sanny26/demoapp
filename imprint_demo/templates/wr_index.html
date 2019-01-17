@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static from staticfiles %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link  href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+  <script src="{% static 'js/jquery.js' %}"></script><!-- jQuery is required -->
+  <script src="{% static 'js/bootstrap.js' %}"></script>
+
+	<script type="module" src="{% static 'js/cropper.js' %}"></script><!-- Cropper.js is required -->
+	<link  href="{% static 'css/cropper.css' %}" rel="stylesheet">
+	<script src="{% static 'js/jquery-cropper.js' %}"></script>
+
+	<link  href="{% static 'css/wr.css' %}" rel="stylesheet">
+
+
+</head>
+
+<body id="page-top" class="index">
+	<div class="container">
+		<h3 class='text-center'>Word Recognition Demo</h3>
+		<hr>
+		<div class="col-md-6 col-lg-6 col-sm-12">
+			<div class="DivToScroll">
+				<div class="DivWithScroll">
+					 <img id='image' src="{{'media/'|add:path }}"  > 
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 col-lg-6 col-sm-12">
+				<button onclick="cropword()">Crop</button>
+		</div>
+	</div>
+
+</body>
+</html>
