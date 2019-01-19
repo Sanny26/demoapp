@@ -15,7 +15,7 @@
     <link href="{% static 'css/thumbnail-slider.css' %}" rel="stylesheet" type="text/css" />
     <script src="{% static 'js/thumbnail-slider.js' %}" type="text/javascript"></script>
 	
- 	<link  href="{% static 'css/dn.css' %}" rel="stylesheet">
+ 	<link  href="{% static 'css/wr.css' %}" rel="stylesheet">
  	<style>
     	ul{
 			list-style: none outside none;
@@ -40,17 +40,7 @@
     </style>
 	<script>
 		$(document).ready(function () {
-		$( "#button" ).click(function() {
-			var div = document.getElementById('button');
-   			div.style.display = 'none';
-   			var div = document.getElementById('buttonbox');
-   			div.style.display = 'none';
-			var bar = document.getElementById('myProgress');
-   			bar.style.display = 'block';
-			move();
-			setTimeout(togle, 1000)   			
-		});
-
+		
 		function move() {
 		  var elem = document.getElementById("myBar");   
 		  var width = 1;
@@ -65,16 +55,34 @@
 		  }
 		}
 
-		function togle(){
-			var div = document.getElementById('process');
-   			div.style.display = 'block';
+		function displayWord(word){
+   			$('#rword').text('Recongized Word: '+ word);
    			var bar = document.getElementById('myProgress');
    			bar.style.display = 'none';
-
 		}
+		var c = document.getElementById("layer1");
+		var context = c.getContext("2d");
+		var img = new Image();
+		img.onload = function () {
+		    context.drawImage(img, 0, 0, 500, 700);
+		}
+		img.src = "{% static path %}";
 
-		 
-	    
+		var c = document.getElementById("layer2");
+		var context2 = c.getContext("2d");
+
+	    context2.fillStyle = "rgba(255, 105, 180, 0.3)";
+	    context2.fillRect(90, 78, 50, 20);
+	    context2.strokeStyle = "rgba(199,21,133, 1)";
+	    context2.lineWidth   = 1;
+	    context2.strokeRect(90, 78, 50, 20);
+
+	    context2.fillStyle = "rgba(255, 105, 180, 0.3)";
+	    context2.fillRect(265, 72, 30, 20);
+	    context2.strokeStyle = "rgba(199,21,133, 1)";
+	    context2.lineWidth   = 1;
+	    context2.strokeRect(265, 72, 30, 20);
+
 	});
 	</script>
 
@@ -114,56 +122,34 @@
 
 		<br>
 		<div class="row justify-content-center">
-			<h4>Document Enhancement Demo</h4>
+			<h4>Word Recognition Demo</h4>
 		</div>
 		<br>
-		<div class="row text-center">
+		<div class="row justify-content-center">
 			<div class="col-md-6 col-lg-6 col-sm-12">
-				<h6 class="text-center">Original Document</h6>
-				<div class="DivToScroll">
-					<div class="DivWithScroll">
-						 <img id='image' src="{% static iname %}" width="100%" > 
-					</div>
+				<h6 style="color:#999;" class="text-center">Selected Document</h6>
+				<div style="position: relative; height: 300px;overflow:scroll;overflow-x:hidden;border: 2px solid #999;border-radius: 4px 0 4px 0;">
+					
+ 					<canvas id="layer1" width="500" height="700" style="position: absolute; left: 0; top: 0; z-index: 0;"></canvas >
+						
+					<canvas id="layer2" width="500" height="700" style="position: absolute; left: 0; top: 0; z-index: 1;"></canvas>
+					https://simonsarris.com/making-html5-canvas-useful/
 				</div>
 			</div>
-			<div class="col-md-6 col-lg-6 col-sm-12">
-				<div id="buttonbox" style="display: inline-block; vertical-align: middle;line-height: 300px;">
-					<button id="button" type="button" class="btn btn-primary">Process the Document</button>
-				</div>	
+			<div class="col-md-2 col-lg-2 col-sm-12">
+				<div style="display: inline-block; vertical-align: middle;line-height: 700px;">
+					<div id="process">
+						<h6 class="text-center" id="rword">Recognize word: -</h6>
+					</div>	
+				</div>
 				<div id="myProgress" style="display: none;">
   					<div id="myBar"></div>
   					<p class="small"> Processing...</p>
-				</div>
-
-				<div id="process" style="display: none;">
-					<h6 class="text-center">Enhanced Document</h6>
-					<div class="DivToScroll">
-						<div class="DivWithScroll">
-							 <img id='image' src="{% static rname %}" width="100%" > 
-						</div>
-					</div>
-				</div>
+				</div>				
 			</div>
 		</div>
 		<br>
-		<div class="row justify-content-center">	
-            <div id="thumbnail-slider">
-                <div class="inner">
-                	<ul>
-                        {% for name in files %}
-		      			<li >
-							<a href="{% url 'dnindex' 2 name|get_pid %}">
-								<img class="thumb" src='{% static "docs/resolution/TestImage/"|add:name %}' >	        
-							</a>
-				    	</li>
-				{% endfor %}
-                    </ul>
-                </div>
-            </div>
-           
-            <div style="clear:both;"></div>
-		</div>
-		<br>
+		
 	</div>
 
 </body>

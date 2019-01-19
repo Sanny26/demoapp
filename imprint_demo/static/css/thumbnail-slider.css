@@ -39,7 +39,7 @@
 #thumbnail-slider ul li {
     display:inline-block;
     *display:inline!important; /*IE7 hack*/
-    border:3px solid black;
+    border:1px solid black;
     margin:0;
     margin-right:10px; /* Spacing between thumbs*/
     transition:border-color 0.3s;
