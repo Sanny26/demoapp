@@ -1,7 +1,9 @@
 from django.shortcuts import render
+import simplejson as json
 
 from .forms import PhotoForm
 import os
+
 # Create your views here.
 
 # https://simpleisbetterthancomplex.com/tutorial/2017/03/02/how-to-crop-images-in-a-django-application.html
@@ -19,4 +21,5 @@ def index(request, pid):
 		context['path'] = 'docs/wr_pages/notes-34.jpg'
 		context['files'] = os.listdir('static/docs/wr_pages')
 		context['pid']  = pid
+		context['word_dict'] = json.dumps({"90#78":"गुजरात", "265#72":"सौर"})
 	return render(request, page_template, context)
