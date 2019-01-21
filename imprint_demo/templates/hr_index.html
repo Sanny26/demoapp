@@ -40,7 +40,17 @@
     </style>
 	<script>
 		$(document).ready(function () {
-	});
+			load();
+		});
+
+		function load(pid, patch_id){
+			var pid = {{pid}};
+			var patch_id = parseInt({{patch_id}}, 10);
+			console.log('success');
+			$('#image1').attr("src", "/static/docs/heritage/patch_input/images/"+pid+"/"+patch_id.toString()+'.jpg')
+			patch_id = patch_id + 1;
+			repeater = setTimeout(load(pid, patch_id), 1000);
+		}
 	</script>
 
 </head>
@@ -80,24 +90,24 @@
 		<div class="row justify-content-center text-center">
 			<div class="col-md-4 col-lg-4 col-sm-12">
 				<h6 class="text-center" style="color:#999;">Original Document</h6></figcaption>
-				<img id='image' src="{% static iname %}" width="200px" height="250px" style="border: 2px solid #DDDDDD;border-radius: 4px 0 4px 0;"> 
+				<img id='image1' src="{% static iname %}" width="200px" height="250px" style="border: 2px solid #DDDDDD;border-radius: 4px 0 4px 0;"> 
 			
 			</div>
 			<div class="col-md-4 col-lg-4 col-sm-12">
 			<h6 class="text-center" style="color:#999;">Enhanced Document</h6>
-					<img id='image' src="{% static rname %}" width="200px" height="250px" style="border: 2px solid #DDDDDD;border-radius: 4px 0 4px 0;">
+					<img id='image3' src="{% static rname %}" width="200px" height="250px" style="border: 2px solid #DDDDDD;border-radius: 4px 0 4px 0;">
 			</div> 
 		</div>
 		<br>
 		<div class="row justify-content-center text-center">
 			<div class="col-md-4 col-lg-4 col-sm-12">
 				<h6 class="text-center" style="color:#999;">Highlighted Patch</h6></figcaption>
-				<img id='image' src="{% static patch_iname %}" width="400px" height="300px" style="border: 2px solid #DDDDDD;border-radius: 4px 0 4px 0;"> 
+				<img id='image2' src="{% static patch_iname %}" width="400px" height="300px" style="border: 2px solid #DDDDDD;border-radius: 4px 0 4px 0;"> 
 			
 			</div>
 			<div class="col-md-4 col-lg-4 col-sm-12">
 			<h6 class="text-center" style="color:#999;">Highlighted Patch</h6>
-				<img id='image' src="{% static patch_rname %}" width="400px" height="300px" style="border: 2px solid #DDDDDD;border-radius: 4px 0 4px 0;">
+				<img id='image4' src="{% static patch_rname %}" width="400px" height="300px" style="border: 2px solid #DDDDDD;border-radius: 4px 0 4px 0;">
 			</div> 
 		</div>
 		<!--div class="row justify-content-center">	
