@@ -1,8 +1,9 @@
 from django.shortcuts import render
 import os
 # Create your views here.
+	
 def index(request, factor, pid):
-	page_template = "dn_index.html"
+	page_template = "hr_index.html"
 	context = {}
 	folder = 'Results_im_{}x'.format(factor)
 	iname = 'final{}.png'.format(pid)

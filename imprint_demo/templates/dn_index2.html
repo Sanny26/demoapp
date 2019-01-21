@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+{% load static from staticfiles %}
+{% load mytemplatetags %}
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	
+	<link href="{% static 'css/thumbs2.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/thumbnail-slider.css' %}" rel="stylesheet" type="text/css" />
+    <script src="{% static 'js/thumbnail-slider.js' %}" type="text/javascript"></script>
+	
+ 	<link  href="{% static 'css/dn.css' %}" rel="stylesheet">
+ 	<style>
+    	ul{
+			list-style: none outside none;
+		    padding-left: 0;
+            margin: 0;
+		}
+        .demo .item{
+            margin-bottom: 60px;
+        }
+		.content-slider li{
+		    background-color: #ed3020;
+		    text-align: center;
+		    color: #FFF;
+		}
+		.content-slider h3 {
+		    margin: 0;
+		    padding: 70px 0;
+		}
+		.demo{
+			width: 800px;
+		}
+    </style>
+	<script>
+		$(document).ready(function () {
+		$( "#button" ).click(function() {
+			var div = document.getElementById('button');
+   			div.style.display = 'none';
+   			var div = document.getElementById('buttonbox');
+   			div.style.display = 'none';
+			var bar = document.getElementById('myProgress');
+   			bar.style.display = 'block';
+			move();
+			setTimeout(togle, 1000)   			
+		});
+
+		function move() {
+		  var elem = document.getElementById("myBar");   
+		  var width = 1;
+		  var id = setInterval(frame, 7);
+		  function frame() {
+		    if (width >= 100) {
+		      clearInterval(id);
+		    } else {
+		      width++; 
+		      elem.style.width = width + '%'; 
+		    }
+		  }
+		}
+
+		function togle(){
+			var div = document.getElementById('process');
+   			div.style.display = 'block';
+   			var bar = document.getElementById('myProgress');
+   			bar.style.display = 'none';
+
+		}
+
+		 
+	    
+	});
+	</script>
+
+</head>
+
+<body >
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <a class="navbar-brand" href="#">IMPRINT</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	    <ul class="navbar-nav ml-auto">
+	      <li class="nav-item active">
+	        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+	      </li>
+	      
+	      <li class="nav-item dropdown">
+	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	          Demos
+	        </a>
+	        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+	          <a class="dropdown-item" href="#">Word Recongition</a>
+	          <a class="dropdown-item" href="#">Document Enhancer</a>
+	        </div>
+	      </li>
+	      
+	    </ul>
+	    <!--form class="form-inline my-2 my-lg-0">
+	      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+	      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+	    </form-->
+	  </div>
+	</nav>
+	<div class="customContainer">
+
+		<br>
+		<div class="row justify-content-center">
+			<h4>Document Enhancement Demo</h4>
+		</div>
+		<br>
+		<div class="row text-center">
+			<div class="col-md-6 col-lg-6 col-sm-12">
+				<h6 class="text-center">Original Document</h6>
+				<div class="DivToScroll">
+					<div class="DivWithScroll">
+						 <img id='image' src="{% static iname %}" width="100%" > 
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 col-lg-6 col-sm-12">
+				<div id="process">
+					<h6 class="text-center">Enhanced Document</h6>
+					<div class="DivToScroll">
+						<div class="DivWithScroll">
+							 <img id='image' src="{% static rname %}" width="100%" > 
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="row justify-content-center">	
+            <div id="thumbnail-slider">
+                <div class="inner">
+                	<ul>
+                        {% for name in files %}
+		      			<li >
+							<a href="{% url 'dnindex' 2 name|get_pid %}">
+								<img class="thumb" src='{% static "docs/resolution/TestImage/"|add:name %}' >	        
+							</a>
+				    	</li>
+				{% endfor %}
+                    </ul>
+                </div>
+            </div>
+           
+            <div style="clear:both;"></div>
+		</div>
+		<br>
+	</div>
+
+</body>
+</html>

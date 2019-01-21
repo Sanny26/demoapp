@@ -13,7 +13,9 @@ img {
 }
 
 img .thumbimg{
-
+    border: 2px solid #DDDDDD;
+    border-radius: 4px 0 4px 0;
+    margin:auto;
 }
 .customContainer{
   margin: 0px 15px;
@@ -21,7 +23,7 @@ img .thumbimg{
 }
 
 .DivToScroll{
-	position:relative; 
+    position:relative; 
     background-color: #F5F5F5;
     border: 2px solid #DDDDDD;
     border-radius: 4px 0 4px 0;
@@ -60,3 +62,21 @@ img .thumbimg{
   background-color: #0066ff;
 }
 
+.img-zoom-container {
+  position: relative;
+}
+
+.img-zoom-lens {
+  position: absolute;
+  border: 1px solid green;
+  /*set the size of the lens:*/
+  width: 40px;
+  height: 40px;
+}
+
+.img-zoom-result {
+  border: 1px solid #d4d4d4;
+  /*set the size of the result div:*/
+  width: 400px;
+  height: 250px;
+}
