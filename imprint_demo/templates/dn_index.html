@@ -150,10 +150,10 @@
             <div id="thumbnail-slider">
                 <div class="inner">
                 	<ul>
-                        {% for name in files %}
+                        {% for file in files %}
 		      			<li >
-							<a href="{% url 'dnindex' 2 name|get_pid %}">
-								<img class="thumb" src='{% static "docs/resolution/TestImage/"|add:name %}' >	        
+							<a href="{% url 'dnindex' 2 file|get_pid %}">
+								<img class="thumb" src='{% static "docs/resolution/TestImage/"|add:file %}' >	        
 							</a>
 				    	</li>
 				{% endfor %}

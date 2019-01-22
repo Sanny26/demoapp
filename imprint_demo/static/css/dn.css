@@ -68,15 +68,16 @@ img .thumbimg{
 
 .img-zoom-lens {
   position: absolute;
-  border: 1px solid green;
+  border: 1px solid #A52A2A;
   /*set the size of the lens:*/
-  width: 40px;
+  width: 60px;
   height: 40px;
+  cursor: pointer;
 }
 
 .img-zoom-result {
-  border: 1px solid #d4d4d4;
+  border: 1px solid #A52A2A ;
   /*set the size of the result div:*/
-  width: 400px;
-  height: 250px;
+  width: 300px;
+  height: 200px;
 }

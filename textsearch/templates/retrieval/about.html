@@ -91,7 +91,7 @@
                 <p style="font-size: 1.0em;">For a given query, a wordspotting classifier is used to generate a feature vector for the query. This pretrained classifier can process both image and text queries.
                 <br>
                 For each collection, features are calculated for all the words in the collection and a k-d tree is constructed using these features. This is used during query time to retrieve relevant results. These trees are stored collection wise.
-                <br>At query time, the feature vector is used to obtain nearest neighbours from the precalculated k-d tree for that collection.</p>
+                <br>At query time, the calculated feature vector is used to obtain nearest neighbours from the precalculated k-d tree for that collection.</p>
                 <div class="row justify-content-center">
                 <img class="img-thumbnail" src="/media/system.png" height="400" width="400">
                 </div>

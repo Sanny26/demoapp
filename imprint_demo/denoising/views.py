@@ -3,12 +3,10 @@ import os
 # Create your views here.
 	
 def index(request, factor, pid):
-	page_template = "hr_index.html"
+	page_template = "dn_index2.html"
 	context = {}
-	folder = 'Results_im_{}x'.format(factor)
-	iname = 'final{}.png'.format(pid)
-	context['iname'] = 'docs/resolution/TestImage/{}'.format(iname)
-	context['rname'] = 'docs/resolution/{}/{}'.format(folder, iname)
-	context['files'] = os.listdir('static/docs/resolution/TestImage/')
+	context['iname'] = 'docs/resolution/IP/final{}.png'.format(pid)
+	context['rname'] = 'docs/resolution/Res/final{}.png'.format(pid)
+	context['files'] = os.listdir('static/docs/resolution/IP/')
 	context['pid']  = pid
 	return render(request, page_template, context)
