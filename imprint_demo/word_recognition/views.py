@@ -44,19 +44,33 @@ def imgws(request):
 	context = {}
 	return render(request, page_template, context)
 
+def postprocess(request):
+	page_template = "techdetail_postprocess.html"
+	context = {}
+	return render(request, page_template, context)
+
+
+
+# def index(request, pid):
+# 	page_template = "wr_index.html"
+# 	context = {}
+# 	if request.method == 'POST':
+# 		form = PhotoForm(request.POST, request.FILES)
+# 		if form.is_valid():
+# 			return redirect('index')
+# 	else:
+# 		form = PhotoForm()
+# 		context['path'] = 'docs/wr_pages/notes-34.jpg'
+# 		context['files'] = os.listdir('static/docs/wr_pages')
+# 		context['pid']  = pid
+# 		context['word_dict'] = json.dumps({"90#78":"गुजरात", "265#72":"सौर"})
+# 	return render(request, page_template, context)
 
 
 def index(request, pid):
 	page_template = "wr_index2.html"
 	context = {}
-	if request.method == 'POST':
-		form = PhotoForm(request.POST, request.FILES)
-		if form.is_valid():
-			return redirect('index')
-	else:
-		form = PhotoForm()
-		context['path'] = 'docs/wr_pages/notes-34.jpg'
-		context['files'] = os.listdir('static/docs/wr_pages')
-		context['pid']  = pid
-		context['word_dict'] = json.dumps({"90#78":"गुजरात", "265#72":"सौर"})
+	context['pid']  = pid
+	context['iname'] = 'docs/wr_pages/input/{}.jpg'.format(pid)
+	context['rname'] = 'docs/wr_pages/output/{}_output.png'.format(pid)
 	return render(request, page_template, context)

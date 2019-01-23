@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 {% load static from staticfiles %}
 {% load mytemplatetags %}
-<html lang="en">
+<html lang="utf-8">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,41 +38,106 @@
 			width: 800px;
 		}
     </style>
-	<script>
+	<script type="text/javascript">
 		$(document).ready(function () {
 		
-		function move() {
-		  var elem = document.getElementById("myBar");   
-		  var width = 1;
-		  var id = setInterval(frame, 7);
-		  function frame() {
-		    if (width >= 100) {
-		      clearInterval(id);
-		    } else {
-		      width++; 
-		      elem.style.width = width + '%'; 
-		    }
-		  }
-		}
+			function move() {
+			  var elem = document.getElementById("myBar");   
+			  var width = 1;
+			  var id = setInterval(frame, 7);
+			  function frame() {
+			    if (width >= 100) {
+			      clearInterval(id);
+			    } else {
+			      width++; 
+			      elem.style.width = width + '%'; 
+			    }
+			  }
+			}
 
-		function displayWord(word){
-   			$('#rword').text('Recongized Word: '+ word);
-   			var bar = document.getElementById('myProgress');
-   			bar.style.display = 'none';
-		}
+			function displayWord(word){
+	   			$('#rword').text(word);
+	   			var bar = document.getElementById('myProgress');
+	   			bar.style.display = 'none';
+			}
 
-		var allStates = $("svg.page > *");
-		allStates.on("click", function() {
-			allStates.removeClass("on");
-			$(this).addClass("on");
-			var word = $(this).attr('word');
-			var bar = document.getElementById('myProgress');
-			bar.style.display = 'block';
-			move();
-			setTimeout(displayWord(word), 200)
+			function collides(rects, x, y) {
+			    var isCollision = false;
+			    for (var i = 0, len = rects.length; i < len; i++) {
+			        var left = rects[i].x, right = rects[i].x+rects[i].w;
+			        var top = rects[i].y, bottom = rects[i].y+rects[i].h;
+			        if (right >= x
+			            && left <= x
+			            && bottom >= y
+			            && top <= y) {
+			            isCollision = rects[i];
+			        }
+			    }
+			    return isCollision;
+			}
+
+			var c = document.getElementById("layer1");
+			var context = c.getContext("2d");
+			var img = new Image();
+			img.onload = function () {
+			    context.drawImage(img, 0, 0, 500, 700);
+			}
+			img.src = "{% static path %}";
+
+			var word_obj = {{ word_dict|safe }};
+			var c = document.getElementById("layer2");
+			if (c && c.getContext){
+			    // list of rectangles to render
+			    var rects = [{x: 90, y: 78, w: 50, h: 20},
+			                 {x: 265, y: 72, w: 30, h: 20}];
+			    // get context
+			    var context2 = c.getContext('2d');
+			    
+			    context2.fillStyle = "rgba(255, 204, 255, 0.3)";
+	        	context2.strokeStyle = "rgba(199,21,133, 1)";
+				context2.lineWidth   = 1;
+			    if (context) {
+			      	for (var i = 0, len = rects.length; i < len; i++) {
+			        	context2.fillRect(rects[i].x, rects[i].y, rects[i].w, rects[i].h);
+	    		    	context2.strokeRect(rects[i].x, rects[i].y, rects[i].w, rects[i].h);
+			      	}
+			  	}
+
+			    // listener, using W3C style for example    
+			    c.addEventListener('click', function(e) {
+			        var rect = collides(rects, e.offsetX, e.offsetY);
+			        if (rect) {
+			            console.log('collision: ' + rect.x + '/' + rect.y);
+			            var key = rect.x + '#' + rect.y;
+			            var value = word_obj[key];
+			            displayWord(value);
+			            context2.clearRect(0, 0, c.width, c.height);
+					    for (var i = 0, len = rects.length; i < len; i++) {
+					    	if ((rects[i].x + '#' + rects[i].y) != key){
+					    		context2.fillStyle = "rgba(255, 230, 255, 0.3)";
+			        			context2.strokeStyle = "rgba(199,21,133, 1)";
+								context2.lineWidth   = 1;
+					        	context2.fillRect(rects[i].x, rects[i].y, rects[i].w, rects[i].h);
+			    		    	context2.strokeRect(rects[i].x, rects[i].y, rects[i].w, rects[i].h);
+			    		    }
+			    		    else{
+			    		    	context2.fillStyle = "rgba(102, 255, 102, 0.3)";
+			        			context2.strokeStyle = "rgba(0, 128, 0, 1)";
+								context2.lineWidth   = 1;
+					        	context2.fillRect(rects[i].x, rects[i].y, rects[i].w, rects[i].h);
+			    		    	context2.strokeRect(rects[i].x, rects[i].y, rects[i].w, rects[i].h);
+			    		    }
+					    }
+					  	
+			        } else {
+			            console.log('no collision');
+			            displayWord('Unknown word');
+			        }
+			    }, false);
+			}
+
 		});
-	    
-	});
+
 	</script>
 
 </head>
@@ -117,24 +182,21 @@
 		<div class="row justify-content-center">
 			<div class="col-md-6 col-lg-6 col-sm-12">
 				<h6 style="color:#999;" class="text-center">Selected Document</h6>
-				<div class="floatTl">
-					<img id='image' class="docimg" src="{% static path %}" width="600" height="800"> 
-				</div>
-				<div class="floatTl">
-					<svg class="page" width="600" height="800">
-					  
-					  	<rect x="105" y="90" width="55" height="20" stroke="red" stroke-width="2" fill="pink" style="opacity:0.4" word="Gujarat"/>
-					  	<rect x="125" y="150" width="35" height="20" stroke="red" stroke-width="2" fill="pink" style="opacity:0.4" word="Vikaar"/>
-					  
-					</svg> 
+				<div style="position: relative; height: 300px;overflow:scroll;overflow-x:hidden;border: 2px solid #999;border-radius: 4px 0 4px 0;">
+					
+ 					<canvas id="layer1" width="500" height="700" style="position: absolute; left: 0; top: 0; z-index: 0;"></canvas >
+						
+					<canvas id="layer2" width="500" height="700" style="position: absolute; left: 0; top: 0; z-index: 1;cursor: pointer;"></canvas>
+					
 				</div>
 			</div>
 			<div class="col-md-3 col-lg-3 col-sm-12">
-				<div style="display: inline-block; vertical-align: middle;line-height: 300px;">
-				<div id="process">
-					<h6 class="text-center" id="rword">Recognize word: -</h6>
-				</div>	
-			</div>
+				<div >
+					<div id="process" style="padding-top: 150px;">
+						<h6 class="text-center">Selected word: </h6>
+						<h6 class="text-center" id="rword" style="color: red;">None</h6>
+					</div>	
+				</div>
 				<div id="myProgress" style="display: none;">
   					<div id="myBar"></div>
   					<p class="small"> Processing...</p>

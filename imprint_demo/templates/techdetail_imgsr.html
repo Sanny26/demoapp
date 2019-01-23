@@ -4,94 +4,65 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Handwritten OCR</title>
-
-
-<link rel="stylesheet" href='{% static "css/reset.css" %}' type="text/css" />
-<link rel="stylesheet" href='{% static "css/styles.css" %}' type="text/css" />
-<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-
-
-<!--[if lt IE 9]>
-<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-<script type="text/javascript" src='{% static "js/jquery.js" %}'></script>
-<script src="http://code.jquery.com/jquery-migrate-1.0.0.js"></script>
-<script type="text/javascript" src='{% static "js/slider.js" %}'></script>
-<script type="text/javascript" src='{% static "js/superfish.js" %}'></script>
-
-<script type="text/javascript" src='{% static "js/custom.js" %}'></script>
-
-<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
-
-<!--
-hallux, a free CSS web template by ZyPOP (zypopwebtemplates.com/)
-
-Download: http://zypopwebtemplates.com/
-
-License: Creative Commons Attribution
-//-->
-
-<style>
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: red;
-  color: white;
-  text-align: center;
-}
-</style>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link  href="{% static 'css/dn.css' %}" rel="stylesheet">
 
 </head>
 <body>
-<div id="container">
-
-    <header> 
-    	<div class="width">
-        		<!--<h1><a href="/">Handwritten OCR</a></h1>-->
-    		<nav>
-    			<ul class="sf-menu dropdown">
-                    <li class="selected"><a href="{% url 'home' %}">Home</a></li>
-                    <li>
-                        <a href="#">Technical Details</a>  
-                        <ul>
-                            <li><a href="{% url 'imgws' %}">Handwritten Text Recognition</a></li>
-                            <li><a href="{% url 'imgann' %}">Image Annotation Tools</a></li>
-                            <li><a href="{% url 'imgenh' %}">Image Restoration & Text Extraction</a></li>
-                            <li><a href="{% url 'imgsr' %}">Image Super-Resolution</a></li>
-                            <li><a href="{% url 'home' %}">Postprocessing</a></li>
-                        </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                    <li class="nav-item dropdown  active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Technical Details
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'imgws' %}">Handwritten Text Recognition</a>
+                            <a class="dropdown-item" href="{% url 'imgann' %}">Image Annotation Tools</a>
+                            <a class="dropdown-item" href="{% url 'imgenh' %}">Image Restoration & Text Extraction</a>
+                            <a class="dropdown-item active" href="{% url 'imgsr' %}">Image Super-Resolution</a>
+                            <a class="dropdown-item" href="{% url 'postprocess' %}">Postprocessing</a>
+                        </div>
                     </li>
-                    <li><a href="{% url '#">Demo</a>
-                        <ul>
-                            <li><a href="{% url 'wrindex' 0 %}">Handwritten Text Recognition</a></li>
-                            <li><a href="{% url 'home' %}">Image Annotation Tools</a></li>
-                            <li><a href="{% url 'hrindex' 2 2 %}">Image Restoration & Text Extraction</a></li>
-                            <li><a href="{% url 'dnindex' 2 2 %}">Image Super-Resolution</a></li>
-                            <li><a href="{% url 'home' %}">Postprocessing</a></li>
-                        </ul>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Demo
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'wrindex' 0 %}">Handwritten Text Recognition</a>
+                            <a class="dropdown-item" href="{% url 'home' %}">Image Annotation Tools</a>
+                            <a class="dropdown-item" href="{% url 'hrindex' 2 2 %}">Image Restoration & Text Extraction</a>
+                            <a class="dropdown-item" href="{% url 'dnindex' 2 2 %}">Image Super-Resolution</a>
+                            <a class="dropdown-item" href="{% url 'home' %}">Postprocessing</a>
+                        </div>
                     </li>
-                    <li>
-                        <a href="{% url 'pub' %}">Publications</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'pub' %}">Publications</a>
                     </li>    
-                    <li><a href="{% url 'partners' %}">Partners</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'partners' %}">Partners</a></li>
                 </ul>
-    		  <div class="clear"></div>
-        	</nav>
+            </div>
         </div>
-    	<div class="clear"></div>
-    </header>
-
-
-    <div id="body" class="width">
-
+    </nav>
+    <div id="container" class="width">
 	<section id="content" class="one-column">
 
 	    <article>
 				
 			
-			<h2>Noise Resilient Super-Resolution on Document Images</h2>
+			<br><h2>Noise Resilient Super-Resolution on Document Images</h2>
 			<br> <br>
 		<p>
 			CEERI, Pilani has been looking into development of a deep learning based framework to enhance the degraded document image for boosting OCR’s performance. Enhancement will include all factors which will help to improve OCR performance such as resolution enhancement, removing noises and removing text touching lines etc.
@@ -102,11 +73,11 @@ License: Creative Commons Attribution
 	</p>
 
 	<center> <figure>
-			<img src = "{% static 'images/ceeri_paper.jpg' %}" height="900px" width="600px">
+			<img src = "{% static 'images/ceeri_paper.jpg' %}" height="500px" width="600px">
 			<figcaption><font size="2">Pipeline for the lower-resolution image recognition system</font></figcaption>
 		</figure>	
 	</center>
-	<br> <br>
+	<br>
 	
 	    <p>Final block is a cascaded implementation of all the blocks shown above. In final block we give images as input. These images are then passed through the layout and linear element removal block, which gives clean images, which is then Super-Resolved 8 times to get a High resolution image. The images are then passed through a OCR. We also do some dictionary based post processing to get better results.</p>
 		</article>
@@ -115,12 +86,7 @@ License: Creative Commons Attribution
         
     	<div class="clear"></div>
     </div>
-    <footer class="width">
-   
-        <div class="footer-bottom">
-            <p>&copy; YourSite 2014. <a href="http://zypopwebtemplates.com/">Free HTML5 Templates</a> by ZyPOP</p>
-         </div>
-    </footer>
+    <br><br>
 </div>
 </body>
 </html>

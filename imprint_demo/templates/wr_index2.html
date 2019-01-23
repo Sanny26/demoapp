@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 {% load static from staticfiles %}
 {% load mytemplatetags %}
-<html lang="utf-8">
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,201 +10,352 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	
-	<link href="{% static 'css/thumbs2.css' %}" rel="stylesheet" />
-    <link href="{% static 'css/thumbnail-slider.css' %}" rel="stylesheet" type="text/css" />
-    <script src="{% static 'js/thumbnail-slider.js' %}" type="text/javascript"></script>
-	
- 	<link  href="{% static 'css/wr.css' %}" rel="stylesheet">
- 	<style>
-    	ul{
-			list-style: none outside none;
-		    padding-left: 0;
-            margin: 0;
+	<script src="{% static 'js/jssor.slider-27.5.0.min.js' %}" type="text/javascript"></script>
+
+	<link  href="{% static 'css/dn.css' %}" rel="stylesheet">
+ 	
+	<script>
+		function imageZoom(img1ID, result1ID, img2ID, result2ID) {
+		  var img1, lens1, result1, img2, lens2, result2, cx, cy;
+		  img1 = document.getElementById(img1ID);
+		  result1 = document.getElementById(result1ID);
+		  img2 = document.getElementById(img2ID);
+		  result2 = document.getElementById(result2ID);
+		  /*create lens:*/
+		  lens1 = document.createElement("DIV");
+		  lens1.setAttribute("class", "img-zoom-lens");
+		  lens2 = document.createElement("DIV");
+		  lens2.setAttribute("class", "img-zoom-lens");
+		  
+		  /*insert lens:*/
+		  img1.parentElement.insertBefore(lens1, img1);
+		  img2.parentElement.insertBefore(lens2, img2);
+		  /*calculate the ratio between result DIV and lens:*/
+		  cx = result1.offsetWidth / lens1.offsetWidth;
+		  cy = result1.offsetHeight / lens1.offsetHeight;
+		  /*set background properties for the result DIV:*/
+		  result1.style.backgroundImage = "url('" + img1.src + "')";
+		  result1.style.backgroundSize = (img1.width * cx) + "px " + (img1.height * cy) + "px";
+		  result2.style.backgroundImage = "url('" + img2.src + "')";
+		  result2.style.backgroundSize = (img2.width * cx) + "px " + (img2.height * cy) + "px";
+		  /*execute a function when someone moves the cursor over the image, or the lens:*/
+		  lens1.addEventListener("mousemove", moveLens);
+		  img1.addEventListener("mousemove", moveLens);
+		  /*lens2.addEventListener("mousemove", moveLens);
+		  img2.addEventListener("mousemove", moveLens);*/
+		  /*and also for touch screens:*/
+		  lens1.addEventListener("touchmove", moveLens);
+		  img1.addEventListener("touchmove", moveLens);
+		  /*lens2.addEventListener("touchmove", moveLens);
+		  img2.addEventListener("touchmove", moveLens);*/
+		  
+		  function moveLens(e) {
+		    var pos, x, y;
+		    /*prevent any other actions that may occur when moving over the image:*/
+		    e.preventDefault();
+		    /*get the cursor's x and y positions:*/
+		    pos = getCursorPos(e);
+		    /*calculate the position of the lens:*/
+		    x = pos.x - (lens1.offsetWidth / 2);
+		    y = pos.y - (lens1.offsetHeight / 2);
+		    /*prevent the lens from being positioned outside the image:*/
+		    if (x > img1.width - lens1.offsetWidth) {x = img1.width - lens1.offsetWidth;}
+		    if (x < 0) {x = 0;}
+		    if (y > img1.height - lens1.offsetHeight) {y = img1.height - lens1.offsetHeight;}
+		    if (y < 0) {y = 0;}
+		    /*set the position of the lens:*/
+		    lens1.style.left = x + "px";
+		    lens1.style.top = y + "px";
+		    /*display what the lens "sees":*/
+		    result1.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+		  }
+		  function getCursorPos(e) {
+		    var a, x = 0, y = 0;
+		    e = e || window.event;
+		    /*get the x and y positions of the image:*/
+		    a = img1.getBoundingClientRect();
+		    /*calculate the cursor's x and y coordinates, relative to the image:*/
+		    x = e.pageX - a.left;
+		    y = e.pageY - a.top;
+		    /*consider any page scrolling:*/
+		    x = x - window.pageXOffset;
+		    y = y - window.pageYOffset;
+		    return {x : x, y : y};
+		  }
 		}
-        .demo .item{
-            margin-bottom: 60px;
-        }
-		.content-slider li{
-		    background-color: #ed3020;
-		    text-align: center;
-		    color: #FFF;
-		}
-		.content-slider h3 {
-		    margin: 0;
-		    padding: 70px 0;
-		}
-		.demo{
-			width: 800px;
-		}
-    </style>
-	<script type="text/javascript">
-		$(document).ready(function () {
+
+		function syncLens(img1ID, result1ID, img2ID, result2ID){
+			var img1, lens1, result1, img2, lens2, result2, cx, cy;
+			img1 = document.getElementById(img1ID);
+			result1 = document.getElementById(result1ID);
+			img2 = document.getElementById(img2ID);
+			result2 = document.getElementById(result2ID);
+			/*create lens:*/
+			lens1 = document.createElement("DIV");
+			lens1.setAttribute("class", "img-zoom-lens");
+			
+			lens2 = document.createElement("DIV");
+			lens2.setAttribute("class", "img-zoom-lens");
 		
-			function move() {
-			  var elem = document.getElementById("myBar");   
-			  var width = 1;
-			  var id = setInterval(frame, 7);
-			  function frame() {
-			    if (width >= 100) {
-			      clearInterval(id);
-			    } else {
-			      width++; 
-			      elem.style.width = width + '%'; 
-			    }
-			  }
-			}
+			/*insert lens:*/
+			img1.parentElement.insertBefore(lens1, img1);
+			img2.parentElement.insertBefore(lens2, img2);
+			lens1.addEventListener("mousemove", moveLens);
+		  	img1.addEventListener("mousemove", moveLens);
 
-			function displayWord(word){
-	   			$('#rword').text(word);
-	   			var bar = document.getElementById('myProgress');
-	   			bar.style.display = 'none';
-			}
+		  	/*calculate the ratio between result DIV and lens:*/
+			cx = result1.offsetWidth / lens1.offsetWidth;
+			cy = result1.offsetHeight / lens1.offsetHeight;
+			/*set background properties for the result DIV:*/
+			result1.style.backgroundImage = "url('" + img1.src + "')";
+			result1.style.backgroundSize = (img1.width * cx) + "px " + (img1.height * cy) + "px";
+			result2.style.backgroundImage = "url('" + img2.src + "')";
+			result2.style.backgroundSize = (img2.width * cx) + "px " + (img2.height * cy) + "px";
 
-			function collides(rects, x, y) {
-			    var isCollision = false;
-			    for (var i = 0, len = rects.length; i < len; i++) {
-			        var left = rects[i].x, right = rects[i].x+rects[i].w;
-			        var top = rects[i].y, bottom = rects[i].y+rects[i].h;
-			        if (right >= x
-			            && left <= x
-			            && bottom >= y
-			            && top <= y) {
-			            isCollision = rects[i];
-			        }
-			    }
-			    return isCollision;
-			}
+		  	function moveLens(e) {
+			    var pos, x, y;
+			    /*prevent any other actions that may occur when moving over the image:*/
+			    e.preventDefault();
+			    /*get the cursor's x and y positions:*/
+			    pos = getCursorPos(e);
+			    /*calculate the position of the lens:*/
+			    x1 = pos.x - (lens1.offsetWidth / 2);
+			    y1 = pos.y - (lens1.offsetHeight / 2);
 
-			var c = document.getElementById("layer1");
-			var context = c.getContext("2d");
-			var img = new Image();
-			img.onload = function () {
-			    context.drawImage(img, 0, 0, 500, 700);
-			}
-			img.src = "{% static path %}";
+			    /*prevent the lens from being positioned outside the image:*/
+			    if (x1 > img1.width - lens1.offsetWidth) {x1 = img1.width - lens1.offsetWidth;}
+			    if (x1 < 0) {x1 = 0;}
+			    if (y1 > img1.height - lens1.offsetHeight) {y1 = img1.height - lens1.offsetHeight;}
+			    if (y1 < 0) {y1 = 0;}
+			    lens1.style.left = x1 + "px";
+			    lens1.style.top = y1 + "px";
 
-			var word_obj = {{ word_dict|safe }};
-			var c = document.getElementById("layer2");
-			if (c && c.getContext){
-			    // list of rectangles to render
-			    var rects = [{x: 90, y: 78, w: 50, h: 20},
-			                 {x: 265, y: 72, w: 30, h: 20}];
-			    // get context
-			    var context2 = c.getContext('2d');
+			    x2 = x1;
+			    y2 = y1;
+			   
+			    if (x2 > img2.width - lens2.offsetWidth) {x2 = img2.width - lens2.offsetWidth;}
+			    if (x2 < 0) {x2 = 0;}
+			    if (y2 > img2.height - lens2.offsetHeight) {y2 = img2.height - lens2.offsetHeight;}
+			    if (y2 < 0) {y2 = 0;}
+			    /*set the position of the lens:*/
 			    
-			    context2.fillStyle = "rgba(255, 204, 255, 0.3)";
-	        	context2.strokeStyle = "rgba(199,21,133, 1)";
-				context2.lineWidth   = 1;
-			    if (context) {
-			      	for (var i = 0, len = rects.length; i < len; i++) {
-			        	context2.fillRect(rects[i].x, rects[i].y, rects[i].w, rects[i].h);
-	    		    	context2.strokeRect(rects[i].x, rects[i].y, rects[i].w, rects[i].h);
-			      	}
-			  	}
-
-			    // listener, using W3C style for example    
-			    c.addEventListener('click', function(e) {
-			        var rect = collides(rects, e.offsetX, e.offsetY);
-			        if (rect) {
-			            console.log('collision: ' + rect.x + '/' + rect.y);
-			            var key = rect.x + '#' + rect.y;
-			            var value = word_obj[key];
-			            displayWord(value);
-			            context2.clearRect(0, 0, c.width, c.height);
-					    for (var i = 0, len = rects.length; i < len; i++) {
-					    	if ((rects[i].x + '#' + rects[i].y) != key){
-					    		context2.fillStyle = "rgba(255, 230, 255, 0.3)";
-			        			context2.strokeStyle = "rgba(199,21,133, 1)";
-								context2.lineWidth   = 1;
-					        	context2.fillRect(rects[i].x, rects[i].y, rects[i].w, rects[i].h);
-			    		    	context2.strokeRect(rects[i].x, rects[i].y, rects[i].w, rects[i].h);
-			    		    }
-			    		    else{
-			    		    	context2.fillStyle = "rgba(102, 255, 102, 0.3)";
-			        			context2.strokeStyle = "rgba(0, 128, 0, 1)";
-								context2.lineWidth   = 1;
-					        	context2.fillRect(rects[i].x, rects[i].y, rects[i].w, rects[i].h);
-			    		    	context2.strokeRect(rects[i].x, rects[i].y, rects[i].w, rects[i].h);
-			    		    }
-					    }
-					  	
-			        } else {
-			            console.log('no collision');
-			            displayWord('Unknown word');
-			        }
-			    }, false);
-			}
-
-		});
-
+			    lens2.style.left = x2 + "px";
+			    lens2.style.top = y2 + "px";
+			    /*display what the lens "sees":*/
+			    result1.style.backgroundPosition = "-" + (x1 * cx) + "px -" + (y1 * cy) + "px";
+			    result2.style.backgroundPosition = "-" + (x2 * cx) + "px -" + (y2 * cy) + "px";
+		  	}
+		  	function getCursorPos(e) {
+			    var a, x = 0, y = 0;
+			    e = e || window.event;
+			    /*get the x and y positions of the image:*/
+			    a = img1.getBoundingClientRect();
+			    /*calculate the cursor's x and y coordinates, relative to the image:*/
+			    x = e.pageX - a.left;
+			    y = e.pageY - a.top;
+			    /*consider any page scrolling:*/
+			    x = x - window.pageXOffset;
+			    y = y - window.pageYOffset;
+			    return {x : x, y : y};
+			}	
+		}
 	</script>
 
+	<script type="text/javascript">
+        jssor_1_slider_init = function() {
+
+            var jssor_1_options = {
+              $AutoPlay: 1,
+              $AutoPlaySteps: 5,
+              $SlideDuration: 160,
+              $SlideWidth: 80,
+              $SlideSpacing: 3,
+              $ArrowNavigatorOptions: {
+                $Class: $JssorArrowNavigator$,
+                $Steps: 3
+              },
+              $BulletNavigatorOptions: {
+                $Class: $JssorBulletNavigator$
+              }
+            };
+
+            var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+
+            /*#region responsive code begin*/
+
+            var MAX_WIDTH = 400;
+
+            function ScaleSlider() {
+                var containerElement = jssor_1_slider.$Elmt.parentNode;
+                var containerWidth = containerElement.clientWidth;
+
+                if (containerWidth) {
+
+                    var expectedWidth = Math.min(MAX_WIDTH || containerWidth, containerWidth);
+
+                    jssor_1_slider.$ScaleWidth(expectedWidth);
+                }
+                else {
+                    window.setTimeout(ScaleSlider, 30);
+                }
+            }
+
+            ScaleSlider();
+
+            $Jssor$.$AddEvent(window, "load", ScaleSlider);
+            $Jssor$.$AddEvent(window, "resize", ScaleSlider);
+            $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
+            /*#endregion responsive code end*/
+        };
+    </script>
+
+    <style>
+        /*jssor slider loading skin spin css*/
+        .jssorl-009-spin img {
+            animation-name: jssorl-009-spin;
+            animation-duration: 1.6s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        @keyframes jssorl-009-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /*jssor slider bullet skin 057 css*/
+        .jssorb057 .i {position:absolute;cursor:pointer;}
+        .jssorb057 .i .b {fill:none;stroke:#fff;stroke-width:2000;stroke-miterlimit:10;stroke-opacity:0.4;}
+        .jssorb057 .i:hover .b {stroke-opacity:.7;}
+        .jssorb057 .iav .b {stroke-opacity: 1;}
+        .jssorb057 .i.idn {opacity:.3;}
+
+        /*jssor slider arrow skin 073 css*/
+        .jssora073 {display:block;position:absolute;cursor:pointer;}
+        .jssora073 .a {fill:#000;fill-opacity:.7;stroke:#000;stroke-width:160;stroke-miterlimit:10;stroke-opacity:.7;}
+        .jssora073:hover {opacity:.8;}
+        .jssora073.jssora073dn {opacity:.4;}
+        .jssora073.jssora073ds {opacity:.3;pointer-events:none;}
+    </style>
 </head>
 
 <body >
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <a class="navbar-brand" href="#">IMPRINT</a>
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	    <span class="navbar-toggler-icon"></span>
-	  </button>
-
-	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-	    <ul class="navbar-nav ml-auto">
-	      <li class="nav-item active">
-	        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-	      </li>
-	      
-	      <li class="nav-item dropdown">
-	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	          Demos
-	        </a>
-	        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-	          <a class="dropdown-item" href="#">Word Recongition</a>
-	          <a class="dropdown-item" href="#">Document Enhancer</a>
-	        </div>
-	      </li>
-	      
-	    </ul>
-	    <!--form class="form-inline my-2 my-lg-0">
-	      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-	      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-	    </form-->
-	  </div>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="#">Handwritten Text Recognition</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+	    		<span class="navbar-toggler-icon"></span>
+	  		</button>
+	  		<div class="collapse navbar-collapse" id="navbarText">
+				<ul class="navbar-nav ml-auto">
+		            <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+		            <li class="nav-item dropdown">
+		            	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				          Technical Details
+				        </a>
+				        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		                    <a class="dropdown-item" href="{% url 'imgws' %}">Handwritten Text Recognition</a>
+		                    <a class="dropdown-item" href="{% url 'imgann' %}">Image Annotation Tools</a>
+		                    <a class="dropdown-item" href="{% url 'imgenh' %}">Image Restoration & Text Extraction</a>
+		                    <a class="dropdown-item" href="{% url 'imgsr' %}">Image Super-Resolution</a>
+		                    <a class="dropdown-item" href="{% url 'postprocess' %}">Postprocessing</a>
+		                </div>
+		            </li>
+		            <li class="nav-item dropdown active">
+		            	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				        	Demo
+				        </a>
+				        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		                    <a class="dropdown-item active" href="{% url 'wrindex' 0 %}">Handwritten Text Recognition</a>
+		                    <a class="dropdown-item" href="{% url 'home' %}">Image Annotation Tools</a>
+		                    <a class="dropdown-item " href="{% url 'hrindex' 2 2 %}">Image Restoration & Text Extraction</a>
+		                    <a class="dropdown-item" href="{% url 'dnindex' 2 2 %}">Image Super-Resolution</a>
+		                    <a class="dropdown-item" href="{% url 'home' %}">Postprocessing</a>
+		                </div>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="{% url 'pub' %}">Publications</a>
+		            </li>    
+		            <li class="nav-item"><a class="nav-link" href="{% url 'partners' %}">Partners</a></li>
+		        </ul>
+		    </div>
+		</div>
 	</nav>
 	<div class="customContainer">
+		<div class="alert alert-success alert-dismissible">
+		  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		  <strong>NOTE:</strong> Hover over original document image to highlight different patches.
+		</div>
+		<div class="row justify-content-center text-center" style="margin-bottom: 10px;">
+			<div>
+				<p class="text-center" style="color:#999;margin-bottom: 3px;">Original Document</p>
+				<div style="position: relative;">
+					<img id="image1" src="{% static iname %}" width="200px" height="250px" class="thumbimg" style="border: 1px solid #606060;border-radius: 4px 0 4px 0;">
+				</div>
+			</div>
+			<div class="col-md-2 col-lg-2 col-sm-2"></div>
+			<div>
+				<p class="text-center" style="color:#999;margin-bottom: 5px;">Enhanced Document</p>
+				<div style="position: relative;">
+					<img id="image2" src="{% static rname %}" width="200px" height="250px" class="thumbimg" style="border: 1px solid #606060;border-radius: 4px 0 4px 0;">
+				</div>
+			</div>
+		</div>
+		<div class="row justify-content-center text-center">
+			<div>
+				<p class="text-center" style="color:#999;margin-bottom: 3px;">Highlighted patch from Original Document</p>			
+				<div id="result1" class="img-zoom-result"></div>
+			</div>
+			<div class="col-md-2 col-lg-2 col-sm-2"></div>
+			<div>
+				<p class="text-center" style="color:#999;margin-bottom: 3px;">Highlighted patch from Enhanced Document</p>
+				<div id="result2" class="img-zoom-result"></div>
+			</div>		  
+		</div>
+		<script>
+			// Initiate zoom effect:
+			syncLens("image1", "result1", "image2", "result2");
+		</script>
+		<br><br>
+		<!-- Thumbnail Slider -->
+		<div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:400px;height:75px;overflow:hidden;visibility:hidden;">
+		<div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
+		    <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="{% static 'img/spin.svg' %}" />
+		</div>
 
-		<br>
-		<div class="row justify-content-center">
-			<h4>Word Recognition Demo</h4>
+		<!--div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:400px;height:75px;overflow:hidden;border: 1px solid #606060;border-radius: 4px 0 4px 0;">
+			{% for file in files %}
+		    <div>
+		        <a href="{% url 'home' %}">
+		        	<img data-u="image" src="{% static 'docs/heritage/input/'|add:file|add:'.jpg' %}" style=
+							"border-right:1px solid #606060;">
+		        </a>
+		    </div>
+		    {% endfor %}
+		    		    
+		</div-->
+		<!-- Bullet Navigator -->
+		<!--div data-u="navigator" class="jssorb057" style="position:absolute;bottom:12px;right:12px;" data-autocenter="1" data-scale="0.5" data-scale-bottom="0.75">
+		    <div data-u="prototype" class="i" style="width:16px;height:16px;">
+		        <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+		            <circle class="b" cx="8000" cy="8000" r="5000"></circle>
+		        </svg>
+		    </div>
+		</div-->
+		<!-- Arrow Navigator -->
+		<div data-u="arrowleft" class="jssora073" style="width:30px;height:30px;top:0px;left:30px;" data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
+		    <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+		        <path class="a" d="M4037.7,8357.3l5891.8,5891.8c100.6,100.6,219.7,150.9,357.3,150.9s256.7-50.3,357.3-150.9 l1318.1-1318.1c100.6-100.6,150.9-219.7,150.9-357.3c0-137.6-50.3-256.7-150.9-357.3L7745.9,8000l4216.4-4216.4 c100.6-100.6,150.9-219.7,150.9-357.3c0-137.6-50.3-256.7-150.9-357.3l-1318.1-1318.1c-100.6-100.6-219.7-150.9-357.3-150.9 s-256.7,50.3-357.3,150.9L4037.7,7642.7c-100.6,100.6-150.9,219.7-150.9,357.3C3886.8,8137.6,3937.1,8256.7,4037.7,8357.3 L4037.7,8357.3z"></path>
+		    </svg>
 		</div>
-		<br>
-		<div class="row justify-content-center">
-			<div class="col-md-6 col-lg-6 col-sm-12">
-				<h6 style="color:#999;" class="text-center">Selected Document</h6>
-				<div style="position: relative; height: 300px;overflow:scroll;overflow-x:hidden;border: 2px solid #999;border-radius: 4px 0 4px 0;">
-					
- 					<canvas id="layer1" width="500" height="700" style="position: absolute; left: 0; top: 0; z-index: 0;"></canvas >
-						
-					<canvas id="layer2" width="500" height="700" style="position: absolute; left: 0; top: 0; z-index: 1;cursor: pointer;"></canvas>
-					
-				</div>
-			</div>
-			<div class="col-md-3 col-lg-3 col-sm-12">
-				<div >
-					<div id="process" style="padding-top: 150px;">
-						<h6 class="text-center">Selected word: </h6>
-						<h6 class="text-center" id="rword" style="color: red;">None</h6>
-					</div>	
-				</div>
-				<div id="myProgress" style="display: none;">
-  					<div id="myBar"></div>
-  					<p class="small"> Processing...</p>
-				</div>				
-			</div>
+		<div data-u="arrowright" class="jssora073" style="width:30px;height:30px;top:0px;right:30px;" data-autocenter="2" data-scale="0.75" data-scale-right="0.75">
+		    <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+		        <path class="a" d="M11962.3,8357.3l-5891.8,5891.8c-100.6,100.6-219.7,150.9-357.3,150.9s-256.7-50.3-357.3-150.9 L4037.7,12931c-100.6-100.6-150.9-219.7-150.9-357.3c0-137.6,50.3-256.7,150.9-357.3L8254.1,8000L4037.7,3783.6 c-100.6-100.6-150.9-219.7-150.9-357.3c0-137.6,50.3-256.7,150.9-357.3l1318.1-1318.1c100.6-100.6,219.7-150.9,357.3-150.9 s256.7,50.3,357.3,150.9l5891.8,5891.8c100.6,100.6,150.9,219.7,150.9,357.3C12113.2,8137.6,12062.9,8256.7,11962.3,8357.3 L11962.3,8357.3z"></path>
+		    </svg>
 		</div>
-		<br>
-		
+	    </div>
+	    <script type="text/javascript">jssor_1_slider_init();</script>
+	    <br><br>
 	</div>
 
 </body>

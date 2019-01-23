@@ -14,41 +14,16 @@
 <link  href="{% static 'css/dn.css' %}" rel="stylesheet">
 
 <style>
-	.round {
-	border-radius: 50%;
-	overflow: hidden;
-	width: 150px;
-	height: 150px;
-	}
-	.round img {
-	display: block;
-	min-width: 100%;
-	min-height: 100%;
-	}
-
 	.column {
 	  float: left;
-	  
-	  padding: 20px;
-	}
-	.column2 {
-	  float: left;
-	  width: 33.33%;
-	  padding: 50px;
-	}
-
-	/* Clear floats after image containers */
-	.row2::after {
-	  content: "";
-	  clear: both;
-	  display: table;
+	  padding: 30px;
 	}
 </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="#">Image Super-Resolution</a>
+			<a class="navbar-brand" href="#"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
 	    		<span class="navbar-toggler-icon"></span>
 	  		</button>
@@ -64,10 +39,10 @@
 		                    <a class="dropdown-item" href="{% url 'imgann' %}">Image Annotation Tools</a>
 		                    <a class="dropdown-item" href="{% url 'imgenh' %}">Image Restoration & Text Extraction</a>
 		                    <a class="dropdown-item" href="{% url 'imgsr' %}">Image Super-Resolution</a>
-		                    <a class="dropdown-item" href="{% url 'home' %}">Postprocessing</a>
+		                    <a class="dropdown-item" href="{% url 'postprocess' %}">Postprocessing</a>
 		                </div>
 		            </li>
-		            <li class="nav-item dropdown active">
+		            <li class="nav-item dropdown">
 		            	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				        	Demo
 				        </a>
@@ -75,14 +50,14 @@
 		                    <a class="dropdown-item" href="{% url 'wrindex' 0 %}">Handwritten Text Recognition</a>
 		                    <a class="dropdown-item" href="{% url 'home' %}">Image Annotation Tools</a>
 		                    <a class="dropdown-item" href="{% url 'hrindex' 2 2 %}">Image Restoration & Text Extraction</a>
-		                    <a class="dropdown-item active" href="{% url 'dnindex' 2 2 %}">Image Super-Resolution</a>
+		                    <a class="dropdown-item" href="{% url 'dnindex' 2 2 %}">Image Super-Resolution</a>
 		                    <a class="dropdown-item" href="{% url 'home' %}">Postprocessing</a>
 		                </div>
 		            </li>
 		            <li class="nav-item">
 		                <a class="nav-link" href="{% url 'pub' %}">Publications</a>
 		            </li>    
-		            <li class="nav-item"><a class="nav-link" href="{% url 'partners' %}">Partners</a></li>
+		            <li class="nav-item active"><a class="nav-link" href="{% url 'partners' %}">Partners</a></li>
 		        </ul>
 		    </div>
 		</div>

@@ -4,125 +4,126 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Handwritten OCR</title>
-
-
-<link rel="stylesheet" href='{% static "css/reset.css" %}' type="text/css" />
-<link rel="stylesheet" href='{% static "css/styles.css" %}' type="text/css" />
-<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-
-
-<!--[if lt IE 9]>
-<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-<script type="text/javascript" src='{% static "js/jquery.js" %}'></script>
-<script src="http://code.jquery.com/jquery-migrate-1.0.0.js"></script>
-<script type="text/javascript" src='{% static "js/slider.js" %}'></script>
-<script type="text/javascript" src='{% static "js/superfish.js" %}'></script>
-
-<script type="text/javascript" src='{% static "js/custom.js" %}'></script>
-
-<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
-
-<!--
-hallux, a free CSS web template by ZyPOP (zypopwebtemplates.com/)
-
-Download: http://zypopwebtemplates.com/
-
-License: Creative Commons Attribution
-//-->
-
-<style>
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: red;
-  color: white;
-  text-align: center;
-}
-</style>
-
-<script>
-function run(interval, frames) {
-    var int = 1;
-    
-    function func() {
-        document.body.id = "b"+int;
-        int++;
-        if(int === frames) { int = 1; }
-    }
-    
-    var swap = window.setInterval(func, interval);
-}
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link  href="{% static 'css/dn.css' %}" rel="stylesheet">
+<script>  $('#myCarousel').carousel({
+        pause: 'none'
+    })
 </script>
 </head>
 <body>
-<div id="container">
-
-    <header> 
-    	<div class="width">
-        		<!--<h1><a href="/">Handwritten OCR</a></h1>-->
-    		<nav>
-    			<ul class="sf-menu dropdown">
-                    <li class="selected"><a href="{% url 'home' %}">Home</a></li>
-                    <li>
-                        <a href="#">Technical Details</a>  
-                        <ul>
-                            <li><a href="{% url 'imgws' %}">Handwritten Text Recognition</a></li>
-                            <li><a href="{% url 'imgann' %}">Image Annotation Tools</a></li>
-                            <li><a href="{% url 'imgenh' %}">Image Restoration & Text Extraction</a></li>
-                            <li><a href="{% url 'imgsr' %}">Image Super-Resolution</a></li>
-                            <li><a href="{% url 'home' %}">Postprocessing</a></li>
-                        </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="#"></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Technical Details
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'imgws' %}">Handwritten Text Recognition</a>
+                            <a class="dropdown-item" href="{% url 'imgann' %}">Image Annotation Tools</a>
+                            <a class="dropdown-item" href="{% url 'imgenh' %}">Image Restoration & Text Extraction</a>
+                            <a class="dropdown-item" href="{% url 'imgsr' %}">Image Super-Resolution</a>
+                            <a class="dropdown-item" href="{% url 'postprocess' %}">Postprocessing</a>
+                        </div>
                     </li>
-                    <li><a href="{% url '#">Demo</a>
-                        <ul>
-                            <li><a href="{% url 'wrindex' 0 %}">Handwritten Text Recognition</a></li>
-                            <li><a href="{% url 'home' %}">Image Annotation Tools</a></li>
-                            <li><a href="{% url 'hrindex' 2 2 %}">Image Restoration & Text Extraction</a></li>
-                            <li><a href="{% url 'dnindex' 2 2 %}">Image Super-Resolution</a></li>
-                            <li><a href="{% url 'home' %}">Postprocessing</a></li>
-                        </ul>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Demo
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'wrindex' 0 %}">Handwritten Text Recognition</a>
+                            <a class="dropdown-item" href="{% url 'home' %}">Image Annotation Tools</a>
+                            <a class="dropdown-item" href="{% url 'hrindex' 2 2 %}">Image Restoration & Text Extraction</a>
+                            <a class="dropdown-item" href="{% url 'dnindex' 2 2 %}">Image Super-Resolution</a>
+                            <a class="dropdown-item" href="{% url 'home' %}">Postprocessing</a>
+                        </div>
                     </li>
-                    <li>
-                        <a href="{% url 'pub' %}">Publications</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'pub' %}">Publications</a>
                     </li>    
-                    <li><a href="{% url 'partners' %}">Partners</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'partners' %}">Partners</a></li>
                 </ul>
-    		  <div class="clear"></div>
-        	</nav>
+            </div>
         </div>
-    	<div class="clear"></div>
+    </nav>
+
+    <header>
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+          <!-- Slide One - Set the background image for this slide in the line below -->
+          <div class="carousel-item active" style="background-image: url('{% static 'images/iiit.jpg'%}')">
+            <div class="carousel-caption d-none d-md-block">
+              <h1><font color="black" size="7">Information Access from Document Images of Indian Languages</font></h1>
+              <p><font color="black"><blink><mark>As a part of IMPRINT initiative of Ministry of Human Resource and Development, Government of India</blink></mark></font></p>
+            </div>
+          </div>
+          <!-- Slide Two - Set the background image for this slide in the line below -->
+          <div class="carousel-item" style="background-image: url('{% static 'images/iitj.jpg'%}')">
+            <div class="carousel-caption d-none d-md-block">
+              <h1><font color="black" size="7">Information Access from Document Images of Indian Languages</font></h1>
+              <p><font color="black"><blink><mark>As a part of IMPRINT initiative of Ministry of Human Resource and Development, Government of India</blink></mark></font></p>
+            </div>
+          </div>
+          <!-- Slide Three - Set the background image for this slide in the line below -->
+          <div class="carousel-item" style="background-image: url('{% static 'images/iitkgp.jpg'%}')">
+            <div class="carousel-caption d-none d-md-block">
+              <h1><font color="black" size="7">Information Access from Document Images of Indian Languages</font></h1>
+              <p><font color="black"><blink><mark>As a part of IMPRINT initiative of Ministry of Human Resource and Development, Government of India</blink></mark></font></p>
+            </div>
+          </div>
+          <div class="carousel-item" style="background-image: url('{% static 'images/isi2.jpg'%}')">
+            <div class="carousel-caption d-none d-md-block">
+              <h1><font color="black" size="7">Information Access from Document Images of Indian Languages</font></h1>
+              <p><font color="black"><blink><mark>As a part of IMPRINT initiative of Ministry of Human Resource and Development, Government of India</blink></mark></font></p>
+            </div>
+          </div>
+          <div class="carousel-item" style="background-image: url('{% static 'images/ceeri.jpg'%}')">
+            <div class="carousel-caption d-none d-md-block">
+              <h1><font color="black" size="7">Information Access from Document Images of Indian Languages</font></h1>
+              <p><font color="black"><blink><mark>As a part of IMPRINT initiative of Ministry of Human Resource and Development, Government of India</blink></mark></font></p>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
     </header>
-
-
-    <div id="intro">
-    	<div class="width">
-    		<div class="intro-content">
-                <h2><font color="black">OCR for Handwritten Documents</font></h2>
-                <p><font color="black">Under IMPRINT initiative of Ministry of Human Resource and Development, Government of India</font></p>
-        	</div>
-        </div>
-    </div>
-
-    <div id="body" class="width">
-		<script>run(2000, 6);</script>
-		<section id="content" class="two-column with-right-sidebar">
-	    <article>
-			<h2>Overview</h2>
-    	    <br> <br>
-            <p style="width:1000px;"><font color="black">Historically India has always been rich in literature. Being a country with 22 recognized languages there is an abundance of literary work which are in the form of handwritten documents. Also a large part of older official records are in the form of handwritten documents. As a consequence of many recent initiatives (Digital India, E-Governance), several of these documents are being digitized which is extremely important for the protection of Indian Heritage. However, they are not yet content level accessible. They can be only accessed by manually entered metadata.Content level access to such collections can also lead to powerful applications such as hyperlinking documents (such as court records), translation, transliteration and access to handwritten documents, form processing and data entry on paper, abnormal activity detection within the stream of fax documents. The major objective of this project is to develop algorithms for detection, extraction and recognition of text from handwritten documents. </font></p>
-		</article>
-        </section>
-    	<div class="clear"></div>
-    </div>
-    <footer class="width">
-        <div class="footer-bottom">
-            <p>&copy; YourSite 2014. <a href="http://zypopwebtemplates.com/">Free CSS Web Templates</a> by ZyPOP</p>
-         </div>
-    </footer>
     
-</div>
+
+  <div id="container" class="width">
+    
+    <br>
+    <div class="row justify-content-center">
+            <p><font color="black">Historically India has always been rich in literature. Being a country with 22 recognized languages there is an abundance of literary work which are in the form of handwritten documents. Also a large part of older official records are in the form of handwritten documents. As a consequence of many recent initiatives (Digital India, E-Governance), several of these documents are being digitized which is extremely important for the protection of Indian Heritage. However, they are not yet content level accessible. They can be only accessed by manually entered metadata. Content level access to such collections can also lead to powerful applications such as hyperlinking documents (such as court records), translation, transliteration and access to handwritten documents, form processing and data entry on paper, abnormal activity detection within the stream of fax documents. The major objective of this project is to develop algorithms for detection, extraction and recognition of text from handwritten documents. </font></p>
+		</div>
+    	<div class="clear"></div>
+    </div>   
+  </div>
 </body>
 </html>

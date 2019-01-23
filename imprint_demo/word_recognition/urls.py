@@ -10,5 +10,6 @@ urlpatterns = [
     path('imgenh/', views.imgenh, name='imgenh'),
     path('imgsr/', views.imgsr, name='imgsr'),
     path('imgws/', views.imgws, name='imgws'),
+    path('postprocess/', views.postprocess, name='postprocess'),
     re_path(r'^(?P<pid>\d+)/$', views.index, name='wrindex'),
 ]

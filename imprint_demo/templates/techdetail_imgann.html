@@ -4,109 +4,84 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Handwritten OCR</title>
-
-
-<link rel="stylesheet" href='{% static "css/reset.css" %}' type="text/css" />
-<link rel="stylesheet" href='{% static "css/styles.css" %}' type="text/css" />
-<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-
-
-<!--[if lt IE 9]>
-<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-<script type="text/javascript" src='{% static "js/jquery.js" %}'></script>
-<script src="http://code.jquery.com/jquery-migrate-1.0.0.js"></script>
-<script type="text/javascript" src='{% static "js/slider.js" %}'></script>
-<script type="text/javascript" src='{% static "js/superfish.js" %}'></script>
-
-<script type="text/javascript" src='{% static "js/custom.js" %}'></script>
-
-<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
-
-<!--
-hallux, a free CSS web template by ZyPOP (zypopwebtemplates.com/)
-
-Download: http://zypopwebtemplates.com/
-
-License: Creative Commons Attribution
-//-->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link  href="{% static 'css/dn.css' %}" rel="stylesheet">
 
 </head>
 <body>
-<div id="container">
-
-    <header> 
-    	<div class="width">
-        		<!--<h1><a href="/">Handwritten OCR</a></h1>-->
-    		<nav>
-    			<ul class="sf-menu dropdown">
-                    <li class="selected"><a href="{% url 'home' %}">Home</a></li>
-                    <li>
-                        <a href="#">Technical Details</a>  
-                        <ul>
-                            <li><a href="{% url 'imgws' %}">Handwritten Text Recognition</a></li>
-                            <li><a href="{% url 'imgann' %}">Image Annotation Tools</a></li>
-                            <li><a href="{% url 'imgenh' %}">Image Restoration & Text Extraction</a></li>
-                            <li><a href="{% url 'imgsr' %}">Image Super-Resolution</a></li>
-                            <li><a href="{% url 'home' %}">Postprocessing</a></li>
-                        </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                    <li class="nav-item dropdown  active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Technical Details
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'imgws' %}">Handwritten Text Recognition</a>
+                            <a class="dropdown-item active" href="{% url 'imgann' %}">Image Annotation Tools</a>
+                            <a class="dropdown-item" href="{% url 'imgenh' %}">Image Restoration & Text Extraction</a>
+                            <a class="dropdown-item" href="{% url 'imgsr' %}">Image Super-Resolution</a>
+                            <a class="dropdown-item" href="{% url 'postprocess' %}">Postprocessing</a>
+                        </div>
                     </li>
-                    <li><a href="{% url '#">Demo</a>
-                        <ul>
-                            <li><a href="{% url 'wrindex' 0 %}">Handwritten Text Recognition</a></li>
-                            <li><a href="{% url 'home' %}">Image Annotation Tools</a></li>
-                            <li><a href="{% url 'hrindex' 2 2 %}">Image Restoration & Text Extraction</a></li>
-                            <li><a href="{% url 'dnindex' 2 2 %}">Image Super-Resolution</a></li>
-                            <li><a href="{% url 'home' %}">Postprocessing</a></li>
-                        </ul>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Demo
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'wrindex' 0 %}">Handwritten Text Recognition</a>
+                            <a class="dropdown-item" href="{% url 'home' %}">Image Annotation Tools</a>
+                            <a class="dropdown-item" href="{% url 'hrindex' 2 2 %}">Image Restoration & Text Extraction</a>
+                            <a class="dropdown-item" href="{% url 'dnindex' 2 2 %}">Image Super-Resolution</a>
+                            <a class="dropdown-item" href="{% url 'home' %}">Postprocessing</a>
+                        </div>
                     </li>
-                    <li>
-                        <a href="{% url 'pub' %}">Publications</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'pub' %}">Publications</a>
                     </li>    
-                    <li><a href="{% url 'partners' %}">Partners</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'partners' %}">Partners</a></li>
                 </ul>
-    		  <div class="clear"></div>
-        	</nav>
+            </div>
         </div>
-    	<div class="clear"></div>
-    </header>
+    </nav>
+    <div id="container" class="width">
+   	<section id="content" class="one-column">
+        <article>
+    			<br><h2>Image Annotation Tool for Handwritten Documents</h2>
+    			<br>
+                <p>IIT Kharagpur has collected a large number of Bengali handwritten documents by eminent personalitiy like Satyajit Ray from National Digital Library project  and  groundtruth is generated for subsequent development of handwritten Bengali OCR.
+    	</p>
+    	<center> <figure>
+    			<img src = "{% static 'images/multidas.jpg' %}" height="400px" width="600px">
+    			<figcaption><font size="2">Block diagram showing multiple features of preprocessing steps and annotation process with MultiDIAS system.</font></figcaption>
+    		</figure>	
+    	</center>
+    	<br>
+    	
+    	    <p>A graphical user interface based ground-truth generation tool called Multi-layered Document Image Annotation System (MultiDIAS) has been created. The proposed system can accommodate the multi-layered structure of the information content of the document images and simultaneously provide a simple platform to allow pixel level annotation of document images in various layers. The annotation process of a document image is conducted on the foreground pixels segmented with a semi-automatic module and coupled together with user supervision to form the elementary labeling units. These units are then labeled in four hierarchical layers (layout type, entity type, line type, word type) with the user defined labels. The output generated are four ground-truth images with an XML file containing the metadata information. The MultiDIAS is tested on a complex handwritten manuscript written by renowned film director Satyajit Ray for the movie 'Goopi Gyne Bagha Byne '. This annotated data generated using MultiDIAS can further be used in a wide range of applications of document image analysis.</p>
+    		
 
+    	
 
-    <div id="body" class="width">
-
-	<section id="content" class="one-column">
-
-	    <article>
-				
-			
-			<h2>Image Annotation Tool for Handwritten Documents</h2>
-			<br> <br>
-            <p>IIT Kharagpur has collected a large number of Bengali handwritten documents by eminent personalitiy like Satyajit Ray from National Digital Library project  and  groundtruth is generated for subsequent development of handwritten Bengali OCR.
-	</p>
-	<center> <figure>
-			<img src = "{% static 'images/multidas.jpg' %}" height="900px" width="600px">
-			<figcaption><font size="2">Block diagram showing multiple features of preprocessing steps and annotation process with MultiDIAS system.</font></figcaption>
-		</figure>	
-	</center>
-	<br> <br>
-	
-	    <p>A graphical user interface based ground-truth generation tool called Multi-layered Document Image Annotation System (MultiDIAS) has been created. The proposed system can accommodate the multi-layered structure of the information content of the document images and simultaneously provide a simple platform to allow pixel level annotation of document images in various layers. The annotation process of a document image is conducted on the foreground pixels segmented with a semi-automatic module and coupled together with user supervision to form the elementary labeling units. These units are then labeled in four hierarchical layers (layout type, entity type, line type, word type) with the user defined labels. The output generated are four ground-truth images with an XML file containing the metadata information. The MultiDIAS is tested on a complex handwritten manuscript written by renowned film director Satyajit Ray for the movie 'Goopi Gyne Bagha Byne '. This annotated data generated using MultiDIAS can further be used in a wide range of applications of document image analysis.</p>
-		
-
-	
-
-		</article>
-        </section>
-        
-        
-    	<div class="clear"></div>
+    		</article>
+            </section>
+            
+            
+        	<div class="clear"></div>
+        </div>
+    <br><br>
     </div>
-    <footer class="width">
-   
-        <div class="footer-bottom">
-            <p>&copy; YourSite 2014. <a href="http://zypopwebtemplates.com/">Free HTML5 Templates</a> by ZyPOP</p>
-        </div>
-    </footer>
-</div>
 </body>
 </html>
