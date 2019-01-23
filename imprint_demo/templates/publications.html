@@ -1,0 +1,146 @@
+<!doctype html>
+{% load static from staticfiles %}
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Handwritten OCR</title>
+
+
+<link rel="stylesheet" href='{% static "css/reset.css" %}' type="text/css" />
+<link rel="stylesheet" href='{% static "css/styles.css" %}' type="text/css" />
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<script type="text/javascript" src='{% static "js/jquery.js" %}'></script>
+<script src="http://code.jquery.com/jquery-migrate-1.0.0.js"></script>
+<script type="text/javascript" src='{% static "js/slider.js" %}'></script>
+<script type="text/javascript" src='{% static "js/superfish.js" %}'></script>
+
+<script type="text/javascript" src='{% static "js/custom.js" %}'></script>
+
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+
+<!--
+hallux, a free CSS web template by ZyPOP (zypopwebtemplates.com/)
+
+Download: http://zypopwebtemplates.com/
+
+License: Creative Commons Attribution
+//-->
+<style>
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: red;
+  color: white;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<div id="container">
+
+    <header> 
+    	<div class="width">
+        		<!--<h1><a href="/">Handwritten OCR</a></h1>-->
+    		<nav>
+    			<ul class="sf-menu dropdown">
+                    <li class="selected"><a href="{% url 'home' %}">Home</a></li>
+                    <li>
+                        <a href="#">Technical Details</a>  
+                        <ul>
+                            <li><a href="{% url 'imgws' %}">Handwritten Text Recognition</a></li>
+                            <li><a href="{% url 'imgann' %}">Image Annotation Tools</a></li>
+                            <li><a href="{% url 'imgenh' %}">Image Restoration & Text Extraction</a></li>
+                            <li><a href="{% url 'imgsr' %}">Image Super-Resolution</a></li>
+                            <li><a href="{% url 'home' %}">Postprocessing</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{% url '#">Demo</a>
+                        <ul>
+                            <li><a href="{% url 'wrindex' 0 %}">Handwritten Text Recognition</a></li>
+                            <li><a href="{% url 'home' %}">Image Annotation Tools</a></li>
+                            <li><a href="{% url 'hrindex' 2 2 %}">Image Restoration & Text Extraction</a></li>
+                            <li><a href="{% url 'dnindex' 2 2 %}">Image Super-Resolution</a></li>
+                            <li><a href="{% url 'home' %}">Postprocessing</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="{% url 'pub' %}">Publications</a>
+                    </li>    
+                    <li><a href="{% url 'partners' %}">Partners</a></li>
+                </ul>
+    		  <div class="clear"></div>
+        	</nav>
+        </div>
+    	<div class="clear"></div>
+    </header>
+
+
+    <div id="body" class="width">
+
+	<section id="content" class="one-column">
+
+	    <article>
+				
+			
+			<h2>Publications</h2>
+			<br> <br>
+			<p style="font-weight:bold; width:1000px;">IIIT Hyderabad</p>
+		 	<ul>
+  				<li>Kartik Dutta, Praveen Krishnan, Minesh Mathew, and C. V. Jawahar, "Towards Accurate Handwritten Word Recognition for Hindi and Bangla", NCVPRIPG, 2017.</li>
+			 	<li>Kartik Dutta, Praveen Krishnan, Minesh Mathew and C. V. Jawahar, "Offline Handwriting Recognition on Devanagari using a new Benchmark Dataset", DAS 2018. </li>
+			  	<li>Kartik Dutta, Praveen Krishnan, Minesh Mathew and C. V. Jawahar, "Towards Spotting and Recognition of Handwritten Words in Indic Scripts", ICFHR 2018. </li>
+				<li>Praveen Krishnan, Kartik Dutta and C. V. Jawahar, "Word Spotting and Recognition using Deep Embedding", DAS 2018.</li>
+			
+			</ul> 
+			<hr style="height:2px;border:none;color:#333;background-color:#333;">	
+			<br> <br>
+			<p style="font-weight:bold; width:1000px;">IIT Kharagpur</p>
+		 	<ul>
+  				<li>A. Poddar, R. Mukherjee, J. Mukhopadhyay, P. K. Biswas, “MultiDIAS: A Hierarchical Multi-layered Document Image Annotation System for Foreground Pixels”, 11th ICVGIP, Hyderabad, December, 2018. </li>			
+			</ul> 
+			<hr style="height:2px;border:none;color:#333;background-color:#333;">
+
+			<br> <br>
+			<p style="font-weight:bold; width:1000px;">ISI Kolkata</p>
+		 	<ul>
+  				<li>M. Wadhwani, D. Kundu and B. Chanda, “Text segmentation and restoration of old handwritten documents”, 11th ICVGIP, Hyderabad, December, 2018.</li>			
+			</ul> 
+			<hr style="height:2px;border:none;color:#333;background-color:#333;">
+
+			<br> <br>
+			<p style="font-weight:bold; width:1000px;">CEERI, Pilani</p>
+		 	<ul>
+  				<li>M. Sharma, A. Ray, S. Chaudhury and B. Lall, "A Noise-Resilient Super-Resolution Framework to Boost OCR Performance," 2017 14th IAPR International Conference on Document Analysis and Recognition (ICDAR), Kyoto, 2017, pp. 466-471.</li>
+				<li>Manoj Sharma, Rudrabha Mukhopadhyay, Avinash Upadhyay, Sriharsha Koundinya, Ankit Shukla, Santanu Chaudhury, "Irgun: Improved residue based gradual up-scaling network for single image super resolution", CVPR Workshops, Saltlake City, USA, 2018</li>
+			</ul> 
+			<hr style="height:2px;border:none;color:#333;background-color:#333;">	
+			<br> <br>
+			<p style="font-weight:bold; width:1000px;">IIT Jodhpur</p>
+		 	<ul>
+  				<li>Nagendar, G., Ranjan, V., Harit, G. & Jawahar, C. V. (2018). Efficient query specific DTW distance for document retrieval with unlimited vocabulary. Journal of Imaging, 4(2), 37.</li>
+				
+			</ul> 
+	
+
+		</article>
+        </section>
+        
+        
+    	<div class="clear"></div>
+    </div>
+    <footer class="width">
+   
+        <div class="footer-bottom">
+            <p>&copy; YourSite 2014. <a href="http://zypopwebtemplates.com/">Free HTML5 Templates</a> by ZyPOP</p>
+         </div>
+    </footer>
+</div>
+</body>
+</html>

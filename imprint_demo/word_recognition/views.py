@@ -9,6 +9,43 @@ import os
 # https://simpleisbetterthancomplex.com/tutorial/2017/03/02/how-to-crop-images-in-a-django-application.html
 # http://blog.appliedinformaticsinc.com/how-to-add-image-cropping-features-using-django-image-cropping-app-jcrop/
 
+def home(request):
+	page_template = "home.html"
+	context = {}
+	return render(request, page_template, context)
+
+def pub(request):
+	page_template = "publications.html"
+	context = {}
+	return render(request, page_template, context)
+
+def partners(request):
+	page_template = "partners.html"
+	context = {}
+	return render(request, page_template, context)
+
+def imgann(request):
+	page_template = "techdetail_imgann.html"
+	context = {}
+	return render(request, page_template, context)
+
+def imgenh(request):
+	page_template = "techdetail_imgenh.html"
+	context = {}
+	return render(request, page_template, context)
+
+def imgsr(request):
+	page_template = "techdetail_imgsr.html"
+	context = {}
+	return render(request, page_template, context)
+
+def imgws(request):
+	page_template = "techdetail_ws.html"
+	context = {}
+	return render(request, page_template, context)
+
+
+
 def index(request, pid):
 	page_template = "wr_index2.html"
 	context = {}
