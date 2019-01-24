@@ -1,7 +1,6 @@
 from django.shortcuts import render
 # import simplejson as json
 
-from .forms import PhotoForm
 import os
 
 # Create your views here.
