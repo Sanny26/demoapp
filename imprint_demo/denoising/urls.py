@@ -4,5 +4,5 @@ from . import views
 
 urlpatterns = [
     #path('', views.index, name='index'),
-    re_path(r'^(?P<factor>\d)/(?P<pid>\d+)/$', views.index, name='dnindex'),
+    re_path(r'^(?P<pid>\d+)/$', views.index, name='dnindex'),
 ]

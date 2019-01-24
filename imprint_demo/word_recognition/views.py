@@ -1,5 +1,5 @@
 from django.shortcuts import render
-import simplejson as json
+# import simplejson as json
 
 from .forms import PhotoForm
 import os

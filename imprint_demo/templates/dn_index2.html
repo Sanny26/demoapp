@@ -268,8 +268,8 @@
 				        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 		                    <a class="dropdown-item" href="{% url 'wrindex' 0 %}">Handwritten Text Recognition</a>
 		                    <a class="dropdown-item" href="{% url 'home' %}">Image Annotation Tools</a>
-		                    <a class="dropdown-item" href="{% url 'hrindex' 2 2 %}">Image Restoration & Text Extraction</a>
-		                    <a class="dropdown-item active" href="{% url 'dnindex' 2 2 %}">Image Super-Resolution</a>
+		                    <a class="dropdown-item" href="{% url 'hrindex' 2 %}">Image Restoration & Text Extraction</a>
+		                    <a class="dropdown-item active" href="{% url 'dnindex' 2 %}">Image Super-Resolution</a>
 		                    <a class="dropdown-item" href="{% url 'home' %}">Postprocessing</a>
 		                </div>
 		            </li>
@@ -329,7 +329,7 @@
 				<div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:400px;height:70px;overflow:hidden;border: 1px solid #606060;border-radius: 4px 0 4px 0;" >
 					{% for file in files %}
 				    <div>
-				        <a href="{% url 'dnindex' 2 file|get_pid %}">
+				        <a href="{% url 'dnindex' file|get_pid %}">
 							<img src='{% static "docs/resolution/IP/"|add:file %}' style=
 							"border-right:1px solid #606060;border-radius: 4px 0 4px 0;">	        
 						</a>

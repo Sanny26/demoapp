@@ -2,7 +2,7 @@ from django.shortcuts import render
 import os
 # Create your views here.
 	
-def index(request, factor, pid):
+def index(request, pid):
 	page_template = "dn_index2.html"
 	context = {}
 	context['iname'] = 'docs/resolution/IP/final{}.png'.format(pid)

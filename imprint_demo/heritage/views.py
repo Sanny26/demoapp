@@ -13,11 +13,10 @@ import os
 	
 # 	return render(request, page_template, context)
 
-def index(request, pid, patch_id):
+def index(request, pid):
 	page_template = "hr_index2.html"
 	context = {}
 	context['pid']  = pid
-	context['patch_id'] = patch_id
 	context['iname'] = 'docs/heritage/input/{}.jpg'.format(pid)
 	context['rname'] = 'docs/heritage/output/{}_output.png'.format(pid)
 	context['files'] = [str(i) for i in range(2, 9)]

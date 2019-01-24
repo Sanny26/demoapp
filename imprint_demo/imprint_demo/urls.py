@@ -21,10 +21,10 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from . import settings
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('wr/', include('word_recognition.urls')),
-    path('dn/', include('denoising.urls')),
-    path('hr/', include('heritage.urls')),
+    path('dia-imprint/admin/', admin.site.urls),
+    path('dia-imprint/', include('word_recognition.urls')),
+    path('dia-imprint/dn/', include('denoising.urls')),
+    path('dia-imprint/hr/', include('heritage.urls')),
 ]
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
