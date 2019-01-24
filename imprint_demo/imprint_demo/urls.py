@@ -25,6 +25,8 @@ urlpatterns = [
     path('dia-imprint/', include('word_recognition.urls')),
     path('dia-imprint/dn/', include('denoising.urls')),
     path('dia-imprint/hr/', include('heritage.urls')),
+    path('dia-imprint/ann-tool/', include('an.urls')),
+    path('dia-imprint/postprocess/', include('postprocess.urls')),
 ]
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

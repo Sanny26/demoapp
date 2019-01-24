@@ -12,4 +12,5 @@ urlpatterns = [
     path('imgws/', views.imgws, name='imgws'),
     path('postprocess/', views.postprocess, name='postprocess'),
     re_path(r'^wr/(?P<pid>\d+)/$', views.index, name='wrindex'),
+    re_path(r'^wr2/(?P<pid>\d+)/$', views.index2, name='wrindex2'),
 ]

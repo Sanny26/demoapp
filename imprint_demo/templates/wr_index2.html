@@ -241,7 +241,7 @@
 
 <body >
 	<nav class="navbar navbar-expand-lg navbar-dark navbar-fixed-top width">
-			<a href="#" style="width:80px;height: 70px;"><img src="{% static 'images/iiith.png' %}" style="width:100%;height:100%;object-fit:contain"></a>&nbsp;
+			<a href="https://www.iiit.ac.in/" style="width:80px;height: 70px;"><img src="{% static 'images/iiith.png' %}" style="width:100%;height:100%;object-fit:contain"></a>&nbsp;
 			<a class="navbar-brand" href="#">Handwritten Text Recognition</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
 	    		<span class="navbar-toggler-icon"></span>
@@ -267,10 +267,10 @@
 				        </a>
 				        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 		                    <a class="dropdown-item active" href="{% url 'wrindex' 0 %}">Handwritten Text Recognition</a>
-		                    <a class="dropdown-item" href="{% url 'home' %}">Image Annotation Tools</a>
+		                    <a class="dropdown-item" href="{% url 'anindex' %}">Image Annotation Tools</a>
 		                    <a class="dropdown-item " href="{% url 'hrindex' 2 %}">Image Restoration & Text Extraction</a>
 		                    <a class="dropdown-item" href="{% url 'dnindex' 2 %}">Image Super-Resolution</a>
-		                    <a class="dropdown-item" href="{% url 'home' %}">Postprocessing</a>
+		                    <a class="dropdown-item" href="{% url 'ppindex' 0 %}">Postprocessing</a>
 		                </div>
 		            </li>
 		            <li class="nav-item">
@@ -282,20 +282,24 @@
 		
 	</nav>
 	<div class="customContainer">
+		<div class="alert alert-danger alert-dismissible width">
+		  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		  <strong>DEVELOPMENT NOTE:</strong> Results not yet added for this project. The output below is to understand how the output will be displayed.<br> Another UI option to display the output can be checked by clicking <a href="{% url 'wrindex2' 0 %}">the link here.</a>
+		</div>
 		<div class="alert alert-warning alert-dismissible width">
 		  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		  <strong>NOTE:</strong> Hover over original document image to highlight different patches.
 		</div>
 		<div class="row justify-content-center text-center" style="margin-bottom: 10px;">
 			<div>
-				<p class="text-center" style="color:#999;margin-bottom: 3px;">Original Document</p>
+				<p class="text-center" style="color:#003300;margin-bottom: 3px;">Original Document</p>
 				<div style="position: relative;">
 					<img id="image1" src="{% static iname %}" width="200px" height="250px" class="thumbimg" style="border: 1px solid #606060;border-radius: 4px 0 4px 0;">
 				</div>
 			</div>
 			<div class="col-md-2 col-lg-2 col-sm-2"></div>
 			<div>
-				<p class="text-center" style="color:#999;margin-bottom: 5px;">Enhanced Document</p>
+				<p class="text-center" style="color:#003300;margin-bottom: 5px;">Recognized Document</p>
 				<div style="position: relative;">
 					<img id="image2" src="{% static rname %}" width="200px" height="250px" class="thumbimg" style="border: 1px solid #606060;border-radius: 4px 0 4px 0;">
 				</div>
@@ -303,12 +307,12 @@
 		</div>
 		<div class="row justify-content-center text-center">
 			<div>
-				<p class="text-center" style="color:#999;margin-bottom: 3px;">Highlighted patch from Original Document</p>			
+				<p class="text-center" style="color:#003300;margin-bottom: 3px;">Highlighted patch from Original Document</p>			
 				<div id="result1" class="img-zoom-result"></div>
 			</div>
 			<div class="col-md-2 col-lg-2 col-sm-2"></div>
 			<div>
-				<p class="text-center" style="color:#999;margin-bottom: 3px;">Highlighted patch from Enhanced Document</p>
+				<p class="text-center" style="color:#003300;margin-bottom: 3px;">Highlighted patch from Recognized Document</p>
 				<div id="result2" class="img-zoom-result"></div>
 			</div>		  
 		</div>

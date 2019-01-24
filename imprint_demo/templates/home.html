@@ -45,10 +45,10 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{% url 'wrindex' 0 %}">Handwritten Text Recognition</a>
-                            <a class="dropdown-item" href="{% url 'home' %}">Image Annotation Tools</a>
+                            <a class="dropdown-item" href="{% url 'anindex' %}">Image Annotation Tools</a>
                             <a class="dropdown-item" href="{% url 'hrindex' 2 %}">Image Restoration & Text Extraction</a>
                             <a class="dropdown-item" href="{% url 'dnindex' 2 %}">Image Super-Resolution</a>
-                            <a class="dropdown-item" href="{% url 'home' %}">Postprocessing</a>
+                            <a class="dropdown-item" href="{% url 'ppindex' 0 %}">Postprocessing</a>
                         </div>
                     </li>
                     <li class="nav-item">
@@ -78,7 +78,7 @@
             </div>
           </div>
           <!-- Slide Two - Set the background image for this slide in the line below -->
-          <div class="carousel-item" style="background-image: url('{% static 'images/iitj.jpg'%}')">
+          <div class="carousel-item" style="background-image: url('{% static 'images/iitj.JPG'%}')">
             <div class="carousel-caption d-none d-md-block">
               <h1><font color="black" size="7">Information Access from Document Images of Indian Languages</font></h1>
               <p><font color="black"><blink><mark>As a part of IMPRINT initiative of Ministry of Human Resource and Development, Government of India</blink></mark></font></p>

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 # import simplejson as json
-
+import json
 import os
 
 # Create your views here.
@@ -50,26 +50,33 @@ def postprocess(request):
 
 
 
-# def index(request, pid):
-# 	page_template = "wr_index.html"
-# 	context = {}
-# 	if request.method == 'POST':
-# 		form = PhotoForm(request.POST, request.FILES)
-# 		if form.is_valid():
-# 			return redirect('index')
-# 	else:
-# 		form = PhotoForm()
-# 		context['path'] = 'docs/wr_pages/notes-34.jpg'
-# 		context['files'] = os.listdir('static/docs/wr_pages')
-# 		context['pid']  = pid
-# 		context['word_dict'] = json.dumps({"90#78":"गुजरात", "265#72":"सौर"})
-# 	return render(request, page_template, context)
+def index2(request, pid):
+	page_template = "wr_index.html"
+	context = {}
+	
+	context['path'] = 'docs/wr_pages/page1.jpg'
+	context['pid']  = pid
+	# word_dict = {"90#78":"गुजरात", "265#72":"सौर"}
+	rects = []
+	word_dict = {}
+	words = ['दिवस', 'शब्द', 'मार्च', 'विश्व', 'अधिकार ']
+	with open('static/docs/wr_pages/doc1_positions.txt') as f:
+		for i, line in enumerate(f):
+			line = line.strip().split(',')
+			key = '{}#{}'.format(int(line[0]), int(line[1]))
+			value = words[i%5]
+			word_dict[key] = value
+			rects.append({'x': int(line[0]), 'y': int(line[1]), 'w': int(line[2])-int(line[0]), 'h':int(line[3])-int(line[1]) })
+	context['word_dict'] = json.dumps(word_dict)
+	context['rects'] = json.dumps(rects)
+	context['files'] = os.listdir('static/docs/wr_pages/')
+	return render(request, page_template, context)
 
 
 def index(request, pid):
 	page_template = "wr_index2.html"
 	context = {}
 	context['pid']  = pid
-	context['iname'] = 'docs/wr_pages/input/{}.jpg'.format(pid)
-	context['rname'] = 'docs/wr_pages/output/{}_output.png'.format(pid)
+	context['iname'] = 'docs/wr_pages/page1.jpg'.format(pid)
+	context['rname'] = 'docs/wr_pages/test_out.jpg'.format(pid)
 	return render(request, page_template, context)
