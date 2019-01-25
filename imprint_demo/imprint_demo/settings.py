@@ -119,10 +119,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/dia-imprint/static/'
 STATIC_PATH = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = ( STATIC_PATH, )
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+MEDIA_URL = '/dia-imprint/media/'
