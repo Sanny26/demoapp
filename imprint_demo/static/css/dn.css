@@ -11,8 +11,9 @@ html,body {
     background-color: #ccffcc;
 }
 
+
 .carousel-item {
-  height: 35vh;
+  height: 30vh;
   min-height: 400px;
   background: no-repeat center center scroll;
   -webkit-background-size: cover;
@@ -31,8 +32,6 @@ html,body {
     background-color: #003300;
 }
 
-
-
 div #docbox {
     position:relative;
     width: 50%;
@@ -46,10 +45,25 @@ img {
   max-width: 100%; /* This rule is very important, please do not ignore this! */
 }
 
-img .thumbimg{
+.column {
+    float: left;
+    padding: 30px;
+    width:400px;
+    height:300px;
+    text-align: center;
+}
+.column-img{
+  width:180px;
+  height:180px;
+}
+
+
+.thumbimg{
     border: 2px solid #DDDDDD;
     border-radius: 4px 0 4px 0;
     margin:auto;
+    width: 200px;
+    height: 250px;
 }
 .customContainer{
   margin: 0px 15px;
@@ -114,4 +128,48 @@ img .thumbimg{
   /*set the size of the result div:*/
   width: 300px;
   height: 200px;
+}
+
+@media only screen and (min-width: 1900px) {
+  .img-zoom-result {
+  width: 600px;
+  height: 400px;
+  }
+  .img-zoom-lens{
+    width: 200px;
+    height:150px;
+  }
+  .thumbimg{
+    width: 500px;
+    height: 600px;
+  }
+  li, p{
+    font-size: 1.5em;
+  }
+  h1{
+    font-size: 4em;
+  }
+  h2{
+    font-size: 3em;
+  }
+  h3, h4{
+    font-size: 2.5em;
+  }
+  a{
+    font-size: 1.5em;
+  }
+  .navbar-brand{
+    font-size: 2em;
+  }
+  .column{
+    width:700px;
+    height:500px;
+  }
+  .column-img{
+    width:300px;
+    height:300px;
+  }
+  .nav-item{
+    font-size: 1em;
+  }
 }

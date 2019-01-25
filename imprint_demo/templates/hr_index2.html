@@ -241,7 +241,8 @@
 
 <body >
 	<nav class="navbar navbar-expand-lg navbar-dark navbar-fixed-top width">
-			<a class="navbar-brand" href="https://www.isical.ac.in/"><img src="{% static 'images/isi.svg' %}" style="width:70px;height:70px;object-fit:contain"> Image Restoration & Text Extraction</a>
+			<a href="https://www.isical.ac.in/" style="width:80px;height: 70px;"><img src="{% static 'images/isi.svg' %}" style="width:100%;height:100%;object-fit:contain"> </a>
+			<a class="navbar-brand" href="#">Image Restoration & Text Extraction</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
 	    		<span class="navbar-toggler-icon"></span>
 	  		</button>
@@ -285,30 +286,30 @@
 		  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		  <strong>NOTE:</strong> Hover over original document image to highlight different patches.
 		</div>
-		<div class="row justify-content-center text-center" style="margin-bottom: 10px;">
+		<div class="row justify-content-center text-center" style="margin-bottom: 10px;margin-top: 10px;">
 			<div>
-				<p class="text-center" style="color:#003300;margin-bottom: 3px;">Original Document</p>
+				<p class="text-center" style="color:#003300;margin-bottom: 5px;">Original Document</p>
 				<div style="position: relative;">
-					<img id="image1" src="{% static iname %}" width="200px" height="250px" class="thumbimg" style="border: 1px solid #606060;border-radius: 4px 0 4px 0;">
+					<img id="image1" src="{% static iname %}" class="thumbimg" style="border: 1px solid #606060;border-radius: 4px 0 4px 0;">
 				</div>
 			</div>
 			<div class="col-md-2 col-lg-2 col-sm-2"></div>
 			<div>
 				<p class="text-center" style="color:#003300;margin-bottom: 5px;">Enhanced Document</p>
 				<div style="position: relative;">
-					<img id="image2" src="{% static rname %}" width="200px" height="250px" class="thumbimg" style="border: 1px solid #606060;border-radius: 4px 0 4px 0;">
+					<img id="image2" src="{% static rname %}" class="thumbimg" style="border: 1px solid #606060;border-radius: 4px 0 4px 0;">
 				</div>
 			</div>
 		</div>
 		<div class="row justify-content-center text-center">
 			<div>
-				<p class="text-center" style="color:#003300;margin-bottom: 3px;">Highlighted patch from Original Document</p>			
-				<div id="result1" class="img-zoom-result"></div>
+				<p class="text-center" style="color:#003300;margin-bottom: 5px;">Highlighted patch from Original Document</p>			
+				<div style="float: right;" id="result1" class="img-zoom-result"></div>
 			</div>
 			<div class="col-md-2 col-lg-2 col-sm-2"></div>
 			<div>
-				<p class="text-center" style="color:#003300;margin-bottom: 3px;">Highlighted patch from Enhanced Document</p>
-				<div id="result2" class="img-zoom-result"></div>
+				<p class="text-center" style="color:#003300;margin-bottom: 5px;">Highlighted patch from Enhanced Document</p>
+				<div style="float: left;" id="result2" class="img-zoom-result"></div>
 			</div>		  
 		</div>
 		<script>

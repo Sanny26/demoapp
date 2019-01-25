@@ -13,12 +13,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <link  href="{% static 'css/dn.css' %}" rel="stylesheet">
 
-<style>
-	.column {
-	  float: left;
-	  padding: 30px;
-	}
-</style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-fixed-top width">
@@ -68,48 +62,47 @@
 			<br>
 			<h4 class="text-center" style="font-weight:bold;">Principal Investigator</h4>
 			<div class="row justify-content-center">
-				<div class = "column" style="width:270px;height:300px;text-align: center;">
-					<img src="{% static 'images/pkb.jpg' %}" class="rounded-circle" style="width:180px;height:180px;" > 	
-					<p class="text-center" style="font-weight:bold;"><font size=2>Prof. Prabir Kumar Biswas<br>Dept. of E & ECE, IIT Kharagpur</font></p>
+				<div class = "column">
+					<img src="{% static 'images/pkb.jpg' %}" class="rounded-circle column-img" > 	
+					<p class="text-center" >Prof. Prabir Kumar Biswas<br>Dept. of E & ECE, IIT Kharagpur</p>
 				</div>
 			</div>
 			
 			<h4 class="text-center" style="font-weight:bold;">Co-Principal Investigators</h4>
 			<div class="row justify-content-center">
-				<div class = "column" style="width:270px;height:300px;text-align: center;">
-					<img src="{% static 'images/jm.jpg' %}" class="rounded-circle" style="width:180px;height:180px;"> 	
-					<p class="text-center" style="font-weight:bold;"><font size=2>Prof. Jayanta Mukhopadhyay<br>Dept. of CSE, IIT Kharagpur</font></p>
+				<div class = "column">
+					<img src="{% static 'images/jm.jpg' %}" class="rounded-circle column-img"> 	
+					<p class="text-center" >Prof. Jayanta Mukhopadhyay<br>Dept. of CSE, IIT Kharagpur</p>
 				</div>
-				<div class = "column" style="width:270px;height:300px;text-align: center;">
-					<img src="{% static 'images/sc.JPG' %}" class="rounded-circle" style="width:180px;height:180px;"> 	
+				<div class = "column">
+					<img src="{% static 'images/sc.JPG' %}" class="rounded-circle column-img"> 	
 					
-					<p class="text-center" style="font-weight:bold;"><font size=2>Prof. Santanu Chaudhury<br>IIT Jodhpur</font></p>
+					<p class="text-center" >Prof. Santanu Chaudhury<br>IIT Jodhpur</p>
 				</div>
-				<div class = "column" style="width:270px;height:300px;text-align: center;">
-					<img src="{% static 'images/bbc.jpg' %}" class="rounded-circle" style="width:180px;height:180px;"> 	
-					<p class="text-center" style="font-weight:bold;"><font size=2>Prof. Bhabatosh Chanda<br>ISI Kolkata</font></p>
+				<div class = "column">
+					<img src="{% static 'images/bbc.jpg' %}" class="rounded-circle column-img"> 	
+					<p class="text-center" >Prof. Bhabatosh Chanda<br>ISI Kolkata</p>
 				</div>
-				<div class = "column" style="width:270px;height:300px;text-align: center;">
-					<img src="{% static 'images/cvj.jpg' %}" class="rounded-circle" style="width:180px;height:180px;"> 	
-					<p class="text-center" style="font-weight:bold;"><font size=2>Prof. C. V. Jawahar<br>IIIT Hyderabad</font></p>
+				<div class = "column">
+					<img src="{% static 'images/cvj.jpg' %}" class="rounded-circle column-img"> 	
+					<p class="text-center" >Prof. C. V. Jawahar<br>IIIT Hyderabad</p>
 				</div>
-			</div>
-			<div class="row justify-content-center">
-				<div class = "column" style="width:270px;height:300px;text-align: center;">
-					<img src="{% static 'images/ss.jpg' %}" class="rounded-circle" style="width:180px;height:180px;"> 	
-					<p class="text-center" style="font-weight:bold;"><font size=2>Prof. Shamik Sural<br>Dept. of CSE, IIT Kharagpur</font></p>
+			
+				<div class = "column">
+					<img src="{% static 'images/ss.jpg' %}" class="rounded-circle column-img"> 	
+					<p class="text-center" >Prof. Shamik Sural<br>Dept. of CSE, IIT Kharagpur</p>
 				</div>
-				<div class = "column" style="width:270px;height:300px;text-align: center;">
-					<img src="{% static 'images/ppd.jpg' %}" class="rounded-circle" style="width:180px;height:180px;"> 	
-					<p class="text-center" style="font-weight:bold;"><font size=2>Prof. P. P. Das<br>Dept. of CSE, IIT Kharagpur</font></p>
+				<div class = "column">
+					<img src="{% static 'images/ppd.jpg' %}" class="rounded-circle column-img"> 	
+					<p class="text-center" >Prof. P. P. Das<br>Dept. of CSE, IIT Kharagpur</p>
 				</div>
-				<div class = "column" style="width:270px;height:300px;text-align: center;">
-					<img src="{% static 'images/gh.jpg' %}" class="rounded-circle" style="width:180px;height:180px;"> 	
-					<p class="text-center" style="font-weight:bold;"><font size=2>Prof. Gaurav Harit<br>IIT Jodhpur</font></p>
+				<div class = "column">
+					<img src="{% static 'images/gh.jpg' %}" class="rounded-circle column-img"> 	
+					<p class="text-center" >Prof. Gaurav Harit<br>IIT Jodhpur</p>
 				</div>
-				<div class = "column" style="width:270px;height:300px;text-align: center;">
-					<img src="{% static 'images/anil.jpg' %}" class="rounded-circle" style="width:180px;height:180px;"> 	
-					<p class="text-center" style="font-weight:bold;"><font size=2>Dr. Anil Saini<br>Scientist, CEERI Pilani</font></p>
+				<div class = "column">
+					<img src="{% static 'images/anil.jpg' %}" class="rounded-circle column-img"> 	
+					<p class="text-center" >Dr. Anil Saini<br>Scientist, CEERI Pilani</p>
 				</div>
 			</div>
 	 	<div class="clear"></div>
