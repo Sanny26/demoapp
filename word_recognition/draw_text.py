@@ -12,7 +12,7 @@ def annotate(number):
 	ret,bi = cv2.threshold(bi,127,255,cv2.THRESH_BINARY)
 
 	words = []
-	with open('output1.txt', encoding='utf-8') as f:
+	with open('output{}.txt'.format(number), encoding='utf-8') as f:
 		for line in f:
 			line = line.strip()
 			words.append(line)
@@ -33,7 +33,7 @@ def annotate(number):
 			pos[path] = [int(line[i]) for i in range(2,6)]
 
 	fontpath = "font.ttf" 
-	font = ImageFont.truetype(fontpath, 25)
+	font = ImageFont.truetype(fontpath, 40)
 
 	with open('seg_data/ann{}.txt'.format(number), 'r') as f:
 		for i, line in enumerate(f):
@@ -42,6 +42,7 @@ def annotate(number):
 
 			pt1_y, pt2_y, pt1_x, pt2_x= list(map(int, pos[line]))
 			# word = 'यदि'
+			print(i)
 			word = words[i]
 			# pdb.set_trace()
 			roi = (bi[pt1_y: pt2_y, pt1_x:pt2_x]!=255).nonzero()
@@ -63,11 +64,11 @@ def annotate(number):
 	cv2.imwrite('final_out{}.jpg'.format(number), img)
 
 
-annotate(1)
-annotate(2)
-annotate(3)
-annotate(4)
-annotate(5)
+#annotate(1)
+#annotate(2)
+#annotate(3)
+#annotate(4)
+#annotate(5)
 annotate(6)
 annotate(7)
 
