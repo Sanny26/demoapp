@@ -58,7 +58,7 @@ def annotate(number):
 			#cv2.putText(img,word,(x1, y1), font, 0.5, (255,0,0), 1, cv2.LINE_AA)
 			img_pil = Image.fromarray(img)
 			draw = ImageDraw.Draw(img_pil)
-			draw.text((x1-15, y1-30),  word, font = font, fill = (0, 255, 0))
+			draw.text((x1-20, y1-40),  word, font = font, fill = (0, 255, 0))
 			img = np.array(img_pil)
 
 	cv2.imwrite('final_out{}.jpg'.format(number), img)
@@ -67,8 +67,8 @@ def annotate(number):
 #annotate(1)
 #annotate(2)
 #annotate(3)
-#annotate(4)
-#annotate(5)
+annotate(4)
+annotate(5)
 annotate(6)
-annotate(7)
+#annotate(7)
 
