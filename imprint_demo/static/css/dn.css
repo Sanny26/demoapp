@@ -1,16 +1,27 @@
+{% load static from staticfiles %}
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
-
+@import url('https://fonts.googleapis.com/css?family=Patua+One');
+@import url('https://fonts.googleapis.com/css?family=Bitter');
 html,body {
     height:100%;
   width:100%;
   position:relative;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Bitter', serif;;
     font-size: 1em;
     color: #000;
     font-weight: 400;
-    background-color: #ccffcc;
+    background-image: url('{% static 'images/iitkgp.jpg'%}');
+    /*background-color:#ebebe0;*/
 }
 
+.text-block {
+  background: rgb(0, 0, 0); /* Fallback color */
+  background: rgba(0, 0, 0, 0.5);;
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-family:  'Patua One', cursive;
+}
 
 .carousel-item {
   height: 30vh;
@@ -29,7 +40,7 @@ html,body {
 
 .navbar-fixed-top {
     min-height: 80px;
-    background-color: #003300;
+    background-color: #004d4d;
 }
 
 div #docbox {
