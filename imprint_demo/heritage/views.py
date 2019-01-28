@@ -14,7 +14,7 @@ import os
 # 	return render(request, page_template, context)
 
 def index(request, pid):
-	page_template = "hr_index2.html"
+	page_template = "hr_index.html"
 	context = {}
 	context['pid']  = pid
 	context['iname'] = 'docs/heritage/input/{}.jpg'.format(pid)

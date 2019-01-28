@@ -76,6 +76,15 @@ img {
     width: 200px;
     height: 250px;
 }
+
+.thumbimg1{
+    border: 2px solid #DDDDDD;
+    border-radius: 4px 0 4px 0;
+    margin:auto;
+    width: 300px;
+    height: 400px;
+}
+
 .customContainer{
   margin: 0px 15px;
   padding: 0px 15px; 
@@ -131,6 +140,15 @@ img {
   /*set the size of the lens:*/
   width: 60px;
   height: 40px;
+  cursor: pointer;
+}
+
+.img-zoom-lens1 {
+  position: absolute;
+  border: 1px solid #A52A2A;
+  /*set the size of the lens:*/
+  width: 100px;
+  height: 70px;
   cursor: pointer;
 }
 
