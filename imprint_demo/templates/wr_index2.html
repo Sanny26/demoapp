@@ -327,17 +327,17 @@
 		    <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="{% static 'img/spin.svg' %}" />
 		</div>
 
-		<!--div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:400px;height:75px;overflow:hidden;border: 1px solid #606060;border-radius: 4px 0 4px 0;">
+		<div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:400px;height:75px;overflow:hidden;border: 1px solid #606060;border-radius: 4px 0 4px 0;">
 			{% for file in files %}
 		    <div>
-		        <a href="{% url 'home' %}">
-		        	<img data-u="image" src="{% static 'docs/heritage/input/'|add:file|add:'.jpg' %}" style=
+		        <a href="{% url 'wrindex' file %}">
+		        	<img data-u="image" src="{% static 'docs/wr_pages/hindi_pages/'|add:file|add:'.jpg' %}" style=
 							"border-right:1px solid #606060;">
 		        </a>
 		    </div>
 		    {% endfor %}
 		    		    
-		</div-->
+		</div>
 		<!-- Bullet Navigator -->
 		<!--div data-u="navigator" class="jssorb057" style="position:absolute;bottom:12px;right:12px;" data-autocenter="1" data-scale="0.5" data-scale-bottom="0.75">
 		    <div data-u="prototype" class="i" style="width:16px;height:16px;">

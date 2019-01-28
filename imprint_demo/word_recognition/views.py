@@ -77,6 +77,7 @@ def index(request, pid):
 	page_template = "wr_index2.html"
 	context = {}
 	context['pid']  = pid
-	context['iname'] = 'docs/wr_pages/page1.jpg'.format(pid)
-	context['rname'] = 'docs/wr_pages/test_out.jpg'.format(pid)
+	context['iname'] = 'docs/wr_pages/hindi_pages/{}.jpg'.format(pid)
+	context['rname'] = 'docs/wr_pages/output/final_out{}.jpg'.format(pid)
+	context['files'] = ['0', '2','3','4','5','6','7']
 	return render(request, page_template, context)
