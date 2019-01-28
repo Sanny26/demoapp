@@ -4,8 +4,3 @@ HindiSeg/doc1_words/2.jpg
 HindiSeg/doc1_words/3.jpg
 HindiSeg/doc1_words/4.jpg
 HindiSeg/doc1_words/5.jpg
-HindiSeg/doc1_words/6.jpg
-HindiSeg/doc1_words/7.jpg
-HindiSeg/doc1_words/8.jpg
-HindiSeg/doc1_words/9.jpg
-HindiSeg/doc1_words/10.jpg

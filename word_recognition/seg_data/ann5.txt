@@ -1,180 +1,167 @@
-seg_data/5/2.jpg, 0, 0, 0
-seg_data/5/3.jpg, 0, 0, 0
-seg_data/5/4.jpg, 0, 0, 0
-seg_data/5/5.jpg, 0, 0, 0
-seg_data/5/6.jpg, 0, 0, 0
-seg_data/5/7.jpg, 0, 0, 0
-seg_data/5/8.jpg, 0, 0, 0
-seg_data/5/9.jpg, 0, 0, 0
-seg_data/5/10.jpg, 0, 0, 0
-seg_data/5/12.jpg, 0, 0, 0
-seg_data/5/13.jpg, 0, 0, 0
-seg_data/5/14.jpg, 0, 0, 0
-seg_data/5/15.jpg, 0, 0, 0
-seg_data/5/16.jpg, 0, 0, 0
-seg_data/5/17.jpg, 0, 0, 0
-seg_data/5/18.jpg, 0, 0, 0
-seg_data/5/19.jpg, 0, 0, 0
-seg_data/5/20.jpg, 0, 0, 0
-seg_data/5/21.jpg, 0, 0, 0
-seg_data/5/22.jpg, 0, 0, 0
-seg_data/5/23.jpg, 0, 0, 0
-seg_data/5/24.jpg, 0, 0, 0
-seg_data/5/25.jpg, 0, 0, 0
-seg_data/5/26.jpg, 0, 0, 0
-seg_data/5/27.jpg, 0, 0, 0
-seg_data/5/28.jpg, 0, 0, 0
-seg_data/5/29.jpg, 0, 0, 0
-seg_data/5/30.jpg, 0, 0, 0
-seg_data/5/31.jpg, 0, 0, 0
-seg_data/5/32.jpg, 0, 0, 0
-seg_data/5/33.jpg, 0, 0, 0
-seg_data/5/34.jpg, 0, 0, 0
-seg_data/5/35.jpg, 0, 0, 0
-seg_data/5/36.jpg, 0, 0, 0
-seg_data/5/37.jpg, 0, 0, 0
-seg_data/5/38.jpg, 0, 0, 0
-seg_data/5/39.jpg, 0, 0, 0
-seg_data/5/40.jpg, 0, 0, 0
-seg_data/5/41.jpg, 0, 0, 0
-seg_data/5/42.jpg, 0, 0, 0
-seg_data/5/43.jpg, 0, 0, 0
-seg_data/5/44.jpg, 0, 0, 0
-seg_data/5/45.jpg, 0, 0, 0
-seg_data/5/46.jpg, 0, 0, 0
-seg_data/5/47.jpg, 0, 0, 0
-seg_data/5/48.jpg, 0, 0, 0
-seg_data/5/49.jpg, 0, 0, 0
-seg_data/5/50.jpg, 0, 0, 0
-seg_data/5/51.jpg, 0, 0, 0
-seg_data/5/52.jpg, 0, 0, 0
-seg_data/5/53.jpg, 0, 0, 0
-seg_data/5/54.jpg, 0, 0, 0
-seg_data/5/55.jpg, 0, 0, 0
-seg_data/5/56.jpg, 0, 0, 0
-seg_data/5/57.jpg, 0, 0, 0
-seg_data/5/58.jpg, 0, 0, 0
-seg_data/5/59.jpg, 0, 0, 0
-seg_data/5/60.jpg, 0, 0, 0
-seg_data/5/61.jpg, 0, 0, 0
-seg_data/5/62.jpg, 0, 0, 0
-seg_data/5/63.jpg, 0, 0, 0
-seg_data/5/64.jpg, 0, 0, 0
-seg_data/5/65.jpg, 0, 0, 0
-seg_data/5/66.jpg, 0, 0, 0
-seg_data/5/67.jpg, 0, 0, 0
-seg_data/5/68.jpg, 0, 0, 0
-seg_data/5/69.jpg, 0, 0, 0
-seg_data/5/70.jpg, 0, 0, 0
-seg_data/5/71.jpg, 0, 0, 0
-seg_data/5/72.jpg, 0, 0, 0
-seg_data/5/73.jpg, 0, 0, 0
-seg_data/5/74.jpg, 0, 0, 0
-seg_data/5/75.jpg, 0, 0, 0
-seg_data/5/76.jpg, 0, 0, 0
-seg_data/5/77.jpg, 0, 0, 0
-seg_data/5/78.jpg, 0, 0, 0
-seg_data/5/79.jpg, 0, 0, 0
-seg_data/5/80.jpg, 0, 0, 0
-seg_data/5/81.jpg, 0, 0, 0
-seg_data/5/82.jpg, 0, 0, 0
-seg_data/5/83.jpg, 0, 0, 0
-seg_data/5/85.jpg, 0, 0, 0
-seg_data/5/86.jpg, 0, 0, 0
-seg_data/5/87.jpg, 0, 0, 0
-seg_data/5/88.jpg, 0, 0, 0
-seg_data/5/89.jpg, 0, 0, 0
-seg_data/5/90.jpg, 0, 0, 0
-seg_data/5/91.jpg, 0, 0, 0
-seg_data/5/92.jpg, 0, 0, 0
-seg_data/5/93.jpg, 0, 0, 0
-seg_data/5/94.jpg, 0, 0, 0
-seg_data/5/95.jpg, 0, 0, 0
-seg_data/5/96.jpg, 0, 0, 0
-seg_data/5/97.jpg, 0, 0, 0
-seg_data/5/98.jpg, 0, 0, 0
-seg_data/5/99.jpg, 0, 0, 0
-seg_data/5/101.jpg, 0, 0, 0
-seg_data/5/102.jpg, 0, 0, 0
-seg_data/5/103.jpg, 0, 0, 0
-seg_data/5/104.jpg, 0, 0, 0
-seg_data/5/105.jpg, 0, 0, 0
-seg_data/5/106.jpg, 0, 0, 0
-seg_data/5/107.jpg, 0, 0, 0
-seg_data/5/108.jpg, 0, 0, 0
-seg_data/5/109.jpg, 0, 0, 0
-seg_data/5/110.jpg, 0, 0, 0
-seg_data/5/111.jpg, 0, 0, 0
-seg_data/5/112.jpg, 0, 0, 0
-seg_data/5/113.jpg, 0, 0, 0
-seg_data/5/114.jpg, 0, 0, 0
-seg_data/5/115.jpg, 0, 0, 0
-seg_data/5/116.jpg, 0, 0, 0
-seg_data/5/117.jpg, 0, 0, 0
-seg_data/5/118.jpg, 0, 0, 0
-seg_data/5/119.jpg, 0, 0, 0
-seg_data/5/120.jpg, 0, 0, 0
-seg_data/5/121.jpg, 0, 0, 0
-seg_data/5/122.jpg, 0, 0, 0
-seg_data/5/123.jpg, 0, 0, 0
-seg_data/5/124.jpg, 0, 0, 0
-seg_data/5/125.jpg, 0, 0, 0
-seg_data/5/126.jpg, 0, 0, 0
-seg_data/5/127.jpg, 0, 0, 0
-seg_data/5/128.jpg, 0, 0, 0
-seg_data/5/129.jpg, 0, 0, 0
-seg_data/5/130.jpg, 0, 0, 0
-seg_data/5/131.jpg, 0, 0, 0
-seg_data/5/132.jpg, 0, 0, 0
-seg_data/5/133.jpg, 0, 0, 0
-seg_data/5/134.jpg, 0, 0, 0
-seg_data/5/135.jpg, 0, 0, 0
-seg_data/5/136.jpg, 0, 0, 0
-seg_data/5/138.jpg, 0, 0, 0
-seg_data/5/139.jpg, 0, 0, 0
-seg_data/5/140.jpg, 0, 0, 0
-seg_data/5/141.jpg, 0, 0, 0
-seg_data/5/142.jpg, 0, 0, 0
-seg_data/5/143.jpg, 0, 0, 0
-seg_data/5/144.jpg, 0, 0, 0
-seg_data/5/145.jpg, 0, 0, 0
-seg_data/5/146.jpg, 0, 0, 0
-seg_data/5/147.jpg, 0, 0, 0
-seg_data/5/148.jpg, 0, 0, 0
-seg_data/5/149.jpg, 0, 0, 0
-seg_data/5/150.jpg, 0, 0, 0
-seg_data/5/151.jpg, 0, 0, 0
-seg_data/5/152.jpg, 0, 0, 0
-seg_data/5/153.jpg, 0, 0, 0
-seg_data/5/154.jpg, 0, 0, 0
-seg_data/5/155.jpg, 0, 0, 0
-seg_data/5/156.jpg, 0, 0, 0
-seg_data/5/157.jpg, 0, 0, 0
-seg_data/5/158.jpg, 0, 0, 0
-seg_data/5/159.jpg, 0, 0, 0
-seg_data/5/160.jpg, 0, 0, 0
-seg_data/5/161.jpg, 0, 0, 0
-seg_data/5/162.jpg, 0, 0, 0
-seg_data/5/163.jpg, 0, 0, 0
-seg_data/5/164.jpg, 0, 0, 0
-seg_data/5/165.jpg, 0, 0, 0
-seg_data/5/166.jpg, 0, 0, 0
-seg_data/5/167.jpg, 0, 0, 0
-seg_data/5/168.jpg, 0, 0, 0
-seg_data/5/169.jpg, 0, 0, 0
-seg_data/5/170.jpg, 0, 0, 0
-seg_data/5/171.jpg, 0, 0, 0
-seg_data/5/172.jpg, 0, 0, 0
-seg_data/5/173.jpg, 0, 0, 0
-seg_data/5/174.jpg, 0, 0, 0
-seg_data/5/175.jpg, 0, 0, 0
-seg_data/5/176.jpg, 0, 0, 0
-seg_data/5/177.jpg, 0, 0, 0
-seg_data/5/179.jpg, 0, 0, 0
-seg_data/5/180.jpg, 0, 0, 0
-seg_data/5/181.jpg, 0, 0, 0
-seg_data/5/182.jpg, 0, 0, 0
-seg_data/5/183.jpg, 0, 0, 0
-seg_data/5/184.jpg, 0, 0, 0
-seg_data/5/185.jpg, 0, 0, 0
-seg_data/5/186.jpg, 0, 0, 0
+bin_data/5/4.jpg
+bin_data/5/5.jpg
+bin_data/5/6.jpg
+bin_data/5/7.jpg
+bin_data/5/8.jpg
+bin_data/5/9.jpg
+bin_data/5/10.jpg
+bin_data/5/12.jpg
+bin_data/5/13.jpg
+bin_data/5/14.jpg
+bin_data/5/15.jpg
+bin_data/5/16.jpg
+bin_data/5/18.jpg
+bin_data/5/19.jpg
+bin_data/5/20.jpg
+bin_data/5/21.jpg
+bin_data/5/22.jpg
+bin_data/5/23.jpg
+bin_data/5/24.jpg
+bin_data/5/25.jpg
+bin_data/5/26.jpg
+bin_data/5/27.jpg
+bin_data/5/28.jpg
+bin_data/5/29.jpg
+bin_data/5/30.jpg
+bin_data/5/31.jpg
+bin_data/5/34.jpg
+bin_data/5/35.jpg
+bin_data/5/36.jpg
+bin_data/5/37.jpg
+bin_data/5/38.jpg
+bin_data/5/39.jpg
+bin_data/5/40.jpg
+bin_data/5/41.jpg
+bin_data/5/42.jpg
+bin_data/5/43.jpg
+bin_data/5/44.jpg
+bin_data/5/45.jpg
+bin_data/5/46.jpg
+bin_data/5/48.jpg
+bin_data/5/49.jpg
+bin_data/5/51.jpg
+bin_data/5/52.jpg
+bin_data/5/53.jpg
+bin_data/5/54.jpg
+bin_data/5/55.jpg
+bin_data/5/56.jpg
+bin_data/5/57.jpg
+bin_data/5/58.jpg
+bin_data/5/59.jpg
+bin_data/5/60.jpg
+bin_data/5/61.jpg
+bin_data/5/63.jpg
+bin_data/5/64.jpg
+bin_data/5/65.jpg
+bin_data/5/66.jpg
+bin_data/5/67.jpg
+bin_data/5/68.jpg
+bin_data/5/69.jpg
+bin_data/5/70.jpg
+bin_data/5/71.jpg
+bin_data/5/72.jpg
+bin_data/5/73.jpg
+bin_data/5/74.jpg
+bin_data/5/75.jpg
+bin_data/5/77.jpg
+bin_data/5/78.jpg
+bin_data/5/79.jpg
+bin_data/5/80.jpg
+bin_data/5/81.jpg
+bin_data/5/82.jpg
+bin_data/5/83.jpg
+bin_data/5/85.jpg
+bin_data/5/86.jpg
+bin_data/5/87.jpg
+bin_data/5/88.jpg
+bin_data/5/89.jpg
+bin_data/5/90.jpg
+bin_data/5/92.jpg
+bin_data/5/93.jpg
+bin_data/5/94.jpg
+bin_data/5/96.jpg
+bin_data/5/97.jpg
+bin_data/5/98.jpg
+bin_data/5/101.jpg
+bin_data/5/102.jpg
+bin_data/5/103.jpg
+bin_data/5/104.jpg
+bin_data/5/105.jpg
+bin_data/5/106.jpg
+bin_data/5/107.jpg
+bin_data/5/108.jpg
+bin_data/5/110.jpg
+bin_data/5/111.jpg
+bin_data/5/112.jpg
+bin_data/5/113.jpg
+bin_data/5/115.jpg
+bin_data/5/116.jpg
+bin_data/5/117.jpg
+bin_data/5/118.jpg
+bin_data/5/119.jpg
+bin_data/5/120.jpg
+bin_data/5/121.jpg
+bin_data/5/122.jpg
+bin_data/5/123.jpg
+bin_data/5/124.jpg
+bin_data/5/125.jpg
+bin_data/5/126.jpg
+bin_data/5/127.jpg
+bin_data/5/128.jpg
+bin_data/5/130.jpg
+bin_data/5/131.jpg
+bin_data/5/132.jpg
+bin_data/5/133.jpg
+bin_data/5/134.jpg
+bin_data/5/135.jpg
+bin_data/5/136.jpg
+bin_data/5/138.jpg
+bin_data/5/139.jpg
+bin_data/5/140.jpg
+bin_data/5/141.jpg
+bin_data/5/142.jpg
+bin_data/5/143.jpg
+bin_data/5/144.jpg
+bin_data/5/145.jpg
+bin_data/5/146.jpg
+bin_data/5/147.jpg
+bin_data/5/148.jpg
+bin_data/5/149.jpg
+bin_data/5/150.jpg
+bin_data/5/151.jpg
+bin_data/5/152.jpg
+bin_data/5/153.jpg
+bin_data/5/154.jpg
+bin_data/5/155.jpg
+bin_data/5/156.jpg
+bin_data/5/157.jpg
+bin_data/5/158.jpg
+bin_data/5/159.jpg
+bin_data/5/160.jpg
+bin_data/5/161.jpg
+bin_data/5/162.jpg
+bin_data/5/163.jpg
+bin_data/5/164.jpg
+bin_data/5/165.jpg
+bin_data/5/166.jpg
+bin_data/5/167.jpg
+bin_data/5/168.jpg
+bin_data/5/169.jpg
+bin_data/5/170.jpg
+bin_data/5/171.jpg
+bin_data/5/172.jpg
+bin_data/5/173.jpg
+bin_data/5/174.jpg
+bin_data/5/175.jpg
+bin_data/5/177.jpg
+bin_data/5/179.jpg
+bin_data/5/180.jpg
+bin_data/5/181.jpg
+bin_data/5/182.jpg
+bin_data/5/183.jpg
+bin_data/5/184.jpg
+bin_data/5/185.jpg
+bin_data/5/400.jpg
+bin_data/5/401.jpg
+bin_data/5/402.jpg
+bin_data/5/403.jpg

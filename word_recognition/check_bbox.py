@@ -4,9 +4,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 
-repo = "seg_data/words/2"
-pos_file = "seg_data/positions2.txt"
-img = cv2.imread("hindi_pages/2.jpg")
+repo = "seg_data/words/5"
+pos_file = "seg_data/positions5.txt"
+img = cv2.imread("hindi_pages/5.jpg")
 pos = {}
 with open(pos_file) as f:
 	for line in f:
@@ -23,6 +23,6 @@ for key, val in pos.items():
 	font = cv2.FONT_HERSHEY_COMPLEX_SMALL
 	cv2.putText(img, key, (val[2], val[0]), font, 0.5, (255,0,0), 1, cv2.LINE_AA)
 
-cv2.imwrite('out2.jpg', img)
+cv2.imwrite('out5.jpg', img)
 
 

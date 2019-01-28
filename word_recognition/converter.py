@@ -18,7 +18,6 @@ with open(infile, 'r') as f:
         line = line.split()
         for ch in line[2:]:
             if ch!='0':
-                print(chr(int(ch)), ch)
                 string += chr(answer[int(ch)])
         words.append(string)
 

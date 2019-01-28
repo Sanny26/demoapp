@@ -2,12 +2,12 @@ import xml.etree.ElementTree as ET
 import pdb
 import cv2
 
-tree = ET.parse('page.xml')
+tree = ET.parse('6.xml')
 root = tree.getroot()
 words = root.findall('object')
-word_dir = 'seg_data/2/'
+word_dir = 'seg_data/6/'
 
-img = cv2.imread('hindi_pages/2.jpg')
+img = cv2.imread('hindi_pages/6.jpg')
 with open('doc1_positions.txt', 'w') as f1:
 	with open('doc1_ann.txt' ,'w') as f:
 		for i, obj in enumerate(words):
@@ -18,6 +18,6 @@ with open('doc1_positions.txt', 'w') as f1:
 			pt2_y = polygon_pts[2].find('y').text
 			word = img[int(pt1_y):int(pt2_y), int(pt1_x):int(pt2_x)]
 			cv2.imwrite('{}{}.jpg'.format(word_dir, i+400), word)
-			f1.write('{}, {}, {}, {}, {}\n'.format(i+400, pt1_y, pt1_x, pt2_y, pt2_x))
+			f1.write('seg_data/6/, {}, {}, {}, {}, {}\n'.format(i+400, pt1_y, pt2_y, pt1_x, pt2_x))
 			f.write('HindiSeg/doc1_words/'+str(i)+'.jpg\n')
 # pdb.set_trace()
