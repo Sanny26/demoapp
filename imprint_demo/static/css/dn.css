@@ -56,6 +56,10 @@ img {
   max-width: 100%; /* This rule is very important, please do not ignore this! */
 }
 
+.img-group{
+  display:flex;
+}
+
 .column {
     float: left;
     padding: 30px;
@@ -78,7 +82,7 @@ img {
 }
 
 .thumbimg1{
-    border: 2px solid #DDDDDD;
+    border: 3px solid #999;
     border-radius: 4px 0 4px 0;
     margin:auto;
     width: 300px;

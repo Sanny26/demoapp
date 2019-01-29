@@ -16,8 +16,8 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-fixed-top width">
-            <a href="https://www.ceeri.res.in/" style="width:80px;height: 70px;"><img src="{% static 'images/ceeri.png' %}" style="width:100%;height:100%;object-fit:contain"></a>
-            
+            <a class="navbar-brand" href="{% url 'home' %}"><strong>DIA IMPRINT</strong></a>
+                       
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -56,37 +56,37 @@
             
         </div>
     </nav>
-    <div id="container" class="width">
-	<section id="content" class="one-column">
+    <div id="container" class="customContainer">
+        <div class=" width">
+            <br>
 
-	    <article>
-				
-			
-			<br><h2>Noise Resilient Super-Resolution on Document Images</h2>
-			<br> <br>
-		<p>
-			CEERI, Pilani has been looking into development of a deep learning based framework to enhance the degraded document image for boosting OCR’s performance. Enhancement will include all factors which will help to improve OCR performance such as resolution enhancement, removing noises and removing text touching lines etc.
-		</p>
-    	<p>
-		A Convolutional Autoencoder neural network model of 6 layers is used with 16, 32, 64 feature map. The kernal size was 5*5. Since the challenge was denoising and super-resolution, another framework with same specification for denoising, toching line removal is also trained. Then both network are end-to-end finetuned to get denoising and super-resolution at same time. Our de-noising architecture can do multiple task such as touching line removal, salt n pepper and different noise removal. Initially, the scale of super-resolution is 2X. The trained network is then used in cascaded form to create 8X super-resolved text images. 
+            <div class="row">
+                <h2>Noise Resilient Super-Resolution on Document Images</h2>
+                <div class="d-block" style="width:80px;height: 70px;">  
+                    <a href="https://www.ceeri.res.in/"><img src="{% static 'images/ceeri.png' %}" style="width:100%;height:100%;object-fit:contain"></a>
+                </div>
+                <br>
+            </div>
 
-	</p>
-
-	<center> <figure>
-			<img src = "{% static 'images/ceeri_paper.jpg' %}" height="500px" width="600px">
-			<figcaption><font size="2">Pipeline for the lower-resolution image recognition system</font></figcaption>
-		</figure>	
-	</center>
-	<br>
-	
-	    <p>Final block is a cascaded implementation of all the blocks shown above. In final block we give images as input. These images are then passed through the layout and linear element removal block, which gives clean images, which is then Super-Resolved 8 times to get a High resolution image. The images are then passed through a OCR. We also do some dictionary based post processing to get better results.</p>
-		</article>
-        </section>
-        
-        
-    	<div class="clear"></div>
+	       <div>		
+        		<p>
+        			CEERI, Pilani has been looking into development of a deep learning based framework to enhance the degraded document image for boosting OCR’s performance. Enhancement will include all factors which will help to improve OCR performance such as resolution enhancement, removing noises and removing text touching lines etc.
+        		</p>
+            	<p>
+        		A Convolutional Autoencoder neural network model of 6 layers is used with 16, 32, 64 feature map. The kernal size was 5*5. Since the challenge was denoising and super-resolution, another framework with same specification for denoising, toching line removal is also trained. Then both network are end-to-end finetuned to get denoising and super-resolution at same time. Our de-noising architecture can do multiple task such as touching line removal, salt n pepper and different noise removal. Initially, the scale of super-resolution is 2X. The trained network is then used in cascaded form to create 8X super-resolved text images. 
+        	   </p>
+            	<center> <figure>
+            			<img src = "{% static 'images/ceeri_paper.jpg' %}" height="500px" width="600px">
+            			<figcaption><font size="2">Pipeline for the lower-resolution image recognition system</font></figcaption>
+            		</figure>	
+            	</center>
+            	<br>
+            	
+        	    <p>Final block is a cascaded implementation of all the blocks shown above. In final block we give images as input. These images are then passed through the layout and linear element removal block, which gives clean images, which is then Super-Resolved 8 times to get a High resolution image. The images are then passed through a OCR. We also do some dictionary based post processing to get better results.</p>
+            </div>      
+    	   <div class="clear"></div>
+        </div>
+        <br><br>
     </div>
-    <br><br>
-</div>
 </body>
 </html>
