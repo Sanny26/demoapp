@@ -241,8 +241,8 @@
 
 <body >
 	<nav class="navbar navbar-expand-lg navbar-dark navbar-fixed-top width">
-			<a href="http://www.iitj.ac.in/" style="width:80px;height: 70px;"><img src="{% static 'images/iitj.gif' %}" style="width:100%;height:100%;object-fit:contain"></a>
-			&nbsp;<a class="navbar-brand" href="#">Post Processing</a>
+			
+			<a class="navbar-brand" href="#"><strong>DIA IMPRINT</strong></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
 	    		<span class="navbar-toggler-icon"></span>
 	  		</button>
@@ -276,18 +276,18 @@
 		            <li class="nav-item">
 		                <a class="nav-link" href="{% url 'pub' %}">Publications</a>
 		            </li>    
-		            <li class="nav-item"><a class="nav-link" href="{% url 'partners' %}">Partners</a></li>
+		            <li class="nav-item"><a class="nav-link" href="{% url 'partners' %}">People</a></li>
 		        </ul>
 		    </div>
 		
 	</nav>
-	
-	<div class="customContainer">
-		
-		<div class="alert alert-warning alert-dismissible width">
-		  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		  <strong>NOTE:</strong> Demo details not yet received.
-		</div>
+	<nav class="navbar navbar-expand-lg navbar-light header width">
+        <h4>Post Processing</h4>
+        <a href="http://www.iitj.ac.in/" style="width:80px;height: 70px;" class="ml-auto"><img src="{% static 'images/iitj.gif' %}" style="width:100%;height:100%;object-fit:contain"> </a>
+    </nav>
+	<div class="main-width">
+			<br><br><br><br>
+			<h5 class="text-center">Coming soon...</h5>
 		
     </div>
 </body>

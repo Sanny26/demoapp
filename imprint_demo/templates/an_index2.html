@@ -241,8 +241,7 @@
 
 <body >
 	<nav class="navbar navbar-expand-lg navbar-dark navbar-fixed-top width">
-            <a href="http://www.iitkgp.ac.in/" style="width:80px;height: 70px;"><img src="{% static 'images/iitkgp_.gif' %}" style="width:100%;height:100%;object-fit:contain"></a>&nbsp;
-            <a class="navbar-brand" href="#">Image Annotation Tools</a>
+            <a class="navbar-brand" href="#"><strong>DIA IMPRINT</strong></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -276,16 +275,19 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'pub' %}">Publications</a>
                     </li>    
-                    <li class="nav-item"><a class="nav-link" href="{% url 'partners' %}">Partners</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'partners' %}">People</a></li>
                 </ul>
             
         </div>
     </nav>
-	
-	<div class="customContainer">
+	<nav class="navbar navbar-expand-lg navbar-light header width">
+        
+        <h4>Image Annotation Tool for Handwritten Documents</h4>
+        <a href="http://www.iitkgp.ac.in/" style="width:80px;height: 70px;" class="ml-auto"><img src="{% static 'images/iitkgp.png' %}" style="width:100%;height:100%;object-fit:contain"> </a>
+    </nav>
+	<div class="main-width">
 		
-		<br>
-		<p class="width"> A demonstration video for the annotation tool, Multi-layered Document Image Annotation System (MultiDIAS), is attached below.The MultiDIAS is tested on a complex handwritten manuscript written by renowned film director Satyajit Ray for the movie 'Goopi Gyne Bagha Byne '. This annotated data generated using MultiDIAS can further be used in a wide range of applications of document image analysis.</p>
+		<p> A demonstration video for the annotation tool, Multi-layered Document Image Annotation System (MultiDIAS), is attached below.The MultiDIAS is tested on a complex handwritten manuscript written by renowned film director Satyajit Ray for the movie 'Goopi Gyne Bagha Byne '. This annotated data generated using MultiDIAS can further be used in a wide range of applications of document image analysis.</p>
 		<br>
 		<div class="row justify-content-center">
 			<video style="width: 70%; height: 50%;object-fit: contain;" controls autoplay>

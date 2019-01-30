@@ -17,7 +17,6 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-fixed-top width">
             <a class="navbar-brand" href="{% url 'home' %}"><strong>DIA IMPRINT</strong></a>
-            <a href="https://www.iiit.ac.in/" style="width:80px;height: 70px;"><img src="{% static 'images/iiith.png' %}" style="width:100%;height:100%;object-fit:contain"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -51,45 +50,36 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'pub' %}">Publications</a>
                     </li>    
-                    <li class="nav-item"><a class="nav-link" href="{% url 'partners' %}">Partners</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'partners' %}">People</a></li>
                 </ul>
             </div>
         
     </nav>
-    <div id="container" class="width">
-	<section id="content" class="one-column">
-
-	    <article>
-				
-			
-			<br><h2>Handwritten Text Recognition and Word Spotting</h2>
-			<br> <br>
-            <p>IIIT Hyderabad has looked into the problem of handwriting recognition in Indian languages. Building accurate lexicon free handwritten text recognizers for Indic languages is a challenging task, mostly due to the inherent complexities in Indic scripts in addition to the cursive nature of handwriting. We developed an end-to-end trainable CNN-RNN hybrid architecture which takes inspirations from recent advances of using residual blocks for training convolutional layers, along with the inclusion of spatial transformer layer to learn a model invariant to geometric distortions present in handwriting. To address the need of large scale training data for such low resources languages, we utilize synthetically rendered data for pre-training the network and later fine tune it on the real data.
-</p>
-	<center> <figure>
-			<img src = "{% static 'images/paper_1_iiit.jpg' %}" height="300px" width="700px">
-			<figcaption><font size="2">Architecture for handritten text recognizer</font></figcaption>
-		</figure>	
-	</center>
-	<br>
-	    <p>We also learn deep convolutional features for word images and textual embedding for word spotting. Thus, we developed an End2End embedding framework which jointly learns both the text and image embeddings using state of the art deep convolutional architectures. </p>
-	<center> <figure>
-			<img src = "{% static 'images/paper_2_iiit.jpg' %}" height="300px" width="500px">
-			<figcaption><font size="2">Architecture to learn image and word embeddings jointly</font></figcaption>
-		</figure>	
-	</center>	
-	<br>	
-	<p>
-		As a part of this project several datasets for handwritten text in several languages has been released.
-	</p>
-	
-
-		</article>
-        </section>
+    <nav class="navbar navbar-expand-lg navbar-light header width">
         
-        
-    	<div class="clear"></div>
-        <br><br>
+        <h4>Handwritten Text Recognition and Word Spotting</h4>
+        <a href="https://www.iiit.ac.in/" style="width:80px;height: 70px;" class="ml-auto"><img src="{% static 'images/iiith_logo.png' %}" style="width:100%;height:100%;object-fit:contain"> </a>
+    </nav>
+    <div class="main-width">
+	        <p>IIIT Hyderabad has looked into the problem of handwriting recognition in Indian languages. Building accurate lexicon free handwritten text recognizers for Indic languages is a challenging task, mostly due to the inherent complexities in Indic scripts in addition to the cursive nature of handwriting. We developed an end-to-end trainable CNN-RNN hybrid architecture which takes inspirations from recent advances of using residual blocks for training convolutional layers, along with the inclusion of spatial transformer layer to learn a model invariant to geometric distortions present in handwriting. To address the need of large scale training data for such low resources languages, we utilize synthetically rendered data for pre-training the network and later fine tune it on the real data.
+            </p>
+        	<center> <figure>
+        			<img src = "{% static 'images/paper_1_iiit.jpg' %}" height="300px" width="700px">
+        			<figcaption><font size="2">Architecture for handritten text recognizer</font></figcaption>
+        		</figure>	
+        	</center>
+        	<br>
+        	    <p>We also learn deep convolutional features for word images and textual embedding for word spotting. Thus, we developed an End2End embedding framework which jointly learns both the text and image embeddings using state of the art deep convolutional architectures. </p>
+        	<center> <figure>
+        			<img src = "{% static 'images/paper_2_iiit.jpg' %}" height="300px" width="500px">
+        			<figcaption><font size="2">Architecture to learn image and word embeddings jointly</font></figcaption>
+        		</figure>	
+        	</center>	
+        	<br>	
+        	<p>
+        		As a part of this project several datasets for handwritten text in several languages has been released.
+        	</p>
+		<div class="clear"></div>
     </div>
     
 </div>

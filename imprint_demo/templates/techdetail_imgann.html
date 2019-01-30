@@ -16,9 +16,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-fixed-top width">
-            <a class="navbar-brand" href="{% url 'home' %}"><strong>DIA IMPRINT</strong></a>
-            <a href="http://www.iitkgp.ac.in/" style="width:80px;height: 70px;"><img src="{% static 'images/iitkgp_.gif' %}" style="width:100%;height:100%;object-fit:contain"></a>
-            
+            <a class="navbar-brand" href="{% url 'home' %}"><strong>DIA IMPRINT</strong></a>           
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -52,37 +50,28 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'pub' %}">Publications</a>
                     </li>    
-                    <li class="nav-item"><a class="nav-link" href="{% url 'partners' %}">Partners</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'partners' %}">People</a></li>
                 </ul>
             
         </div>
     </nav>
-    <div id="container" class="width">
-   	<section id="content" class="one-column">
-        <article>
-    			<br><h2>Image Annotation Tool for Handwritten Documents</h2>
-    			<br>
-                <p>IIT Kharagpur has collected a large number of Bengali handwritten documents by eminent personalitiy like Satyajit Ray from National Digital Library project  and  groundtruth is generated for subsequent development of handwritten Bengali OCR.
-    	</p>
-    	<center> <figure>
-    			<img src = "{% static 'images/multidas.jpg' %}" height="400px" width="600px">
-    			<figcaption><font size="2">Block diagram showing multiple features of preprocessing steps and annotation process with MultiDIAS system.</font></figcaption>
-    		</figure>	
-    	</center>
-    	<br>
+    <nav class="navbar navbar-expand-lg navbar-light header width">
+        
+        <h4>Image Annotation Tool for Handwritten Documents</h4>
+        <a href="http://www.iitkgp.ac.in/" style="width:80px;height: 70px;" class="ml-auto"><img src="{% static 'images/iitkgp.png' %}" style="width:100%;height:100%;object-fit:contain"> </a>
+    </nav>
+    <div class="main-width">
+               <p>IIT Kharagpur has collected a large number of Bengali handwritten documents by eminent personalitiy like Satyajit Ray from National Digital Library project  and  groundtruth is generated for subsequent development of handwritten Bengali OCR.
+        	</p>
+        	<center> <figure>
+        			<img src = "{% static 'images/multidas.jpg' %}" height="400px" width="600px">
+        			<figcaption><font size="2">Block diagram showing multiple features of preprocessing steps and annotation process with MultiDIAS system.</font></figcaption>
+        		</figure>	
+        	</center>
+        	<br>
     	
     	    <p>A graphical user interface based ground-truth generation tool called Multi-layered Document Image Annotation System (MultiDIAS) has been created. The proposed system can accommodate the multi-layered structure of the information content of the document images and simultaneously provide a simple platform to allow pixel level annotation of document images in various layers. The annotation process of a document image is conducted on the foreground pixels segmented with a semi-automatic module and coupled together with user supervision to form the elementary labeling units. These units are then labeled in four hierarchical layers (layout type, entity type, line type, word type) with the user defined labels. The output generated are four ground-truth images with an XML file containing the metadata information. The MultiDIAS is tested on a complex handwritten manuscript written by renowned film director Satyajit Ray for the movie 'Goopi Gyne Bagha Byne '. This annotated data generated using MultiDIAS can further be used in a wide range of applications of document image analysis.</p>
-    		
-
-    	
-
-    		</article>
-            </section>
-            
-            
         	<div class="clear"></div>
-        </div>
-    <br><br>
     </div>
 </body>
 </html>

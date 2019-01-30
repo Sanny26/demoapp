@@ -9,9 +9,8 @@ html,body {
   font-family: 'Bitter', serif;;
     font-size: 1em;
     color: #000;
-    font-weight: 400;
-    background-image: url('{% static 'images/iitkgp.jpg'%}');
-    /*background-color:#ebebe0;*/
+    font-weight: 400;   
+    background-color:#ebebe0;
 }
 
 .text-block {
@@ -38,9 +37,31 @@ html,body {
   margin: 0 auto;
 }
 
+.main-width{
+  max-width: 90%;
+  margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 10px;
+  padding-bottom: 30px;
+}
+
+.hpad{
+  padding-top: 15px;
+  padding-bottom: 20px;
+  padding-right: 3px;
+  padding-left: 3px;
+  border-bottom: 1px solid #000;
+}
+
 .navbar-fixed-top {
     min-height: 80px;
     background-color: #004d4d;
+}
+
+.header {
+    min-height: 80px;
+    background-color: #ebebe0;
 }
 
 div #docbox {
@@ -58,6 +79,10 @@ img {
 
 .img-group{
   display:flex;
+  padding-bottom: 10px;
+  padding-top: 5px;
+  background-color: #e5bcbc/*#ffcccc*/;
+  border-radius: 7px;
 }
 
 .column {
@@ -70,6 +95,7 @@ img {
 .column-img{
   width:180px;
   height:180px;
+  margin-bottom: 20px;
 }
 
 
@@ -92,6 +118,7 @@ img {
 .customContainer{
   margin: 0px 15px;
   padding: 0px 15px; 
+
 }
 
 .DivToScroll{

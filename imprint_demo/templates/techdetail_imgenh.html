@@ -16,15 +16,14 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-fixed-top width">
-            <a class="navbar-brand" href="{% url 'home' %}"><strong>DIA IMPRINT</strong></a>
-            <a href="https://www.isical.ac.in/" style="width:80px;height: 70px;"><img src="{% static 'images/isi.svg' %}" style="width:100%;height:100%;object-fit:contain"></a>
+            <a class="navbar-brand" href="{% url 'home' %}"><strong>DIA IMPRINT</strong></a>           
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
-                    <li class="nav-item dropdown active">
+                    <li class="nav-item dropdown  active">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Technical Details
                         </a>
@@ -51,35 +50,23 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'pub' %}">Publications</a>
                     </li>    
-                    <li class="nav-item"><a class="nav-link" href="{% url 'partners' %}">Partners</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'partners' %}">People</a></li>
                 </ul>
-            </div>
-        
+            
+        </div>
     </nav>
-    <div id="container" class="width">
-	<section id="content" class="one-column">
-
-	    <article>
-				
-			
-			<br><h2>Image Restoration and Text Extraction Techniques for Historical Handwritten Documents</h2>
-			<br> <br>
+    <nav class="navbar navbar-expand-lg navbar-light header width">
+        
+        <h4>Image Restoration and Text Extraction Techniques for Historical Handwritten Documents</h4>
+        <a href="https://www.isical.ac.in/" style="width:80px;height: 70px;" class="ml-auto"><img src="{% static 'images/isi.png' %}" style="width:100%;height:100%;object-fit:contain"> </a>
+    </nav>
+    <div class="main-width">
+	
             <p>ISI Kolkata has been working on development of algorithms for restoring degraded old handwritten documents. For this a deep neural net based system has been developed which can produce a output of restored denoised image automatically if corresponding old degraded handwritten document image given as input. 
 
-	</p>
-	
-	    <p>A deep neural net based system has also been developed which can extract written text as output automatically if provided with the corresponding old degraded handwritten document. </p>
-		
-
-	
-
-		</article>
-        </section>
-        
-        
-    	<div class="clear"></div>
-    </div>
-    <br><br>
+        	</p>
+        	<p>A deep neural net based system has also been developed which can extract written text as output automatically if provided with the corresponding old degraded handwritten document. </p>
+        	<div class="clear"></div>
     </div>
 </body>
 </html>
