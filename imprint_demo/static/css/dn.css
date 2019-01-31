@@ -81,8 +81,9 @@ img {
   display:flex;
   padding-bottom: 10px;
   padding-top: 5px;
-  background-color: #e5bcbc/*#ffcccc*/;
+  background-color: #b3d9ff/*#80bfff/*#4da6ff/*#ff6666/*#ffa64d/*#ff8080/*rgba(230, 115, 0, 0.7)/*#e5bcbc/*#ffcccc*/;
   border-radius: 7px;
+  color:white;
 }
 
 .column {
