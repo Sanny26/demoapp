@@ -12,7 +12,7 @@ from shutil import copyfile
 import requests
 
 from .models import Collections
-from .forms import ImSearchForm, TxtSearchForm
+from .forms import ImSearchForm, TxtSearchForm, SearchForm
 from .word_index import query_word
 from .extractFeature import feature
 from .E2Efeat import imgFeat, txtFeat
@@ -20,8 +20,8 @@ from .E2Efeat import imgFeat, txtFeat
 def about_project(request):
 	page_template = 'retrieval/about.html'
 	context = {}
-	collections = Collections.objects.all().values_list('collection_name', flat=True) 
-	context['collections'] = [(each.replace(' ', '_'), each)for each in collections]
+	Collection = Collection.objects.all().values_list('collection_name', flat=True) 
+	context['Collection'] = [(each.replace(' ', '_'), each)for each in Collection]
 	return render(request, page_template, context)
 
 def redirect_query(request, cname, choice):
@@ -36,8 +36,8 @@ def redirect_query(request, cname, choice):
 def index(request):
 	page_template =  'retrieval/home.html'
 	context = {}
-	collections = Collections.objects.all().values_list('collection_name', flat=True) 
-	context['collections'] = [(each.replace(' ', '_'), each)for each in collections]
+	Collection = Collection.objects.all().values_list('collection_name', flat=True) 
+	context['Collection'] = [(each.replace(' ', '_'), each)for each in Collection]
 	return render(request, page_template, context)
 
 def collection_index(request, cname):
@@ -45,14 +45,14 @@ def collection_index(request, cname):
 	context = {}
 	request.session['cname'] = cname
 	Cname = cname.replace('_', ' ')
-	collection = Collections.objects.filter(collection_name = Cname)[0]
+	collection = Collection.objects.filter(collection_name = Cname)[0]
 	context['desc'] = collection.desc
 	context['Cname'] = Cname
 	context['cname'] = cname
 	if collection.collection_link != '':
 		context['url'] = collection.collection_link
-	collections = Collections.objects.all().values_list('collection_name', flat=True) 
-	context['collections'] = [(each.replace(' ', '_'), each)for each in collections]
+	Collection = Collection.objects.all().values_list('collection_name', flat=True) 
+	context['Collection'] = [(each.replace(' ', '_'), each)for each in Collection]
 	return render(request, page_template, context)
 
 def text_query(request):
@@ -63,7 +63,7 @@ def text_query(request):
 	Cname = cname.replace('_', ' ')
 	context['Cname'] = Cname
 	context['cname'] = cname
-	collection = Collections.objects.filter(collection_name = Cname)[0]
+	collection = Collection.objects.filter(collection_name = Cname)[0]
 	model_path = collection.weights_path
 	kdtree_path = collection.kdtree_path
 	page2word_path = collection.page2word_path
@@ -122,8 +122,8 @@ def text_query(request):
 			
 			return redirect('mresults', page=0)
 
-	collections = Collections.objects.all().values_list('collection_name', flat=True) 
-	context['collections'] = [(each.replace(' ', '_'), each)for each in collections]
+	Collection = Collection.objects.all().values_list('collection_name', flat=True) 
+	context['Collection'] = [(each.replace(' ', '_'), each)for each in Collection]
 	return render(request, page_template, context)
 
 def image_query(request):
@@ -132,7 +132,7 @@ def image_query(request):
 	
 	cname = request.session['cname']
 	Cname = cname.replace('_', ' ')
-	collection = Collections.objects.filter(collection_name = Cname)[0]
+	collection = Collection.objects.filter(collection_name = Cname)[0]
 	model_path = collection.weights_path
 	kdtree_path = collection.kdtree_path
 	page2word_path = collection.page2word_path
@@ -191,8 +191,8 @@ def image_query(request):
 	context['dpaths'] = paths
 	context['Cname'] = Cname
 	context['cname'] = cname
-	collections = Collections.objects.all().values_list('collection_name', flat=True) 
-	context['collections'] = [(each.replace(' ', '_'), each)for each in collections]
+	Collection = Collection.objects.all().values_list('collection_name', flat=True) 
+	context['Collection'] = [(each.replace(' ', '_'), each)for each in Collection]
 	return render(request, page_template, context)
 
 def show_image(request):
@@ -224,7 +224,7 @@ def show_page(request):
 def demo_results(request, im_id):
 	cname = request.session['cname']
 	Cname = cname.replace('_', ' ')
-	collection = Collections.objects.filter(collection_name = Cname)[0]
+	collection = Collection.objects.filter(collection_name = Cname)[0]
 	demo_path = collection.demo_path
 	model_path = collection.weights_path
 	kdtree_path = collection.kdtree_path
@@ -267,7 +267,7 @@ def results(request):
 	request.session['cname'] = cname
 	Cname = cname.replace('_', ' ')
 	context['Cname'] = Cname
-	collection = Collections.objects.filter(collection_name = Cname)[0]
+	collection = Collection.objects.filter(collection_name = Cname)[0]
 	context['word_path'] = collection.words_path
 	
 
@@ -294,8 +294,8 @@ def results(request):
 		context['qimg'] = request.session['qimg']
 	context['cname'] = cname
 	context['ftype'] = request.session['ftype']
-	collections = Collections.objects.all().values_list('collection_name', flat=True) 
-	context['collections'] = [(each.replace(' ', '_'), each)for each in collections]
+	Collection = Collection.objects.all().values_list('collection_name', flat=True) 
+	context['Collection'] = [(each.replace(' ', '_'), each)for each in Collection]
 	return render(request, page_template, context) 
 
 def mresults(request, page):
@@ -324,8 +324,8 @@ def mresults(request, page):
 		context['qimg'] = reverse('show_image')
 	else:
 		context['qimg'] = request.session['qimg']
-	collections = Collections.objects.all().values_list('collection_name', flat=True) 
-	context['collections'] = [(each.replace(' ', '_'), each)for each in collections]
+	Collection = Collection.objects.all().values_list('collection_name', flat=True) 
+	context['Collection'] = [(each.replace(' ', '_'), each)for each in Collection]
 	return render(request, page_template, context)
 
 def view_results(request, page, pid):
@@ -373,7 +373,25 @@ def view_results(request, page, pid):
 		context['prev_pid'] = -1
 		context['page'] = 0
 	context['cname'] = cname
-	collections = Collections.objects.all().values_list('collection_name', flat=True) 
-	context['collections'] = [(each.replace(' ', '_'), each)for each in collections]
+	Collection = Collection.objects.all().values_list('collection_name', flat=True) 
+	context['Collection'] = [(each.replace(' ', '_'), each)for each in Collection]
 	
+	return render(request, page_template, context)
+
+def query(request):
+	page_template =  'retrieval/search.html'
+	context = {}
+	if request.method == 'POST':
+		form1 = SearchForm(request.POST, request.FILES)
+		if form1.is_valid():
+			if 'imquery' in request.FILES:
+				fobj = request.FILES['imquery']
+				jpeg_array = bytearray(fobj.read())
+				img = cv2.imdecode(np.asarray(jpeg_array), 1)
+				img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+		else:
+			print(form1.errors)
+
+	form1 = SearchForm()
+	context['form1'] = form1
 	return render(request, page_template, context)
