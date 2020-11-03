@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>DIA IMPRINT</title>
+<title></title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,43 +16,37 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-fixed-top width">
-        
-          <a class="navbar-brand" href="{% url 'home' %}"><strong>HW Collect</strong></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarText">
-            <!-- <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
-                </ul>  -->
-            </div>
-        
+        <a class="navbar-brand" href="{% url 'home' %}"><strong>HW Collect</strong></a>
     </nav>
 
 
   <div id="container" class="width">
-    <form class="form" enctype="multipart/form-data" method="post">
-                    <div class="row justify-content-center">
-                    <div class="card" style="width: 30rem;background-color: #F8BBD0">
-                        <div class="card-body">
-                            {% csrf_token %}
-                            {% for hidden in form1.hidden_fields %}
-                            {{ hidden }}
-                            {% endfor %}
-                            {# Include the visible fields #}
-                            {% for field in form1.visible_fields %}
-                                <!--div class="fieldWrapper"-->
-                                    {{ field.errors }}
-                                    {{ field }}
-                                
-                            {% endfor %}
-                        <button type="submit" class="btn btn-danger"><i class="fas fa-search"></i></button>
-
-                    </div>
-                </div>
-                </div>
-                </form>
-                          
+    <div class="row col-8 offset-2">
+        <h2>Copy the below text</h2>
+        <div class="card">
+            <div class="card-body">
+              This is some text within a card body.
+              <p>{{text}}</p>
+            </div>
+        </div>
+        <br><br>
+        <div class="row col-8 offset-2 justify-content-center">
+            <form class="form" enctype="multipart/form-data" method="post">
+                {% csrf_token %}
+                {{ form1.as_p }}
+                <!-- {% for hidden in form1.hidden_fields %}
+                {{ hidden }}
+                {% endfor %}
+                {# Include the visible fields #}
+                {% for field in form1.visible_fields %}
+                        {{ field.errors }}
+                        {{ field }}
+                    
+                {% endfor %} -->
+                <button type="submit" class="btn btn-primary">Upload form</button>
+            </form>
+        </div>
+    </div>                  
   </div>
 </body>
 </html>

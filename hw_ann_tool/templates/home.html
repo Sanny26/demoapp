@@ -32,16 +32,20 @@
 
   <div id="container" class="width">
     <br>
-    <div class="row col-8 offset-2">
-      <h2>Copy the below provided text and click the submit button</h2>
-      <div class="card">
-        <div class="card-body">
-          This is some text within a card body.
-          <p>{{text}}</p>
-        </div>
-      </div>
-      <br><br>
-      <a href="{% url 'upload' %}" class="btn btn-primary ">Upload handwritten form</a>                      
+    <form class="form" enctype="multipart/form-data" method="post">
+                    <div class="row justify-content-center">
+                    <div class="card">
+                        <div class="card-body">
+                            {% csrf_token %}
+                            {{form1.as_p}}
+                        <button type="submit" class="btn btn-primary">Upload form</button>
+
+                    </div>
+                </div>
+                </div>
+                </form>
+    
+                            
     </div>
   </div>
 </body>
