@@ -22,27 +22,34 @@
 
   <div id="container" class="width">
     <div class="row col-8 offset-2">
-        <h2>Copy the below text</h2>
+        <div class="row">
+            <h4 class="hpad">Copy the below text</h4>
+        </div>
         <div class="card">
             <div class="card-body">
               <p>{{text}}</p>
             </div>
         </div>
         <br><br>
-        <div class="row col-8 offset-2 justify-content-center">
-            <form class="form" enctype="multipart/form-data" method="post">
-                {% csrf_token %}
-                {{ form1.as_p }}
-                <!-- {% for hidden in form1.hidden_fields %}
-                {{ hidden }}
-                {% endfor %}
-                {# Include the visible fields #}
-                {% for field in form1.visible_fields %}
-                        {{ field.errors }}
-                        {{ field }}
-                    
-                {% endfor %} -->
-                <button type="submit" class="btn btn-primary">Upload form</button>
+        <div class="row col-10 offset-2 justify-content-center">
+            <form class="form mt-2" method="post" enctype="multipart/form-data" novalidate>
+              {% csrf_token %}
+
+              {% for hidden_field in form.hidden_fields %}
+                {{ hidden_field }}
+              {% endfor %}
+
+              {% for field in form.visible_fields %}
+                <div class="form-group">
+                  {{ field.label_tag }}
+                  {{ field }}
+                  {% if field.help_text %}
+                    <small class="form-text text-muted">{{ field.help_text }}</small>
+                  {% endif %}
+                </div>
+              {% endfor %}
+
+              <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>                  

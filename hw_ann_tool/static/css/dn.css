@@ -47,11 +47,9 @@ html,body {
 }
 
 .hpad{
-  padding-top: 15px;
-  padding-bottom: 20px;
-  padding-right: 3px;
-  padding-left: 3px;
-  border-bottom: 1px solid #000;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  padding-left: 15px; 
 }
 
 .navbar-fixed-top {

@@ -8,7 +8,7 @@ LANGUAGE_CHOICES = (
 
 class ImUpForm(forms.Form):
 
-	hwform = forms.ImageField(label='Upload an image ', widget=forms.FileInput(
+	hwform = forms.ImageField(label='Upload your file', widget=forms.FileInput(
             attrs={
                 'style': 'border-color: blue;',
                 'placeholder': 'Choose an image file'
@@ -17,5 +17,9 @@ class ImUpForm(forms.Form):
 
 class DetailsForm(forms.Form):
 
-	lang = forms.MultipleChoiceField(choices=LANGUAGE_CHOICES, label='Choose language', required=True)
-	email = forms.EmailField(label='Email id', required=True)
+	lang = forms.ChoiceField(choices=LANGUAGE_CHOICES,
+		                             label='Your choice of language',
+		                             required=True,
+		                             widget=forms.Select(attrs={'class':'form-control'}),
+		                             )
+	email = forms.EmailField(label='Email id')

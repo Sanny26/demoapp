@@ -32,20 +32,36 @@
 
   <div id="container" class="width">
     <br>
-    <form class="form" enctype="multipart/form-data" method="post">
-                    <div class="row justify-content-center">
-                    <div class="card">
-                        <div class="card-body">
-                            {% csrf_token %}
-                            {{form1.as_p}}
-                        <button type="submit" class="btn btn-primary">Upload form</button>
+    <div class="row">
+      <div class="col-6 justify-content-center">
+        <div class="card">
+          <div class="card-title">
+            <h4>How it works?</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-4 offset-2 justify-content-center">
+        <form method="post" enctype="multipart/form-data" novalidate class="form">
+              {% csrf_token %}
 
-                    </div>
+              {% for hidden_field in form.hidden_fields %}
+                {{ hidden_field }}
+              {% endfor %}
+
+              {% for field in form.visible_fields %}
+                <div class="form-group">
+                  {{ field.label_tag }}
+                  {{ field }}
+                  {% if field.help_text %}
+                    <small class="form-text text-muted">{{ field.help_text }}</small>
+                  {% endif %}
                 </div>
-                </div>
-                </form>
-    
-                            
+              {% endfor %}
+
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+      </div>
+      
     </div>
   </div>
 </body>
