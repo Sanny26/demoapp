@@ -16,16 +16,7 @@ def upload(request):
 	files = os.listdir(dirpath)
 	upload_prefix = f'{MEDIA_ROOT}/uploads/{lang}_paras/'
 
-	if 'para_id' not in request.session:
-		para_id = random.choice(files)[:-4]
-	else:
-		para_id = request.session['para_id']
-		del request.session['para_id']
-	nfile = f'{dirpath}{para_id}.txt'
-	print(f'upload {para_id}')
-	text = open(nfile).read()
-	context['text'] = text		
-	
+	# print(request.session.items(), request.method)
 	if request.method == 'POST':
 		form = ImUpForm(request.POST, request.FILES)
 		if form.is_valid():
@@ -33,13 +24,23 @@ def upload(request):
 			jpeg_array = bytearray(fobj.read())
 			image = Image.open(io.BytesIO(jpeg_array))
 			image = image.convert('RGB')
+			para_id = request.session['para_id'] 
 			savepath = f'{upload_prefix}{para_id}.jpg'
 			# need to create db model to link filename, email, paragraph id(rid)
-			request.session['para_id'] = para_id
 			image.save(savepath)
+			print('After form validation', request.session.items(), request.method)
 			return redirect('review', para_id=para_id)
+		else:
+			print(form.errors)
 	else:
-		print(f'upload get request{para_id}')
+		para_id = random.choice(files)[:-4]
+		nfile = f'{dirpath}{para_id}.txt'
+		text = open(nfile).read()
+		context['text'] = text
+		request.session['para_id'] = para_id
+		# if 'para_id' in request.session:		
+		# 	del request.session['para_id']
+		# print(f'upload get request{para_id}')
 		form = ImUpForm()
 
 	context['form'] = form
@@ -54,7 +55,7 @@ def review(request, para_id):
 	files = os.listdir(dirpath)
 	upload_prefix = f'{MEDIA_ROOT}/uploads/{lang}_paras/'
 	display_prefix = f'{MEDIA_URL}/uploads/{lang}_paras/'
-
+	print(request.session.items(), request.method)
 	# para_id = request.session['para_id']
 	nfile = f'{dirpath}{para_id}.txt'
 	print(f'upload {para_id}')
@@ -73,7 +74,7 @@ def review(request, para_id):
 			image.save(savepath)
 			return redirect('review', para_id=para_id)
 	else:
-		context['im_path'] =  f'{display_prefix}{para_id[:-4]}.jpg'
+		context['im_path'] =  f'{display_prefix}{para_id}.jpg'
 		form = ImUpForm()
 
 	context['form'] = form
